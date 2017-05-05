@@ -10,6 +10,7 @@ export const App = ({state}) => {
         <h2>Welcome to Chromattis</h2>
       </header>
       <div className="main-container">
+        <div>Goal: Arrange the grid so every tile is the same color</div>
         <div>Moves: {state.moves}</div>
         <button onClick={ () => { store.dispatch({ type: 'SHUFFLE_COLORS' }) } }>New Game</button>
         <Game tiles={state.board} />
