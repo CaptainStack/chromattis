@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 
-export const App = () => 
+export const App = ({state}) => 
   <div className="App">
     <header>
       <h2>Welcome to Chromattis</h2>
     </header>
     <div className="main-container">
-      To get started, edit <code>src/App.js</code> and save to reload.
+      {state}
     </div>
   </div>
 
