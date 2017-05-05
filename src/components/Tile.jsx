@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Tile.css';
-import { tileClicked } from '../events';
+import { tileUpClicked, tileDownClicked } from '../events';
 
 let color_map = {
   0: "#B71234",
@@ -13,9 +13,12 @@ let color_map = {
 
 export const Tile = ({tile}) => 
   <div className='Tile' 
-       key={tile.id} 
-       onClick={tileClicked(tile)} 
-       style={{backgroundColor: color_map[tile.color_sequence[tile.current_color]]}}>
+       onMouseDown={tileDownClicked(tile)}
+       onMouseUp={tileUpClicked(tile)} 
+       style={{
+          backgroundColor: color_map[tile.current_color],
+          opacity: tile.will_change ? 0.75 : 1
+        }}>
   </div>
 
 export default Tile;
