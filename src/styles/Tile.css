@@ -1,0 +1,14 @@
+.Tile {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  width: 107px;
+  height: 107px;
+}
+
+.Tile:active {
+  opacity: 0.5;
+}

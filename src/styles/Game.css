@@ -1,0 +1,13 @@
+.Game {
+  background: black;
+  border-radius: 6px;
+  padding-left: 15px;
+  padding-top: 15px;
+  box-sizing: content-box;
+  display: flex;
+  flex-wrap: wrap;
+  width: 366px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
