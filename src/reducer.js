@@ -1,4 +1,5 @@
-import { INITIAL_STATE, advance_tile_color, highlight_tiles } from './actions';
+import { INITIAL_STATE } from './initial_state';
+import { advance_tile_color, highlight_tiles } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
