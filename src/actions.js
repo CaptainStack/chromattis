@@ -26,3 +26,12 @@ export const clear_highlights = (state) => {
   }
   return state;
 }
+
+export const shuffle_colors = (state) => {
+  state.moves = 0;
+  
+  for (let tile of state.board) {
+    tile.current_color = Math.floor(Math.random() * 5 + 1);
+  }
+  return state;
+}

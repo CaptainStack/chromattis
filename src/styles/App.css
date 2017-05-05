@@ -10,4 +10,7 @@ header {
 
 .main-container {
   font-size: large;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
