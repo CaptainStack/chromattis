@@ -3,18 +3,26 @@ export const advance_tile_color = (state, tile) => {
 
   for (let updated_tile of tiles) {
     updated_tile.current_color < 5 ? updated_tile.current_color += 1 : updated_tile.current_color = 0;
-    updated_tile.will_change = false;
   }
   
+  state.moves++;
+
   return state;
 }
 
-export const highlight_tiles = (state, tile) => {
-  for (let t of state.board) {
-    if (tile.target_tiles.includes(t.id)) {
-      t.will_change = true;
+export const highlight_tiles = (state, clicked_tile) => {
+  for (let tile of state.board) {
+    if (clicked_tile.target_tiles.includes(tile.id)) {
+      tile.will_change = true;
     }
   }
 
+  return state;
+}
+
+export const clear_highlights = (state) => {
+  for (let tile of state.board) {
+    tile.will_change = false;
+  }
   return state;
 }

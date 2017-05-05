@@ -7,5 +7,6 @@ export const INITIAL_STATE = {
           {id: 5, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [2, 4, 4, 5, 8]},
           {id: 6, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [3, 6, 7]}, 
           {id: 7, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [6, 7, 8, 4]}, 
-          {id: 8, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [5, 7, 8]}]
+          {id: 8, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [5, 7, 8]}],
+  moves: 0
 };

@@ -9,6 +9,8 @@ export const App = ({state}) => {
         <h2>Welcome to Chromattis</h2>
       </header>
       <div className="main-container">
+        <div>Moves</div>
+        <div>{state.moves}</div>
         <Game tiles={state.board} />
       </div>
     </div>

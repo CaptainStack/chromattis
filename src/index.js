@@ -8,5 +8,11 @@ import reducer from './reducer';
 export const store = createStore(reducer);
 export const render = () => ReactDOM.render(<App state={store.getState()} />, document.getElementById('root'));
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('body').addEventListener('mouseup', (e) => {
+    store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+  });
+}, false);
+
 render();
 store.subscribe(render);
