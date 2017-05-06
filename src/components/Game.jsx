@@ -6,7 +6,7 @@ export const Game = ({tiles, game_in_progress}) => {
   tiles = tiles.map(tile => <Tile key={tile.id} tile={tile} game_in_progress={ game_in_progress }/>);
   let victory_modal = <div className='victory-modal'>You Win</div>
   return (
-    <div className='Game' style={{
+    <div className='Game' onContextMenu={(event) => event.preventDefault() } style={{
          pointerEvents: !game_in_progress ? 'none' : null}}>
       { !game_in_progress ? victory_modal : null }
       { tiles }

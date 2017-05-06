@@ -14,6 +14,22 @@ export const advance_tile_color = (state, tile) => {
   return state;
 }
 
+export const previous_tile_color = (state, tile) => {
+  let tiles = state.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
+
+  for (let updated_tile of tiles) {
+    updated_tile.current_color = updated_tile.current_color === 0 ? 5 : updated_tile.current_color - 1;
+  }
+  
+  state.moves++;
+
+  if (state.hasWon() && (state.best_score === 'N/A' || state.best_score > state.moves)) {
+    state.best_score = state.moves;
+  }
+
+  return state;
+}
+
 export const highlight_tiles = (state, clicked_tile) => {
   for (let tile of state.board) {
     if (clicked_tile.target_tiles.includes(tile.id)) {

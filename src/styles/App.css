@@ -14,3 +14,10 @@ header {
   margin-left: auto;
   margin-right: auto;
 }
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  justify-content: space-between;
+}
