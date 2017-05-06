@@ -11,3 +11,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+.victory-modal {
+  position: absolute;
+  background: rgba(238, 228, 218, 0.73);
+  width: 483px;
+  height: 483px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+}
