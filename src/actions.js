@@ -7,6 +7,10 @@ export const advance_tile_color = (state, tile) => {
   
   state.moves++;
 
+  if (state.hasWon() && (state.best_score === 'N/A' || state.best_score > state.moves)) {
+    state.best_score = state.moves;
+  }
+
   return state;
 }
 

@@ -12,6 +12,7 @@ export const App = ({state}) => {
       <div className="main-container">
         <div>Goal: Arrange the grid so every tile is the same color</div>
         <div>Moves: {state.moves}</div>
+        <div>Best: {state.best_score}</div>
         <button onClick={ () => { store.dispatch({ type: 'SHUFFLE_COLORS' }) } }>New Game</button>
         <button onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</button>
         <Game tiles={state.board} game_in_progress={!state.hasWon()} />
