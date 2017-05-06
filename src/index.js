@@ -16,4 +16,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 render();
 store.subscribe(render);
-store.subscribe(() => localStorage.setItem('reduxState', JSON.stringify(store.getState())));
+store.subscribe(() => localStorage.setItem('chromattis_saved_state', JSON.stringify(store.getState())));

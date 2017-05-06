@@ -14,7 +14,9 @@ let color_map = {
 export const Tile = ({tile}) => 
   <div className='Tile' 
        onMouseDown={tileDownClicked(tile)}
-       onMouseUp={tileUpClicked(tile)} 
+       onMouseUp={tileUpClicked(tile)}
+       onTouchStart={tileDownClicked(tile)}
+       onTouchEnd={tileUpClicked(tile)}
        style={{
           backgroundColor: color_map[tile.current_color],
           opacity: tile.will_change ? 0.75 : 1

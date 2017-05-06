@@ -8,16 +8,15 @@ let hasWon =
     return true;
   }
 
-let persistedState = {};
+let persistedState = localStorage.getItem('chromattis_saved_state');
 
 // Rebuild the redux state by parsing the JSON string in localStorage
-if (localStorage.getItem('reduxState')) {
-  persistedState = JSON.parse(localStorage.getItem('reduxState'));
+if (persistedState) {
+  persistedState = JSON.parse(localStorage.getItem('chromattis_saved_state'));
+  persistedState.hasWon = hasWon;
 }
 
-persistedState.hasWon = hasWon;
-
-export const INITIAL_STATE = localStorage.getItem('reduxState') ? persistedState : {
+export const INITIAL_STATE = localStorage.getItem('chromattis_saved_state') ? persistedState : {
   board: [{id: 0, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [0,1,3]}, 
           {id: 1, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [1, 3, 5]}, 
           {id: 2, will_change: false, current_color: Math.floor(Math.random() * 5 + 1), target_tiles: [1, 2, 5]},
