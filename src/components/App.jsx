@@ -22,10 +22,8 @@ export const App = ({state}) => {
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
           <a className='flat-button' onClick={newGameButtonClicked}>New Game</a>
+          <a className='flat-button' onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a>
         </div>
-        <ul>
-          <li><a onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a></li>
-        </ul>
         <Game tiles={state.board} game_in_progress={!state.hasWon()} current_moves={state.moves} />
         <p><strong>HOW TO PLAY:</strong> Left-click to advance tiles to the next color. Right-click to change them to their previous. There are 6 colors in total that appear in the order red, orange, yellow, green, blue, white.</p>
         <hr />

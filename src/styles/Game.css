@@ -9,7 +9,8 @@
   width: 500px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 50px; 
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 .victory-modal {
   position: absolute;
@@ -33,6 +34,8 @@
 
 @media (max-width: 460px) {
   .Game {
+    margin-bottom: 20px;
+    margin-top: 20px;
     width: 300px;
   }
   .victory-modal {
