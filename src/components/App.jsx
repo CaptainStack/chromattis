@@ -6,18 +6,41 @@ import { store } from '../index';
 export const App = ({state}) => {
   return(
     <div className="App">
-      <header>
-        <h2>Welcome to Chromattis</h2>
-      </header>
       <div className="main-container">
-        <div>Arrange the grid so every tile is the same color. Left-click to toggle tiles to the next color. Right-click to toggle them to the previous one.</div>
+        <div className='row'>
+          <h1>Chromattis</h1>
+          <div className='score-container'>
+            <h3>MOVES:</h3> 
+            <p>{state.moves}</p>
+          </div>
+          <div className='score-container'>
+            <h3>BEST:</h3> 
+            <p>{state.best_score}</p>
+          </div>
+        </div>
+        <div className='row'>
+          <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
+          <a className='flat-button' onClick={ () => { store.dispatch({ type: 'SHUFFLE_COLORS' }) } }>New Game</a>
+        </div>
         <ul>
-          <li>Moves: {state.moves}</li>
-          <li>Best: {state.best_score}</li>
-          <li><button onClick={ () => { store.dispatch({ type: 'SHUFFLE_COLORS' }) } }>New Game</button></li>
-          <li><button onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</button></li>
+          <li><a onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a></li>
         </ul>
         <Game tiles={state.board} game_in_progress={!state.hasWon()} />
+        <p><strong>HOW TO PLAY:</strong> Left-click to advance tiles to the next color. Right-click to change them to their previous. There are 6 colors in total that appear in the order red, orange, yellow, green, blue, white.</p>
+        <hr />
+        <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'>Andre Stackhouse.</a> Source code <a href='https://github.com/CaptainStack/chromattis' target='_'>hosted on GitHub</a> under an open source MIT license.</p>
+        {/* SOCIAL MEDIA BUTTONS */}
+        <div className='row'>
+          <a href="https://twitter.com/share" className="twitter-share-button" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charSet="utf-8"></script>
+          <div className="fb-share-button" data-href="https://captainstack.github.io/chromattis/" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a className="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse">Share</a></div>
+          <a href="//www.reddit.com/submit" onClick={() => { window.location = '//www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false }}> <img src="//www.redditstatic.com/spreddit7.gif" alt="submit to reddit" /> </a>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="TFH72M6LQSGNG" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+            <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" />
+          </form>
+        </div>
       </div>
     </div>
   );

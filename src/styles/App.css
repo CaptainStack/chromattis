@@ -15,9 +15,75 @@ header {
   margin-right: auto;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 ul {
   display: flex;
   flex-direction: row;
   list-style: none;
   justify-content: space-between;
+}
+
+p {
+  line-height: 1.65;
+}
+
+h1 {
+  font-size: 52px;
+}
+
+.flat-button {
+    background: #8f7a66;
+    border-radius: 3px;
+    padding: 0 10px;
+    text-decoration: none;
+    color: #f9f6f2;
+    height: 40px;
+    line-height: 42px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.score-container {
+  position: relative;
+  background: #bbada0;
+  border-radius: 3px;
+  text-align: center;
+  display: inline-block;
+  padding: 10px;
+}
+
+.score-container p {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+}
+
+.score-container h3 {
+  width: 100%;
+  top: 10px;
+  left: 0;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  color: #eee4da;
+}
+
+.score-container * {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@font-face {
+  font-family: "Clear Sans";
+  src: url('./ClearSans-Regular.ttf');
 }
