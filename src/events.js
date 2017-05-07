@@ -12,3 +12,10 @@ export const tileUpClicked = clicked_tile => event => {
 export const tileDownClicked = clicked_tile => event => {
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
 }
+
+export const newGameButtonClicked = event => {
+  let interval = setInterval(function() {
+    store.dispatch({ type: 'SHUFFLE_COLORS' })
+  }.bind(this), 50);
+  setTimeout(function() { clearInterval(interval) }.bind(this), 800);
+}

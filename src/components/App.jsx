@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { store } from '../index';
+import { newGameButtonClicked } from '../events';
 
 export const App = ({state}) => {
   return(
@@ -20,7 +21,7 @@ export const App = ({state}) => {
         </div>
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
-          <a className='flat-button' onClick={ () => { store.dispatch({ type: 'SHUFFLE_COLORS' }) } }>New Game</a>
+          <a className='flat-button' onClick={newGameButtonClicked}>New Game</a>
         </div>
         <ul>
           <li><a onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a></li>
