@@ -88,9 +88,12 @@ p {
 @media (max-width: 460px) {
   .main-container {
     font-size: medium;
-    width: 330px;
+    width: 300px;
   }
   h1 {
-    font-size: 40px;
+    font-size: 32px;
+  }
+  .score-container p {
+    font-size: 18px;
   }
 }
