@@ -17,7 +17,16 @@
   width: 483px;
   height: 483px;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.victory-modal h1 {
   font-size: 48px;
+}
+
+.victory-share {
+  width: 60%;
 }

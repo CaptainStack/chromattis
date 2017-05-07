@@ -11,7 +11,7 @@ let color_map = {
   5: "#FFFFFF",
 }
 
-export const Tile = ({tile}) => 
+export const Tile = ({tile, game_in_progress}) => 
   <div className='Tile' 
        onMouseDown={tileDownClicked(tile)}
        onMouseUp={tileUpClicked(tile)}
@@ -19,7 +19,8 @@ export const Tile = ({tile}) =>
        onTouchEnd={tileUpClicked(tile)}
        style={{
           backgroundColor: color_map[tile.current_color],
-          opacity: tile.will_change ? 0.75 : 1
+          opacity: tile.will_change ? 0.75 : 1,
+          pointerEvents: !game_in_progress ? 'none' : null
         }}>
   </div>
 
