@@ -6,3 +6,10 @@
   width: 151px;
   height: 151px;
 }
+
+@media (max-width: 500px) {
+  .Tile {
+    width: 118px;
+    height: 118px;
+  }
+}

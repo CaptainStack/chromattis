@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-header {
-  background-color: #222;
-  padding: 20px;
-  color: white;
-}
-
 .main-container {
   font-size: large;
   width: 500px;
@@ -92,4 +86,11 @@ h1 {
 @font-face {
   font-family: "Clear Sans";
   src: url('./ClearSans-Regular.ttf');
+}
+
+@media (max-width: 500px) {
+  .main-container {
+    font-size: medium;
+    width: 400px;
+  }
 }

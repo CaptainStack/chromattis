@@ -30,3 +30,13 @@
 .victory-share {
   width: 60%;
 }
+
+@media (max-width: 500px) {
+  .Game {
+    width: 400px;
+  }
+  .victory-modal {
+    width: 383px;
+    height: 383px;
+  }
+}
