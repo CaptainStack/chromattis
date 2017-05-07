@@ -26,6 +26,10 @@ ul {
   justify-content: space-between;
 }
 
+p a {
+  color: #776e65;
+}
+
 p {
   line-height: 1.65;
 }
