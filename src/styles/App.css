@@ -85,10 +85,10 @@ p {
   src: url('./ClearSans-Regular.ttf');
 }
 
-@media (max-width: 500px) {
+@media (max-width: 460px) {
   .main-container {
     font-size: medium;
-    width: 370px;
+    width: 360px;
   }
   h1 {
     font-size: 40px;
