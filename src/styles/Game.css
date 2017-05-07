@@ -33,10 +33,10 @@
 
 @media (max-width: 460px) {
   .Game {
-    width: 360px;
+    width: 348px;
   }
   .victory-modal {
-    width: 343px;
-    height: 343px;
+    width: 331px;
+    height: 331px;
   }
 }
