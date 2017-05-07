@@ -7,7 +7,7 @@
   height: 151px;
 }
 
-@media (max-width: 460px) {
+@media (max-width: 520px) {
   .Tile {
     width: 85px;
     height: 85px;
