@@ -39,15 +39,16 @@ h1 {
 }
 
 .flat-button {
-    background: #8f7a66;
-    border-radius: 3px;
-    padding: 0 10px;
-    text-decoration: none;
-    color: #f9f6f2;
-    height: 40px;
-    line-height: 42px;
-    cursor: pointer;
-    text-align: center;
+  border: 0;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 10px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  cursor: pointer;
+  text-align: center;
 }
 
 .score-container {
