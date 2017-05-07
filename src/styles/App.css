@@ -41,6 +41,7 @@ p {
   line-height: 42px;
   cursor: pointer;
   text-align: center;
+  user-select: none;
 }
 
 .score-container {
