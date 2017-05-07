@@ -12,6 +12,7 @@
 
 h1 {
   font-weight: bold;
+  font-size: 52px;
 }
 
 ul {
@@ -27,10 +28,6 @@ p a {
 
 p {
   line-height: 1.65;
-}
-
-h1 {
-  font-size: 52px;
 }
 
 .flat-button {
@@ -91,6 +88,9 @@ h1 {
 @media (max-width: 500px) {
   .main-container {
     font-size: medium;
-    width: 400px;
+    width: 370px;
+  }
+  h1 {
+    font-size: 40px;
   }
 }
