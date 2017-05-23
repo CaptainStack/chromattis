@@ -12,6 +12,11 @@
   margin-bottom: 40px;
   margin-top: 40px;
 }
+
+.Game .flat-button {
+  margin-right: 10px;
+}
+
 .victory-modal {
   position: absolute;
   background: rgba(238, 228, 218, 0.73);
