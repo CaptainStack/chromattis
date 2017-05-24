@@ -64,6 +64,8 @@ export const solve_puzzle = (state) => {
 }
 
 export const navigate_level = (state, level) => {
-  state.current_level_index = level;
+  if (state.levels.length - 1 >= level) {
+    state.current_level_index = level;
+  }
   return state;
 }
