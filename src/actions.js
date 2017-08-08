@@ -48,11 +48,25 @@ export const clear_highlights = (state) => {
 }
 
 export const shuffle_colors = (state) => {
-  state.current_level().moves = 0;
+  let board = state.current_level().board;
+  let keystone = board[0];
+  let best_score = state.current_level().best_score;
 
-  for (let tile of state.current_level().board) {
-    tile.current_color = Math.floor(Math.random() * 5 + 1);
+  for (let tile of board) {
+    if (tile === keystone || keystone.target_tiles.includes(tile.id)) {
+      tile.current_color = 0;
+    } else {
+      tile.current_color = 1;
+    }
   }
+
+  for (let i = 0; i < 1000; i++) {
+    advance_tile_color(state, board[Math.floor(Math.random() * board.length)]);
+    state.current_level().moves = 0;
+  }
+  
+  state.current_level().best_score = best_score;
+
   return state;
 }
 
