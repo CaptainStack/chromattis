@@ -1,0 +1,32 @@
+.VictoryModal {
+  position: absolute;
+  background: rgba(238, 228, 218, 0.73);
+  width: 483px;
+  height: 483px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  
+.VictoryModal h1 {
+  font-size: 48px;
+}
+  
+.victory-share {
+  width: 60%;
+}
+  
+@media (max-width: 460px) {
+  .VictoryModal {
+    width: 285px;
+    height: 285px;
+  }
+  .VictoryModal h1 {
+    font-size: 24px;
+  }
+  .victory-share {
+    width: 80%;
+  }
+}
