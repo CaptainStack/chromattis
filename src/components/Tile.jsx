@@ -20,7 +20,8 @@ export const Tile = ({tile, game_in_progress}) =>
        style={{
           backgroundColor: color_map[tile.current_color],
           opacity: tile.will_change ? 0.75 : 1,
-          pointerEvents: !game_in_progress ? 'none' : null
+          pointerEvents: !game_in_progress ? 'none' : null,
+          userSelect: 'none'
         }}>
   </div>
 
