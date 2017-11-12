@@ -55,6 +55,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
             {id: 8, will_change: false, current_color: null, target_tiles: [5, 7, 8]}],
     moves: 0,
     best_score: 'N/A',
+    currently_selected: null,
     in_winning_state: in_winning_state
   },
   {
@@ -69,6 +70,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
             {id: 8, will_change: false, current_color: null, target_tiles: [4, 5, 7, 8]}],
     moves: 0,
     best_score: 'N/A',
+    currently_selected: null,
     in_winning_state: in_winning_state
   }],
   current_level_index: 0,

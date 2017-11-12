@@ -11,6 +11,8 @@ export const advance_tile_color = (state, tile) => {
     state.current_level().best_score = state.current_level().moves;
   }
 
+  state.current_level().currently_selected = null;
+
   return state;
 }
 
@@ -36,6 +38,7 @@ export const highlight_tiles = (state, clicked_tile) => {
       tile.will_change = true;
     }
   }
+  state.current_level().currently_selected = clicked_tile.id;
 
   return state;
 }
