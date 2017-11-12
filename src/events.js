@@ -1,12 +1,16 @@
 import { store } from './index';
 
 export const tileUpClicked = clicked_tile => event => {
-  if (event.button === 0) {
-    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: clicked_tile });
+  let current_level = store.getState().current_level();
+  let down_clicked_tile = current_level.board[current_level.currently_selected];
+
+  if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
   }
-  else if (event.button === 2) {
+  else if (event.button === 2 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
+  store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
 }
 
 export const tileDownClicked = clicked_tile => event => {
