@@ -1,15 +1,4 @@
 .Tile {
   cursor: pointer;
   border-radius: 3px;
-  margin-right: 15px;
-  margin-bottom: 15px;
-  width: 151px;
-  height: 151px;
-}
-
-@media (max-width: 460px) {
-  .Tile {
-    width: 85px;
-    height: 85px;
-  }
 }
