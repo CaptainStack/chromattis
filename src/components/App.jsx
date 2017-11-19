@@ -3,6 +3,7 @@ import '../styles/App.css';
 import { Game } from './Game';
 import { store } from '../index';
 import { newGameButtonClicked } from '../events';
+import { VictoryModal } from './VictoryModal';
 
 export const App = ({state}) => {
   let current_level = state.current_level();
@@ -16,7 +17,7 @@ export const App = ({state}) => {
          onClick={ is_unlocked ? () => {store.dispatch({ type: 'NAVIGATE_LEVEL', level: index })} : null }
          title={ is_unlocked ? `Click to go to level ${index}` : 'Locked' } >
          {index}
-  </a>)})
+      </a>)})
 
   return(
     <div className="App">
@@ -39,6 +40,7 @@ export const App = ({state}) => {
         </div>
         <div>Select Level: {level_navigation}</div>
         <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
+        <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } />
         <p><strong>HOW TO PLAY:</strong> Left-click to advance tiles to the next color. Right-click to change them to their previous. There are 6 colors in total that appear in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Source code hosted on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an open source MIT license.</p>

@@ -3,38 +3,16 @@
   border-radius: 6px;
   padding-left: 15px;
   padding-top: 15px;
+  padding-bottom: 15px;
   box-sizing: content-box;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 151px);
+  grid-template-rows: repeat(3, 151px);
+  grid-gap: 15px;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 40px;
-  margin-top: 40px;
-}
-
-.Game .flat-button {
-  margin-right: 10px;
-}
-
-.victory-modal {
-  position: absolute;
-  background: rgba(238, 228, 218, 0.73);
-  width: 483px;
-  height: 483px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.victory-modal h1 {
-  font-size: 48px;
-}
-
-.victory-share {
-  width: 60%;
 }
 
 @media (max-width: 460px) {
@@ -42,15 +20,8 @@
     margin-bottom: 20px;
     margin-top: 20px;
     width: 300px;
-  }
-  .victory-modal {
-    width: 285px;
-    height: 285px;
-  }
-  .victory-modal h1 {
-    font-size: 24px;
-  }
-  .victory-share {
-    width: 80%;
+    grid-template-columns: repeat(3, 85px);
+    grid-template-rows: repeat(3, 85px);
+    grid-gap: 15px;
   }
 }

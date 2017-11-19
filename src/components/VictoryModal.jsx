@@ -4,7 +4,7 @@ import { store } from '../index';
 import { newGameButtonClicked } from '../events';
 
 export const VictoryModal = ({game_in_progress, current_moves, current_level_index}) =>
-  <div className='VictoryModal' style={{ visibility: game_in_progress ? 'hidden' : null }}>
+  <div className='VictoryModal' style={{ display: game_in_progress ? 'none' : null }}>
     <h1>Solved in {current_moves} moves!</h1>
     <p>Try to do it in fewer or move on?</p>
     <div className='row'>

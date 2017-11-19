@@ -119,6 +119,7 @@ p {
   font-size: 15px;
   color: white;
   user-select: none;
+  margin-bottom: 40px;
 }
 
 .level-navigation-button.current-level {
