@@ -23,3 +23,13 @@ export const newGameButtonClicked = event => {
   }, 50);
   setTimeout(function() { clearInterval(interval) }, 800);
 }
+
+export const navigateLevelButtonClicked = level_index => event => {
+  store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
+
+  let current_level = store.getState().current_level();
+
+  if (current_level.in_winning_state() && current_level.best_score === 'N/A') {
+    store.dispatch({ type: 'SHUFFLE_COLORS' });
+  }
+}
