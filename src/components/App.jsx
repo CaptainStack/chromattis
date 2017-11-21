@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { store } from '../index';
-import { newGameButtonClicked } from '../events';
+import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 import { VictoryModal } from './VictoryModal';
 
 export const App = ({state}) => {
@@ -14,7 +14,7 @@ export const App = ({state}) => {
     return (
       <a key={ index } 
          className={`level-navigation-button ${ current_level_class } ${ locked_class }`} 
-         onClick={ is_unlocked ? () => {store.dispatch({ type: 'NAVIGATE_LEVEL', level: index })} : null }
+         onClick={ is_unlocked ? navigateLevelButtonClicked(index) : null }
          title={ is_unlocked ? `Click to go to level ${index}` : 'Locked' } >
          {index}
       </a>)})
