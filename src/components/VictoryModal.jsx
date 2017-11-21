@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/VictoryModal.css';
-import { store } from '../index';
-import { newGameButtonClicked } from '../events';
+import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 
 export const VictoryModal = ({game_in_progress, current_moves, current_level_index}) =>
   <div className='VictoryModal' style={{ display: game_in_progress ? 'none' : null }}>
@@ -9,7 +8,7 @@ export const VictoryModal = ({game_in_progress, current_moves, current_level_ind
     <p>Try to do it in fewer or move on?</p>
     <div className='row'>
       <a className='flat-button' onClick={ newGameButtonClicked }>Reset Puzzle</a>
-      <a className='flat-button' onClick={ () => {store.dispatch({ type: 'NAVIGATE_LEVEL', level: current_level_index + 1 })} }>Next Puzzle</a>
+      <a className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index + 1) }>Next Puzzle</a>
     </div>
     <p>Brag about it:</p>
     <div className='row victory-share' style={{ display: game_in_progress ? 'none' : null }}>
