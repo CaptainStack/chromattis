@@ -11,13 +11,13 @@
   margin-right: auto;
 }
 
-@media (max-width: 460px) {
+/* @media (max-width: 600px) {
   .Game {
     margin-bottom: 20px;
     margin-top: 20px;
-    width: 300px;
+    width: 600px;
     grid-template-columns: repeat(3, 85px);
     grid-template-rows: repeat(3, 85px);
     grid-gap: 15px;
   }
-}
+} */

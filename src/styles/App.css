@@ -86,10 +86,10 @@ p {
   src: url('./ClearSans-Regular.ttf');
 }
 
-@media (max-width: 460px) {
+/* @media (max-width: 600px) {
   .main-container {
     font-size: medium;
-    width: 300px;
+    width: 600px;
   }
   h1 {
     font-size: 32px;
@@ -104,7 +104,7 @@ p {
   .row input[class='flat-button'] {
     margin-top: 10px;
   }
-}
+} */
 
 .level-navigation-button {
   cursor: pointer;
