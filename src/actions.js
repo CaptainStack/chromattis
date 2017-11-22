@@ -50,9 +50,16 @@ export const clear_highlights = (state) => {
   return state;
 }
 
+export const tiles_would_solve_puzzle = (board, target_tiles) => {
+  let target_tiles_ids = target_tiles.map(tile => tile.id);
+  let updated_colors = board.map(tile => !target_tiles_ids.includes(tile.id) ? tile.current_color : tile.current_color < 5 ? tile.current_color + 1 : 0);
+
+  return updated_colors.every(color => color === updated_colors[0]);
+}
+
 export const shuffle_colors = (state) => {
   let board = state.current_level().board;
-  let keystone = board[0];
+  let keystone = board[Math.floor(Math.random() * board.length)];
   let best_score = state.current_level().best_score;
 
   for (let tile of board) {
@@ -64,7 +71,18 @@ export const shuffle_colors = (state) => {
   }
 
   for (let i = 0; i < 1000; i++) {
-    advance_tile_color(state, board[Math.floor(Math.random() * board.length)]);
+    let shffle_tile_index = Math.floor(Math.random() * board.length);
+    let shuffle_tile = board[shffle_tile_index];
+
+    let target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
+
+    // Don't solve the puzzle while shuffling
+    if (!tiles_would_solve_puzzle(board, target_tiles)) {
+      advance_tile_color(state, shuffle_tile);
+    } else {
+      previous_tile_color(state, shuffle_tile);
+    }
+
     state.current_level().moves = 0;
   }
   
