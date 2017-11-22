@@ -61,7 +61,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
   },{
     board: [{id: 0, will_change: false, current_color: null, target_tiles: [0, 1]}, 
             {id: 1, will_change: false, current_color: null, target_tiles: [1, 2]}, 
-            {id: 2, will_change: false, current_color: null, target_tiles: [3, 1]},
+            {id: 2, will_change: false, current_color: null, target_tiles: [2, 0]},
             {id: 3, will_change: false, current_color: null, target_tiles: [3, 2]}],
     moves: 0,
     best_score: 'N/A',
