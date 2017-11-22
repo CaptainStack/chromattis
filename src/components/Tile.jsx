@@ -19,7 +19,8 @@ export const Tile = ({tile, game_in_progress}) =>
        onTouchEnd={tileUpClicked(tile)}
        style={{
           backgroundColor: color_map[tile.current_color],
-          opacity: tile.will_change ? 0.75 : 1,
+          transform: tile.will_change ? 'scale(0.95)' : null,
+          opacity: tile.will_change ? 0.5 : 1,
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
