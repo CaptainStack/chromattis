@@ -21,8 +21,8 @@
 .VictoryModal .flat-button {
   margin-right: 10px;
 }
-
-@media (max-width: 460px) {
+/* 
+@media (max-width: 600px) {
   .VictoryModal {
     width: 285px;
     height: 285px;
@@ -33,4 +33,4 @@
   .victory-share {
     width: 80%;
   }
-}
+} */
