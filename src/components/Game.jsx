@@ -9,8 +9,8 @@ export const Game = ({tiles, game_in_progress, current_moves, current_level_inde
          onContextMenu={event => event.preventDefault() } 
          style={{ 
            display: game_in_progress ? null : 'none',
-           gridTemplateColumns: `repeat(${ Math.sqrt(tiles.length) }, ${ 600 / Math.sqrt(tiles.length) - 15 }px)`,
-           gridTemplateRows: `repeat(${ Math.sqrt(tiles.length) }, ${ 600 / Math.sqrt(tiles.length) - 15 }px)`,
+           gridTemplateColumns: `repeat(${ Math.sqrt(tiles.length) }, ${ 555 / Math.sqrt(tiles.length) - 15 }px)`,
+           gridTemplateRows: `repeat(${ Math.sqrt(tiles.length) }, ${ 555 / Math.sqrt(tiles.length) - 15 }px)`,
            gridGap: '15px' }} >
       { tiles }
     </div>

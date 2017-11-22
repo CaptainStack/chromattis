@@ -1,7 +1,7 @@
 .VictoryModal {
   background: #cabfb4;
-  width: 100%;
-  height: 585px;
+  width: 540px;
+  height: 540px;
   border: 15px solid black;
   display: flex;
   flex-wrap: wrap;
