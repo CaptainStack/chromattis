@@ -9,3 +9,6 @@
   -ms-user-select: none;
   user-select: none;
 }
+.Tile:focus {
+  outline: none !important;
+}
