@@ -13,6 +13,10 @@
   /* border: 1px solid black; */
 }
 
+#game-row {
+  min-height: 600px;
+}
+
 h1 {
   font-weight: bold;
   font-size: 52px;
