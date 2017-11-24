@@ -16,6 +16,10 @@
   min-height: 570px;
 }
 
+div:focus {
+  outline: none !important;
+}
+
 h1 {
   font-weight: bold;
   font-size: 52px;
