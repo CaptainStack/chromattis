@@ -33,6 +33,7 @@ div:focus {
 h1 {
   font-weight: bold;
   font-size: 52px;
+  margin-top: 15px;
 }
 
 ul {
@@ -62,6 +63,11 @@ p {
   cursor: pointer;
   text-align: center;
   user-select: none;
+}
+
+.flat-button:active {
+  transform: scale(0.95);
+  transition: 0.08s;
 }
 
 .score-container {
@@ -105,26 +111,6 @@ p {
   font-family: "Clear Sans";
   src: url('./ClearSans-Regular.ttf');
 }
-
-/* @media (max-width: 600px) {
-  .main-container {
-    font-size: medium;
-    width: 600px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-  .score-container p {
-    font-size: 18px;
-  }
-  .row.social {
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  .row input[class='flat-button'] {
-    margin-top: 10px;
-  }
-} */
 
 .level-navigation-button {
   cursor: pointer;
