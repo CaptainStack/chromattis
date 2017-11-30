@@ -10,7 +10,7 @@ export const render = () => ReactDOM.render(<App state={store.getState()} />, do
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener('mouseup', (event) => {
-    if (event.srcElement.className !== 'Tile') {
+    if (event.target.className !== 'Tile') {
       store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
     }
   });
