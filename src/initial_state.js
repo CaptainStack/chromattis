@@ -52,7 +52,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     in_winning_state: in_winning_state
   },{
     board: [{id: 0, will_change: false, current_color: null, target_tiles: [0, 1]}, 
-            {id: 1, will_change: false, current_color: null, target_tiles: [1, 2]}, 
+            {id: 1, will_change: false, current_color: null, target_tiles: [0, 2]}, 
             {id: 2, will_change: false, current_color: null, target_tiles: [2, 1]}],
     moves: 0,
     best_score: 'N/A',
@@ -63,6 +63,20 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
             {id: 1, will_change: false, current_color: null, target_tiles: [1, 2]}, 
             {id: 2, will_change: false, current_color: null, target_tiles: [2, 0]},
             {id: 3, will_change: false, current_color: null, target_tiles: [3, 2]}],
+    moves: 0,
+    best_score: 'N/A',
+    currently_selected: null,
+    in_winning_state: in_winning_state
+  },{
+    board: [{id: 0, will_change: false, current_color: null, target_tiles: [0, 1, 3, 4]}, 
+            {id: 1, will_change: false, current_color: null, target_tiles: [1, 5]}, 
+            {id: 2, will_change: false, current_color: null, target_tiles: [1, 2, 4, 5]},
+            {id: 3, will_change: false, current_color: null, target_tiles: [3, 1]}, 
+            {id: 4, will_change: false, current_color: null, target_tiles: [4, 5]}, 
+            {id: 5, will_change: false, current_color: null, target_tiles: [5, 7]},
+            {id: 6, will_change: false, current_color: null, target_tiles: [3, 4, 6, 7]}, 
+            {id: 7, will_change: false, current_color: null, target_tiles: [3, 7]}, 
+            {id: 8, will_change: false, current_color: null, target_tiles: [4, 5, 7, 8]}],
     moves: 0,
     best_score: 'N/A',
     currently_selected: null,
@@ -81,23 +95,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     best_score: 'N/A',
     currently_selected: null,
     in_winning_state: in_winning_state
-  },
-  {
-    board: [{id: 0, will_change: false, current_color: null, target_tiles: [0, 1, 3, 4]}, 
-            {id: 1, will_change: false, current_color: null, target_tiles: [1, 5]}, 
-            {id: 2, will_change: false, current_color: null, target_tiles: [1, 2, 4, 5]},
-            {id: 3, will_change: false, current_color: null, target_tiles: [3, 1]}, 
-            {id: 4, will_change: false, current_color: null, target_tiles: [4, 5]}, 
-            {id: 5, will_change: false, current_color: null, target_tiles: [5, 7]},
-            {id: 6, will_change: false, current_color: null, target_tiles: [3, 4, 6, 7]}, 
-            {id: 7, will_change: false, current_color: null, target_tiles: [3, 7]}, 
-            {id: 8, will_change: false, current_color: null, target_tiles: [4, 5, 7, 8]}],
-    moves: 0,
-    best_score: 'N/A',
-    currently_selected: null,
-    in_winning_state: in_winning_state
-  },
-  {
+  },{
     board: [{id: 0, will_change: false, current_color: null, target_tiles: [0, 1, 2, 3]}, 
             {id: 1, will_change: false, current_color: null, target_tiles: [1, 4]}, 
             {id: 2, will_change: false, current_color: null, target_tiles: [2, 5, 8]},
