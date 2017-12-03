@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 6px;
 }
   
 .VictoryModal h1 {
@@ -21,16 +22,3 @@
 .VictoryModal .flat-button {
   margin-right: 10px;
 }
-/* 
-@media (max-width: 600px) {
-  .VictoryModal {
-    width: 285px;
-    height: 285px;
-  }
-  .VictoryModal h1 {
-    font-size: 24px;
-  }
-  .victory-share {
-    width: 80%;
-  }
-} */
