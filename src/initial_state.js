@@ -63,8 +63,8 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     in_winning_state: in_winning_state,
   },{
     board: [
-      TileData(0, [0, 1, 3, 4]), TileData(1, [3, 1, 5]), TileData(2, [1, 2, 5]),
-      TileData(3, [0, 3, 4]), TileData(4, [0, 2, 4]), TileData(5, [1, 2, 4, 5]),
+      TileData(0, [0, 1]), TileData(1, [1, 2]),
+      TileData(2, [2, 0]), TileData(3, [3, 2]),
     ],
     moves: 0,
     best_score: 'N/A',
@@ -72,7 +72,8 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     in_winning_state: in_winning_state,
   },{
     board: [
-      TileData(0, [0, 1]), TileData(1, [1, 2]), TileData(2, [2, 0]), TileData(3, [3, 2]),
+      TileData(0, [0, 1, 3, 4]), TileData(1, [3, 1, 5]), TileData(2, [1, 2, 5]),
+      TileData(3, [0, 3, 4]), TileData(4, [0, 2, 4]), TileData(5, [1, 2, 4, 5]),
     ],
     moves: 0,
     best_score: 'N/A',
