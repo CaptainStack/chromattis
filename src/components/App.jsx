@@ -2,22 +2,12 @@ import React from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { store } from '../index';
-import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 import { VictoryModal } from './VictoryModal';
+import { LevelNavigation } from './LevelNavigation';
+import { newGameButtonClicked } from '../events';
 
 export const App = ({state}) => {
   let current_level = state.current_level();
-  let level_navigation = state.levels.map((level, index) => {
-    let current_level_class = state.current_level_index === index ? 'current-level' : null;
-    let is_unlocked = state.highest_unlocked_level() >= index;
-    let locked_class = is_unlocked ? 'unlocked' : 'locked';
-    return (
-      <a key={ index } 
-         className={`level-navigation-button ${ current_level_class } ${ locked_class }`} 
-         onClick={ is_unlocked ? navigateLevelButtonClicked(index) : null }
-         title={ is_unlocked ? `Click to go to level ${index}` : 'Locked' } >
-         {index}
-      </a>)})
 
   return(
     <div className="App">
@@ -38,7 +28,7 @@ export const App = ({state}) => {
           <a className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</a>
           <a className='flat-button' onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a>
         </div>
-        <div>Select Level: {level_navigation}</div>
+        <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
           <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
           <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } />

@@ -1,0 +1,27 @@
+.level-navigation-button {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 50%;
+  background-color: #8f7a66;
+  margin-right: 5px;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  user-select: none;
+  margin-bottom: 16px;
+}
+  
+.level-navigation-button.current-level {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 25px;
+}
+
+.locked {
+  background-color: #bbada0;
+  cursor: not-allowed;
+}
