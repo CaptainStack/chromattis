@@ -25,8 +25,8 @@ export const App = ({state}) => {
         </div>
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
-          <a className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</a>
-          <a className='flat-button' onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</a>
+          <span className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
+          <span className='flat-button' onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</span>
         </div>
         <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
