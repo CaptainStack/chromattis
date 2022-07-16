@@ -24,6 +24,7 @@ export const Tile = ({tile, game_in_progress}) =>
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
+    <span style={{color: color_map[tile.current_color]}}>{tile.current_color}</span>
   </div>
 
 export default Tile;

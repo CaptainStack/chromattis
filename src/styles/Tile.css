@@ -9,7 +9,15 @@
   -ms-user-select: none;
   user-select: none;
   transition: 0.08s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12vh;
 }
 .Tile:focus {
   outline: none !important;
+}
+
+.Tile span {
+  filter: brightness(75%);
 }
