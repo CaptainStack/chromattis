@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Tile.css';
-import { tileUpClicked, tileDownClicked } from '../events';
+import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered } from '../events';
 
 let color_map = {
   0: "#B71234",
@@ -14,6 +14,8 @@ let color_map = {
 export const Tile = ({tile, game_in_progress}) => 
   <div className='Tile' 
        onMouseDown={tileDownClicked(tile)}
+       onMouseOver={tileHovered(tile)}
+       onMouseLeave={tileUnhovered(tile)}
        onMouseUp={tileUpClicked(tile)}
        onTouchStart={tileDownClicked(tile)}
        onTouchEnd={tileUpClicked(tile)}
