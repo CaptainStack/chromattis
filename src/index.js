@@ -9,7 +9,7 @@ export const store = createStore(reducer);
 export const render = () => ReactDOM.render(<App state={store.getState()} />, document.getElementById('root'));
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('body').addEventListener('mouseup', (event) => {
+  document.querySelector('body').addEventListener(['mouseup', 'touchend'], (event) => {
     if (event.target.className !== 'Tile') {
       store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
     }
