@@ -14,7 +14,7 @@ export const tileUpClicked = clicked_tile => event => {
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  audio.play();
+  // audio.play();
 }
 
 export const tileDownClicked = clicked_tile => event => {
