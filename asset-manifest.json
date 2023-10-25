@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/chromattis/static/css/main.aaa247d6.css",
-    "main.js": "/chromattis/static/js/main.54c0e74e.js",
+    "main.js": "/chromattis/static/js/main.eff5fcfc.js",
     "static/media/ClearSans-Regular.ttf": "/chromattis/static/media/ClearSans-Regular.43ea7d2123718b0cfd2c.ttf",
     "static/media/downclick.ogg": "/chromattis/static/media/downclick.869cd57fb78ae87e42fb.ogg",
     "static/media/upclick.ogg": "/chromattis/static/media/upclick.9159170c88bf3dc9a8f4.ogg",
     "index.html": "/chromattis/index.html",
     "main.aaa247d6.css.map": "/chromattis/static/css/main.aaa247d6.css.map",
-    "main.54c0e74e.js.map": "/chromattis/static/js/main.54c0e74e.js.map"
+    "main.eff5fcfc.js.map": "/chromattis/static/js/main.eff5fcfc.js.map"
   },
   "entrypoints": [
     "static/css/main.aaa247d6.css",
-    "static/js/main.54c0e74e.js"
+    "static/js/main.eff5fcfc.js"
   ]
 }
