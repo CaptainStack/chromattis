@@ -1,6 +1,10 @@
 import { store } from './index';
+import downclick from './audio/downclick.ogg';
+import upclick from './audio/upclick.ogg';
 
 export const tileUpClicked = clicked_tile => event => {
+  let audio = new Audio(upclick);
+  audio.play();
   let current_level = store.getState().current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
@@ -14,6 +18,8 @@ export const tileUpClicked = clicked_tile => event => {
 }
 
 export const tileDownClicked = clicked_tile => event => {
+  let audio = new Audio(downclick);
+  audio.play();
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
 }
 
