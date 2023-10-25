@@ -41,7 +41,7 @@ if (persisted_state) {
   }
 }
 
-const TileData = (id, target_tiles, will_change, current_color) => ({ id: id, will_change: will_change, current_color: current_color, target_tiles: target_tiles });
+const TileData = (id, target_tiles, will_change, preview, current_color) => ({ id: id, will_change: will_change, preview: preview, current_color: current_color, target_tiles: target_tiles });
 
 // If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
 export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors({

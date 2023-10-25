@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/Tile.css';import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered } from '../events';
+import '../styles/Tile.css';
+import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered } from '../events';
 
 let color_map = {
   0: "#B71234",
@@ -11,7 +12,7 @@ let color_map = {
 }
 
 export const Tile = ({tile, game_in_progress}) => 
-  <div className='Tile' 
+  <div className='Tile'
        onMouseDown={tileDownClicked(tile)}
        onMouseOver={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
@@ -21,7 +22,8 @@ export const Tile = ({tile, game_in_progress}) =>
        style={{
           backgroundColor: color_map[tile.current_color],
           transform: tile.will_change ? 'scale(0.95)' : null,
-          opacity: tile.will_change ? 0.5 : 1,
+          animation: tile.preview ? 'pulse 2s infinite' : null,
+          opacity: tile.will_change ? 0.25 : tile.preview ? 0.5 : 1,
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>

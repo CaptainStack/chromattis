@@ -24,7 +24,7 @@ export const tileDownClicked = clicked_tile => event => {
 }
 
 export const tileHovered = hovered_tile => event => {
-  store.dispatch({ type: 'HIGHLIGHT_TILES', tile: hovered_tile });
+  store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
 }
 
 export const tileUnhovered = hovered_tile => event => {

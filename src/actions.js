@@ -32,10 +32,22 @@ export const previous_tile_color = (state, tile) => {
   return state;
 }
 
+export const preview_tiles = (state, hovered_tile) => {
+  for (let tile of state.current_level().board) {
+    if (hovered_tile.target_tiles.includes(tile.id)) {
+      tile.preview = true;
+    }
+  }
+  state.current_level().currently_selected = hovered_tile.id;
+
+  return state;
+}
+
 export const highlight_tiles = (state, clicked_tile) => {
   for (let tile of state.current_level().board) {
     if (clicked_tile.target_tiles.includes(tile.id)) {
       tile.will_change = true;
+      tile.preview = false;
     }
   }
   state.current_level().currently_selected = clicked_tile.id;
@@ -45,6 +57,7 @@ export const highlight_tiles = (state, clicked_tile) => {
 
 export const clear_highlights = (state) => {
   for (let tile of state.current_level().board) {
+    tile.preview = false;
     tile.will_change = false;
   }
   return state;

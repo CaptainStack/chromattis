@@ -1,5 +1,5 @@
 import { INITIAL_STATE } from './initial_state';
-import { advance_tile_color, previous_tile_color, highlight_tiles, clear_highlights, shuffle_colors, solve_puzzle, navigate_level } from './actions';
+import { advance_tile_color, previous_tile_color, preview_tiles, highlight_tiles, clear_highlights, shuffle_colors, solve_puzzle, navigate_level } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -7,6 +7,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return advance_tile_color(state, action.tile);
     case 'PREVIOUS_TILE_COLOR':
       return previous_tile_color(state, action.tile);
+      case 'PREVIEW_TILES':
+        return preview_tiles(state, action.tile);
     case 'HIGHLIGHT_TILES':
       return highlight_tiles(state, action.tile);
     case 'CLEAR_HIGHLIGHTS':
