@@ -19,6 +19,7 @@ export const Tile = ({tile, game_in_progress}) =>
        onMouseUp={tileUpClicked(tile)}
        onTouchStart={tileDownClicked(tile)}
        onTouchEnd={tileUpClicked(tile)}
+       onTouchCancel={tileUpClicked(tile)}
        style={{
           backgroundColor: color_map[tile.current_color],
           transform: tile.will_change ? 'scale(0.95)' : null,
