@@ -14,13 +14,15 @@ export const tileUpClicked = clicked_tile => event => {
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  // audio.play();
+  audio.play();
+  event.preventDefault();
 }
 
 export const tileDownClicked = clicked_tile => event => {
   let audio = new Audio(downclick);
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
   audio.play();
+  event.preventDefault();
 }
 
 export const tileHovered = hovered_tile => event => {
