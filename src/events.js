@@ -4,7 +4,6 @@ import upclick from './audio/upclick.ogg';
 
 export const tileUpClicked = clicked_tile => event => {
   let audio = new Audio(upclick);
-  audio.play();
   let current_level = store.getState().current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
@@ -15,12 +14,13 @@ export const tileUpClicked = clicked_tile => event => {
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+  audio.play();
 }
 
 export const tileDownClicked = clicked_tile => event => {
   let audio = new Audio(downclick);
-  audio.play();
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
+  audio.play();
 }
 
 export const tileHovered = hovered_tile => event => {
