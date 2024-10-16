@@ -1,0 +1,26 @@
+{
+  "name": "Chromattis",
+  "short_name": "chromattis",
+  "description": "Chromattis is a simple, fun, challenging puzzle game by Andre Stackhouse. Do you have the brains to solve it?",
+  "scope": "/chromattis/",
+  "start_url": "/chromattis/",
+  "theme_color": "#8f7a66",
+  "background_color": "#776e65",
+  "display": "standalone",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/chromattis/favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512"
+    }
+  ],
+  "screenshots" : [
+  {
+    "src": "chromattis-social-preview.png",
+    "form_factor": "wide"
+  },
+  {
+    "src": "chromattis-social-preview.png"
+  }
+]
+}
