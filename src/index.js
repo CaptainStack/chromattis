@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 }, false);
 
+screen.orientation
+.lock("portrait")
+.then(() => {
+  log.textContent = `Locked to ${oppositeOrientation}\n`;
+})
+.catch((error) => {
+  log.textContent += `${error}\n`;
+});
 render();
 store.subscribe(render);
 store.subscribe(() => localStorage.setItem('chromattis_saved_state', JSON.stringify(store.getState())));
