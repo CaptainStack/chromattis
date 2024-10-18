@@ -4,4 +4,9 @@ body {
   font-family: "Clear Sans", Arial, sans-serif;
   background: #faf8ef;
   color: #776e65;
+  overscroll-behavior: none;
+}
+
+html {
+  overscroll-behavior: none;
 }
