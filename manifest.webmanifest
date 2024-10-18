@@ -11,12 +11,14 @@
   "icons": [
     {
       "src": "/chromattis/favicon.svg",
-      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512"
+      "sizes": "144x144",
+      "purpose": "any"
     }
   ],
   "screenshots" : [
   {
     "src": "chromattis-social-preview.png",
+    "sizes": "1200x600",
     "form_factor": "wide"
   },
   {
