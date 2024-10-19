@@ -38,7 +38,7 @@ self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('Installing cache : ' + CACHE_NAME);
-      return cache.addAll(URLS)
+      return cache.addAll(APP_STATIC_RESOURCES)
     })
   )
 })
