@@ -23,9 +23,9 @@
       "form_factor": "wide"
     },
     {
-      "src": "chromattis-social-preview.png",
+      "src": "splash-narrow.png",
       "sizes": "1080x2400",
-      "form_factor": "tall"
+      "form_factor": "narrow"
     }
   ]
 }
