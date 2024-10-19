@@ -1,6 +1,7 @@
-var GHPATH = '/chromattis';
+const GHPATH = '/chromattis';
+const APP_PREFIX = 'chromattis';
 const VERSION = "v1";
-const CACHE_NAME = `APP_PREFIX${VERSION}`;
+const CACHE_NAME = `${APP_PREFIX}-${VERSION}`;
 
 
 const APP_STATIC_RESOURCES = [
