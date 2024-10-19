@@ -1,7 +1,7 @@
-var GHPATH = '/chromattis';
-var APP_PREFIX = 'period-tracker-';
+const GHPATH = '/chromattis';
+const APP_PREFIX = 'chromattis';
 const VERSION = "v1";
-const CACHE_NAME = `APP_PREFIX${VERSION}`;
+const CACHE_NAME = `${APP_PREFIX}-${VERSION}`;
 
 
 const APP_STATIC_RESOURCES = [
@@ -18,7 +18,6 @@ const APP_STATIC_RESOURCES = [
   `${GHPATH}/actions.js`,
 ];
 
-// var CACHE_NAME = APP_PREFIX + VERSION
 self.addEventListener('fetch', function (e) {
   console.log('Fetch request : ' + e.request.url);
   e.respondWith(
