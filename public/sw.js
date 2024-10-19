@@ -9,13 +9,6 @@ const APP_STATIC_RESOURCES = [
   `${GHPATH}/index.html`,
   `${GHPATH}/chromattis-favicon.png`,
   `${GHPATH}/favicon.svg`,
-  `${GHPATH}/app.css`,
-  `${GHPATH}/index.css`,
-  `${GHPATH}/reducer.js`,
-  `${GHPATH}/initial_state.js`,
-  `${GHPATH}/index.js`,
-  `${GHPATH}/events.js`,
-  `${GHPATH}/actions.js`,
 ];
 
 self.addEventListener('fetch', function (e) {
