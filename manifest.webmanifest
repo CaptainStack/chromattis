@@ -17,13 +17,15 @@
     }
   ],
   "screenshots" : [
-  {
-    "src": "chromattis-social-preview.png",
-    "sizes": "1200x600",
-    "form_factor": "wide"
-  },
-  {
-    "src": "chromattis-social-preview.png"
-  }
-]
+    {
+      "src": "chromattis-social-preview.png",
+      "sizes": "1200x600",
+      "form_factor": "wide"
+    },
+    {
+      "src": "chromattis-social-preview-tall.png",
+      "sizes": "1080x2400",
+      "form_factor": "narrow"
+    }
+  ]
 }
