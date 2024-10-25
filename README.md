@@ -84,7 +84,7 @@ Chromattis is a single page application (SPA) that runs entirely client-side wit
 * `events.js` - The file which contains all UI event listeners.
 * `reducer.js` - The file which specifies all operations which modify the Redux state. All state management must be done via reducers defined in this file.
 * `sw.js` - The service worker which handles application caching.
-* `manifest.webmanifest` - the file which specifies metadata necessary to install Chromattis as a PWA.
+* `app.webmanifest` - the file which specifies metadata necessary to install Chromattis as a PWA.
 
 ### Deploying to GitHub Pages
 
