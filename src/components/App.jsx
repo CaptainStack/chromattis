@@ -1,7 +1,6 @@
 import React from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
-import { store } from '../index';
 import { VictoryModal } from './VictoryModal';
 import { LevelNavigation } from './LevelNavigation';
 import { newGameButtonClicked } from '../events';
@@ -26,7 +25,6 @@ export const App = ({state}) => {
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
           <span className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
-          <span className='flat-button' onClick={ () => { store.dispatch({ type: 'SOLVE_PUZZLE' }) } } style={{ display: 'none' }}>Solve</span>
         </div>
         <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
