@@ -114,6 +114,16 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     },
     {
       board: [
+        TileData(0, [0, 1, 2]), TileData(1, [1, 3, 4, 5]), TileData(2, [2, 4, 5]),
+        TileData(3, [1, 3]), TileData(4, [0, 2, 4]), TileData(5, [1, 2, 4, 5]),
+      ],
+      moves: 0,
+      best_score: 'N/A',
+      currently_selected: null,
+      in_winning_state: in_winning_state,
+    },
+    {
+      board: [
         TileData(0, [0, 1, 3, 4]), TileData(1, [1, 5]), TileData(2, [1, 2, 4, 5]),
         TileData(3, [3, 1]), TileData(4, [4, 5]), TileData(5, [5, 7]),
         TileData(6, [3, 4, 6, 7]), TileData(7, [3, 7]), TileData(8, [4, 5, 7, 8]),
@@ -128,6 +138,18 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
         TileData(0, [0, 1, 3]), TileData(1, [1, 3, 5]), TileData(2, [1, 2, 5]),
         TileData(3, [1, 3, 7]), TileData(4, [1, 3, 5, 7]), TileData(5, [2, 4, 4, 5, 8]),
         TileData(6, [3, 6, 7]), TileData(7, [6, 7, 8, 4]), TileData(8, [5, 7, 8]),
+      ],
+      moves: 0,
+      best_score: 'N/A',
+      currently_selected: null,
+      in_winning_state: in_winning_state,
+    },
+    {
+      board: [
+        TileData(0, [0, 1, 4, 5]), TileData(1, [1, 2]), TileData(2, [1, 2]), TileData(3, [2, 3, 6, 7]),
+        TileData(4, [4, 8]), TileData(5, [5, 6, 9, 10]), TileData(6, [5, 6, 9, 10]), TileData(7, [7, 11]),
+        TileData(8, [4, 8]), TileData(9, [5, 6, 9, 10]), TileData(10, [5, 6, 9, 10]), TileData(11, [7, 11]),
+        TileData(12, [8, 9, 12, 13]), TileData(13, [13, 14]), TileData(14, [13, 14]), TileData(15, [10, 11, 14, 15]),
       ],
       moves: 0,
       best_score: 'N/A',
