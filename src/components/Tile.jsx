@@ -21,6 +21,7 @@ export const Tile = ({tile, game_in_progress}) =>
        onTouchEnd={tileUpClicked(tile)}
        style={{
           backgroundColor: color_map[tile.current_color],
+          border: tile.preview ? '5px solid #8f7a66' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
           opacity: tile.will_change ? 0.25 : tile.preview ? 0.5 : 1,
