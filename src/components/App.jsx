@@ -10,7 +10,7 @@ export const App = ({state}) => {
   let current_level = state.current_level();
 
   return(
-    <div className="App">
+    <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
         <div className='row'>
           <h1>Chromattis</h1>
