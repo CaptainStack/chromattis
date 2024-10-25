@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
@@ -6,6 +6,33 @@ import { LevelNavigation } from './LevelNavigation';
 import { newGameButtonClicked } from '../events';
 
 export const App = ({state}) => {
+  // Add event listeners for custom install button/prompt
+  // Logic should show button conditionally on support for PWA installation
+  useEffect(() => {
+    let installPrompt = null;
+    const installButton = document.querySelector("#install");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      installPrompt = event;
+      installButton.removeAttribute("hidden");
+    });
+
+    installButton.addEventListener("click", async () => {
+      if (!installPrompt) {
+        return;
+      }
+      const result = await installPrompt.prompt();
+      console.log(`Install prompt was: ${result.outcome}`);
+      disableInAppInstallPrompt();
+    });
+
+    function disableInAppInstallPrompt() {
+      installPrompt = null;
+      installButton.setAttribute("hidden", "");
+    }
+  });
+
   let current_level = state.current_level();
 
   return(
@@ -25,6 +52,7 @@ export const App = ({state}) => {
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
           <span className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
+          <span id="install" className='flat-button' hidden>Install</span>
         </div>
         <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
