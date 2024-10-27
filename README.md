@@ -94,6 +94,8 @@ The deployment script is:
 
 `npm run deploy`
 
+IMPORTANT - this deployment script will deploy your application as it currently stands on your local setup, it does not deploy from your main branch on GitHub. Always deploy from a clean branch instead of a working branch.
+
 ### Contributing to Chromattis
 
 Chromattis has been to date the project of a single developer. As such, there is no currently defined contribution process other than to send a pull request.
