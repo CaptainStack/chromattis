@@ -1,6 +1,11 @@
 import React from 'react';
 import '../styles/Tile.css';
 import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered } from '../events';
+import downclick from '../audio/downclick.ogg';
+import upclick from '../audio/upclick.ogg';
+
+let upclick_audio = new Audio(upclick);
+let downclick_audio = new Audio(downclick);
 
 let color_map = {
   0: "#B71234",
@@ -13,12 +18,12 @@ let color_map = {
 
 export const Tile = ({tile, game_in_progress}) => 
   <div className='Tile'
-       onMouseDown={tileDownClicked(tile)}
+       onMouseDown={tileDownClicked(tile, downclick_audio)}
        onMouseOver={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
-       onMouseUp={tileUpClicked(tile)}
-       onTouchStart={tileDownClicked(tile)}
-       onTouchEnd={tileUpClicked(tile)}
+       onMouseUp={tileUpClicked(tile, upclick_audio)}
+       onTouchStart={tileDownClicked(tile, downclick_audio)}
+       onTouchEnd={tileUpClicked(tile, upclick_audio)}
        style={{
           backgroundColor: color_map[tile.current_color],
           border: tile.preview ? '5px solid #8f7a66' : null,
