@@ -4,7 +4,7 @@ export const tileUpClicked = (clicked_tile, audio) => event => {
   let current_level = store.getState().current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
-  if ((event.button === 0 || event.type.startsWith('touch')) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+  if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
   }
   else if (event.button === 2 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
@@ -16,7 +16,6 @@ export const tileUpClicked = (clicked_tile, audio) => event => {
 }
 
 export const tileDownClicked = (clicked_tile, audio) => event => {
-
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
   audio.play();
   event.stopPropagation();
