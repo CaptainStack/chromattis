@@ -59,7 +59,7 @@ export const App = ({state}) => {
           <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
           <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } />
         </div>
-        <p><strong>HOW TO PLAY:</strong> Left-click to advance tiles to the next color. Right-click to change them to their previous. There are 6 colors in total that appear in the order red, orange, yellow, green, blue, white.</p>
+        <p><strong>HOW TO PLAY:</strong> Click or tap to advance tiles to the next color. Right-click or two-finger tap to change them to their previous. There are 6 colors in total that appear in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Source code hosted on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an open source MIT license.</p>
         {/* SOCIAL MEDIA BUTTONS */}
