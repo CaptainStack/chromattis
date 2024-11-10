@@ -1,8 +1,6 @@
 import { store } from './index';
 
 export const tileUpClicked = (clicked_tile, audio) => event => {
-  event.preventDefault();
-
   let current_level = store.getState().current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
