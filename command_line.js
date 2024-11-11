@@ -20,19 +20,23 @@ man = help = commands = function() {
 }
 
 const press = (index) => {
-  document.getElementById(`press_${index}`).click();
+  document.getElementById(`press_tile_${index}`).click();
 }
 
 const reverse = (index) => {
-  document.getElementById(`reverse_${index}`).click();
+  document.getElementById(`reverse_tile_${index}`).click();
 }
 
 const preview = (index) => {
-  document.getElementById(`preview_${index}`).click();
+  document.getElementById(`preview_tile_${index}`).click();
 }
 
 const shuffle = () => {
-  document.getElementById('reset').click();
+  document.getElementById('reset_game').click();
+}
+
+const install = () => {
+  document.getElementById('install').click();
 }
 
 help()
