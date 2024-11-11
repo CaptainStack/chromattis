@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Tile.css';
-import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered } from '../events';
+import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview } from '../events';
 
 let color_map = {
   0: "#B71234",
@@ -29,6 +29,11 @@ export const Tile = ({tile, game_in_progress}) =>
           userSelect: 'none'
         }}>
     <span style={{color: color_map[tile.current_color]}}>{tile.current_color}</span>
+
+    {/* HIDDEN CLI BUTTONS */}
+    <span hidden id={`press_tile_${tile.id}`} onClick={cliClick(tile)}></span>
+    <span hidden id={`reverse_tile_${tile.id}`} onClick={cliClick(tile, true)}></span>
+    <span hidden id={`preview_tile_${tile.id}`} onClick={cliPreview(tile)}></span>
   </div>
 
 export default Tile;

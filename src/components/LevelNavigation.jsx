@@ -13,7 +13,7 @@ export const LevelNavigation = ({levels, current_level_index, highest_unlocked_l
     return (
       <span key={ index } 
          className={`level-navigation-button ${ current_level_class } ${ locked_class }`} 
-         onClick={ is_unlocked ? navigateLevelButtonClicked(index) : null }
+         onClick={ navigateLevelButtonClicked(index) }
          title={ is_unlocked ? `Click to go to level ${index}` : 'Locked' } >
          {index}
       </span>

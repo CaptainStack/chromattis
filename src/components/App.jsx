@@ -3,7 +3,7 @@ import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { LevelNavigation } from './LevelNavigation';
-import { newGameButtonClicked } from '../events';
+import { newGameButtonClicked, cliPrintBoard } from '../events';
 
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
@@ -31,6 +31,7 @@ export const App = ({state}) => {
       installPrompt = null;
       installButton.setAttribute("hidden", "");
     }
+    cliPrintBoard();
   });
 
   let current_level = state.current_level();
@@ -51,13 +52,14 @@ export const App = ({state}) => {
         </div>
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
-          <span className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
+          <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
           <span id="install" className='flat-button' hidden>Install</span>
+          <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
         </div>
         <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
           <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
-          <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } />
+          <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } best_score={current_level.best_score} total_levels={state.levels.length} />
         </div>
         <p><strong>HOW TO PLAY:</strong> Tap tiles to advance them to their next color. Two-finger tap or right-click to reverse them to their previous. There are 6 colors that cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />

@@ -2,14 +2,15 @@ import React from 'react';
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 
-export const VictoryModal = ({game_in_progress, current_moves, current_level_index, best_score}) =>
+export const VictoryModal = ({game_in_progress, current_moves, current_level_index, best_score, total_levels}) =>
   <div className='VictoryModal' style={{ display: game_in_progress ? 'none' : null }}>
     { current_moves <= best_score ? <h3>High score!</h3> : null }
     <h1>You solved Level {current_level_index} in <br /> {current_moves} moves!</h1>
     <p>Try to do it in fewer or move on?</p>
     <div className='row'>
+      <span id='previous_puzzle_button' className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index > 0 ? current_level_index - 1 : current_level_index) }>Previous Puzzle</span>
       <span className='flat-button' onClick={ newGameButtonClicked }>Reset Puzzle</span>
-      <span className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index + 1) }>Next Puzzle</span>
+      <span id='next_puzzle_button' className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index < total_levels ? current_level_index + 1 : current_level_index) }>Next Puzzle</span>
     </div>
     <p>Brag about it:</p>
     <div className='row victory-share' style={{ display: game_in_progress ? 'none' : null }}>
