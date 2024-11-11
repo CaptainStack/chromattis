@@ -85,9 +85,10 @@ export const newGameButtonClicked = event => {
 export const navigateLevelButtonClicked = level_index => event => {
   if (level_index <= store.getState().highest_unlocked_level()) {
     store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
-    cliPrintBoard();
+    console.log(`Switching to Level ${level_index}...`);
+    setTimeout(() => {cliPrintBoard()}, 500);
   } else {
-    console.log(`You haven't unlocked Level ${level_index} yet`);
+    console.log(`You haven't unlocked Level ${level_index} yet.`);
   }
   
   let current_level = store.getState().current_level();
