@@ -84,7 +84,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
       TileData(3, [3, 1]), TileData(4, [4, 5]), TileData(5, [5, 7]),
       TileData(6, [3, 4, 6, 7]), TileData(7, [3, 7]), TileData(8, [4, 5, 7, 8]),
     ]),
-    TileData([
+    LevelData([
       TileData(0, [0, 1, 3]), TileData(1, [1, 3, 5]), TileData(2, [1, 2, 5]),
       TileData(3, [1, 3, 7]), TileData(4, [1, 3, 5, 7]), TileData(5, [2, 4, 4, 5, 8]),
       TileData(6, [3, 6, 7]), TileData(7, [6, 7, 8, 4]), TileData(8, [5, 7, 8]),
