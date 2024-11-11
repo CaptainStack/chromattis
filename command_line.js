@@ -2,21 +2,33 @@
 // and is designed to be run in the console in the browser developer tools
 // The scripts are separate from the React application and do not have access
 // to the application scope. All interactions between the CLI and the React
-// application happen via presses of hidden buttons simulated via JavaScript.
-// These hidden buttons are bound to the same React event handlers as the visible UI.
+// application happen via presses of buttons (sometimes hidden) simulated via JavaScript.
+// These buttons are bound to the same React event handlers as the visible UI.
 
 let man, help, commands;
 man = help = commands = function() {
   console.log(`
-    Welcome to the Chromattis Command Line Interface (CLI)
-    All commands are JavaScript functions and must be invoked as function calls complete with open and close parenthesis ()
-    Every Tile has an ID starting with the first Tile in the upper left at 0, and going up by one with each Tile from there.
+Welcome to the Chromattis Command Line Interface (CLI)
 
-    Below is a list of all available commands:
+All commands are JavaScript functions and must be invoked as function calls complete with open and close parenthesis ()
+Every Tile has an ID starting with the first Tile in the upper left at 0, and going up by one with each Tile from there.
 
-    shuffle() - reset the board by shuffling, also sets movecount back to 0.
-    help() - displays all CLI commands.
-    press(index) - Takes an integer corresponding to a tile on the board. Triggers a press of that tile.
+Below is a list of all available commands:
+
+help() - displays all CLI commands.
+
+show_board() - Prints the current state of the game board to the console.
+shuffle() - Resets the board by shuffling, also sets movecount back to 0.
+
+press(index) - Takes an integer corresponding to a Tile on the board. Triggers a press of that tile.
+reverse(index) - Takes an integer corresponding to a Tile on the board. Triggers a reverse-press of that tile.
+preview(index) - Takes an integer corresponding to a Tile on the board and prints all the tiles that pressing it would impact.
+
+next_level() - Navigates the game to the next level if unlocked.
+previous_level() - Navigates the game to the previous level.
+goto_level(index) - Takes a level index and navigates the game to it.
+
+install() - Installs Chromattis to your device. Requires Progressive Web Application (PWA) support.
   `);
 }
 
@@ -41,7 +53,19 @@ const install = () => {
 }
 
 const next_level = () => {
-  document.getElementById('level-navigation-1').click();
+  document.getElementById('next_puzzle_button').click();
+}
+
+const previous_level = () => {
+  document.getElementById('previous_puzzle_button').click();
+}
+
+const goto_level = (index) => {
+  document.getElementsByClassName('level-navigation-button')[index].click();
+}
+
+const show_board = () => {
+  document.getElementById('show_board').click();
 }
 
 help()
