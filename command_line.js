@@ -10,6 +10,7 @@ man = help = commands = function() {
   console.log(`
     Welcome to the Chromattis Command Line Interface (CLI)
     All commands are JavaScript functions and must be invoked as function calls complete with open and close parenthesis ()
+    Every Tile has an ID starting with the first Tile in the upper left at 0, and going up by one with each Tile from there.
 
     Below is a list of all available commands:
 
@@ -37,6 +38,10 @@ const shuffle = () => {
 
 const install = () => {
   document.getElementById('install').click();
+}
+
+const next_level = () => {
+  document.getElementById('level-navigation-1').click();
 }
 
 help()
