@@ -31,7 +31,6 @@ export const App = ({state}) => {
       installPrompt = null;
       installButton.setAttribute("hidden", "");
     }
-    cliPrintBoard();
   });
 
   let current_level = state.current_level();
