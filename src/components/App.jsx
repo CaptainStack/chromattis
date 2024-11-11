@@ -61,7 +61,7 @@ export const App = ({state}) => {
         </div>
         <p><strong>HOW TO PLAY:</strong> Tap tiles to advance them to their next color. Two-finger tap or right-click to reverse them to their previous. There are 6 colors that cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
-        <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license.</p>
+        <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license. <a href='https://forms.gle/YVkRv9uepXTjW46r9'><strong>Submit feedback here</strong>.</a></p>
         {/* SOCIAL MEDIA BUTTONS */}
         <div className='row social'>
           <a href="https://twitter.com/share?text=Are%20you%20smart%20enough%20to%20solve%20#Chromattis%3F&via=CaptainStack" className="twitter-share-button" data-show-count="true">Tweet</a><script async src="//platform.twitter.com/widgets.js" charSet="utf-8"></script>
