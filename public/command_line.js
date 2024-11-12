@@ -6,8 +6,8 @@
 // These buttons are bound to the same React event handlers as the visible UI.
 
 let man, help, commands;
-man = help = commands = function() {
-  console.log(`
+man = help = commands = () =>
+console.log(`
 Welcome to the Chromattis Command Line Interface (CLI)
 
 All commands are JavaScript functions and must be invoked as function calls complete with open and close parenthesis ()
@@ -30,47 +30,17 @@ previous_level() - Navigates the game to the previous level.
 goto_level(index) - Takes a level index and navigates the game to it.
 
 install() - Installs Chromattis to your device. Requires Progressive Web Application (PWA) support.
-  `);
-}
+`);
 
-const press = (index) => {
-  document.getElementById(`press_tile_${index}`).click();
-}
-
-const reverse = (index) => {
-  document.getElementById(`reverse_tile_${index}`).click();
-}
-
-const preview = (index) => {
-  document.getElementById(`preview_tile_${index}`).click();
-}
-
-const shuffle = () => {
-  document.getElementById('reset_game').click();
-}
-
-const install = () => {
-  document.getElementById('install').click();
-}
-
-const next_level = () => {
-  document.getElementById('next_puzzle_button').click();
-}
-
-const previous_level = () => {
-  document.getElementById('previous_puzzle_button').click();
-}
-
-const goto_level = (index) => {
-  document.getElementsByClassName('level-navigation-button')[index].click();
-}
-
-const show_board = () => {
-  document.getElementById('show_board').click();
-}
-
-const undo = () => {
-  document.getElementById('undo').click();
-}
+const press = (index) => document.getElementById(`press_tile_${index}`).click();
+const reverse = (index) => document.getElementById(`reverse_tile_${index}`).click();
+const preview = (index) => document.getElementById(`preview_tile_${index}`).click();
+const shuffle = () => document.getElementById('reset_game').click();
+const install = () => document.getElementById('install').click();
+const next_level = () => document.getElementById('next_puzzle_button').click();
+const previous_level = () => document.getElementById('previous_puzzle_button').click();
+const goto_level = (index) => document.getElementsByClassName('level-navigation-button')[index].click();
+const show_board = () => document.getElementById('show_board').click();
+const undo = () => document.getElementById('undo').click();
 
 help()

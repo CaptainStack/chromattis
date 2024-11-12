@@ -39,7 +39,7 @@ export const App = ({state}) => {
     <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
         <div className='row'>
-          <h1>Chromattis</h1>
+          <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
           <div className='score-container'>
             <h3>MOVES:</h3> 
             <p>{current_level.moves}</p>
@@ -51,7 +51,7 @@ export const App = ({state}) => {
           <span id="install" className='flat-button' hidden>Install ⇩</span>
         </div>
         <div className='row'>
-          <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
+          <p><strong>Solve by making all Tiles the same color/number</strong></p>
           <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
           <span id="undo" className={`flat-button ${state.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
@@ -61,7 +61,7 @@ export const App = ({state}) => {
           <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
           <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } best_score={current_level.best_score} total_levels={state.levels.length} />
         </div>
-        <p><strong>HOW TO PLAY:</strong> Tap tiles to advance them to their next color. Two-finger tap or right-click to reverse them to their previous. There are 6 colors that cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p><strong>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license. <a href='https://forms.gle/YVkRv9uepXTjW46r9'><strong>Submit feedback here</strong>.</a></p>
         {/* SOCIAL MEDIA BUTTONS */}

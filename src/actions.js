@@ -1,3 +1,5 @@
+import { cliPrintBoard } from "./events";
+
 export const advance_tile_color = (state, tile) => {
   let tiles = state.current_level().board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
 
@@ -125,6 +127,7 @@ export const undo_move = (state) => {
   let last_move = current_level.last_move ? current_level.last_move : null;
 
   if (last_move) {
+    console.log('Undoing last move...');
     if (last_move.reverse) {
       advance_tile_color(state, last_move.tile);
       state.current_level().last_move = null;
@@ -134,6 +137,7 @@ export const undo_move = (state) => {
       state.current_level().last_move = null;
       current_level.moves -= 2;
     }
+    setTimeout(() => {cliPrintBoard()}, 500);
   } else {
     console.log('You can only undo your last move.');
   }

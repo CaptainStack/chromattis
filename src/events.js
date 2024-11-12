@@ -49,9 +49,11 @@ export const tileUpClicked = (clicked_tile) => event => {
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
   if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+    console.log(`Press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
   }
   else if ((event.button === 2 || event.touches.length == 1) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+    console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
   cliPrintBoard();
@@ -66,19 +68,9 @@ export const tileDownClicked = (clicked_tile) => event => {
   event.stopPropagation();
 }
 
-export const tileHovered = hovered_tile => event => {
-  store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
-}
-
-export const tileUnhovered = hovered_tile => event => {
-  store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
-}
-
-export const undoButtonClicked = event => {
-  console.log('Undoing last move...');
-  store.dispatch({ type: 'UNDO_MOVE' });
-  setTimeout(() => {cliPrintBoard()}, 500);
-}
+export const tileHovered = hovered_tile => event => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+export const tileUnhovered = hovered_tile => event => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
+export const undoButtonClicked = event => store.dispatch({ type: 'UNDO_MOVE' });
 
 export const newGameButtonClicked = event => {
   console.log('Shuffling board...')
