@@ -47,6 +47,7 @@ const LevelData = (board) => ({
   moves: 0,
   best_score: 'N/A',
   currently_selected: null,
+  last_move: null,
   in_winning_state: in_winning_state,
 });
 

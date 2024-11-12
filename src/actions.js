@@ -12,6 +12,7 @@ export const advance_tile_color = (state, tile) => {
   }
 
   state.current_level().currently_selected = null;
+  state.current_level().last_move = { tile: tile, reverse: false };
 
   return state;
 }
@@ -29,6 +30,7 @@ export const previous_tile_color = (state, tile) => {
     state.current_level().best_score = state.current_level().moves;
   }
 
+  state.current_level().last_move = { tile: tile, reverse: true };
   return state;
 }
 
@@ -100,7 +102,7 @@ export const shuffle_colors = (state) => {
   }
   
   state.current_level().best_score = best_score;
-
+  state.current_level().last_move = null;
   return state;
 }
 
@@ -115,5 +117,26 @@ export const navigate_level = (state, level) => {
   if (state.levels.length - 1 >= level) {
     state.current_level_index = level;
   }
+  return state;
+}
+
+export const undo_move = (state) => {
+  let current_level = state.current_level();
+  let last_move = current_level.last_move ? current_level.last_move : null;
+
+  if (last_move) {
+    if (last_move.reverse) {
+      advance_tile_color(state, last_move.tile);
+      state.current_level().last_move = null;
+      current_level.moves -= 2;
+    } else {
+      previous_tile_color(state, last_move.tile);
+      state.current_level().last_move = null;
+      current_level.moves -= 2;
+    }
+  } else {
+    console.log('You can only undo your last move.');
+  }
+
   return state;
 }

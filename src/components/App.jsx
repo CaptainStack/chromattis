@@ -3,7 +3,7 @@ import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { LevelNavigation } from './LevelNavigation';
-import { newGameButtonClicked, cliPrintBoard } from '../events';
+import { newGameButtonClicked, undoButtonClicked, cliPrintBoard } from '../events';
 
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
@@ -48,11 +48,12 @@ export const App = ({state}) => {
             <h3>BEST:</h3> 
             <p>{current_level.best_score}</p>
           </div>
+          <span id="install" className='flat-button' hidden>Install ⇩</span>
         </div>
         <div className='row'>
           <p>Click tiles to make the whole puzzle <strong>one color.</strong></p>
-          <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset Puzzle</span>
-          <span id="install" className='flat-button' hidden>Install</span>
+          <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
+          <span id="undo" className={`flat-button ${state.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
         </div>
         <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>

@@ -74,6 +74,12 @@ export const tileUnhovered = hovered_tile => event => {
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
 }
 
+export const undoButtonClicked = event => {
+  console.log('Undoing last move...');
+  store.dispatch({ type: 'UNDO_MOVE' });
+  setTimeout(() => {cliPrintBoard()}, 500);
+}
+
 export const newGameButtonClicked = event => {
   console.log('Shuffling board...')
   let interval = setInterval(function() {
