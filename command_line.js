@@ -23,6 +23,7 @@ shuffle() - Resets the board by shuffling, also sets movecount back to 0.
 press(index) - Takes an integer corresponding to a Tile on the board. Triggers a press of that tile.
 reverse(index) - Takes an integer corresponding to a Tile on the board. Triggers a reverse-press of that tile.
 preview(index) - Takes an integer corresponding to a Tile on the board and prints all the tiles that pressing it would impact.
+undo() - Undoes the last move taken - cannot be used twice in a row.
 
 next_level() - Navigates the game to the next level if unlocked.
 previous_level() - Navigates the game to the previous level.
@@ -66,6 +67,10 @@ const goto_level = (index) => {
 
 const show_board = () => {
   document.getElementById('show_board').click();
+}
+
+const undo = () => {
+  document.getElementById('undo').click();
 }
 
 help()
