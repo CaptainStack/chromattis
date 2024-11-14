@@ -113,91 +113,91 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     lessons: [
       {
         text: 'Chromattis is a puzzle made up of a grid of tiles',
-        image: './chromattis/tutorial/00-grid.gif',
+        image: '00-grid.gif',
       },
       {
         text: 'Each tile has a value represented as both a color and a number',
-        image: './chromattis/tutorial/01-values.gif',
+        image: '01-values.gif',
       },
       {
         text: 'Tap/click a tile to advance a set of tiles to the next color',
-        image: './chromattis/tutorial/02-tap.gif',
+        image: '02-tap.gif',
       },
       {
         text: 'There are six colors that tiles can cycle through',
-        image: './chromattis/tutorial/03-cycle.gif',
+        image: '03-cycle.gif',
       },
       {
         text: '0 = red, 1 = orange, 2 = yellow, 3 = green, 4 = blue, 5 = white',
-        image: './chromattis/tutorial/03-cycle.gif',
+        image: '03-cycle.gif',
       },
       {
         text: 'The goal of the puzzle is to get every tile to share the same value',
-        image: './chromattis/tutorial/04-solving.gif',
+        image: '04-solving.gif',
       },
       {
         text: 'Try to solve in as few moves as possible for a challenge',
-        image: './chromattis/tutorial/05-moves.gif',
+        image: '05-moves.gif',
       },
       {
         text: 'A tile can impact one or more tiles in the grid',
-        image: './chromattis/tutorial/06-multiple.gif',
+        image: '06-multiple.gif',
       },
       {
         text: "The selected tile isn't always one that changes",
-        image: './chromattis/tutorial/07-others.gif',
+        image: '07-others.gif',
       },
       {
         text: "Hover your cursor or long press to preview which tiles will change",
-        image: './chromattis/tutorial/08-preview.gif',
+        image: '08-preview.gif',
       },
       {
         text: 'Drag your finger off the tile to cancel a move',
-        image: './chromattis/tutorial/09-cancel.gif',
+        image: '09-cancel.gif',
       },
       {
         text: 'Right click or two-finger tap to go in the reverse direction',
-        image: './chromattis/tutorial/10-reverse.gif',
+        image: '10-reverse.gif',
       },
       {
         text: 'Undo your last move with the undo button',
-        image: './chromattis/tutorial/11-undo.gif',
+        image: '11-undo.gif',
       },
       {
         text: 'The reset button shuffles the board and resets the move counter',
-        image: './chromattis/tutorial/12-shuffle.gif',
+        image: '12-shuffle.gif',
       },
       {
         text: 'Those are the basics, keep going for tips and strategies',
-        image: './chromattis/tutorial/04-solving.gif',
+        image: '04-solving.gif',
       },
       {
         text: 'Six taps on one tile returns the board where it started',
-        image: './chromattis/tutorial/13-sixpress.gif',
+        image: '13-sixpress.gif',
       },
       {
         text: 'Three consecutive taps "inverts" a set\'s colors',
-        image: './chromattis/tutorial/14-invert.gif',
+        image: '14-invert.gif',
       },
       {
         text: "Don't try and solve everything at once, start with smaller goals",
-        image: './chromattis/tutorial/04-solving.gif',
+        image: '04-solving.gif',
       },
       {
         text: 'Try getting the corners of the puzzle to match',
-        image: './chromattis/tutorial/15-corners.gif',
+        image: '15-corners.gif',
       },
       {
         text: 'Try reducing the board to just two colors',
-        image: './chromattis/tutorial/16-twocolors.gif',
+        image: '16-twocolors.gif',
       },
       {
         text: 'Reduce the number of nonconforming tiles from there',
-        image: './chromattis/tutorial/17-reduce.gif',
+        image: '17-reduce.gif',
       },
       {
         text: 'Good luck have fun!',
-        image: './chromattis/tutorial/04-solving.gif',
+        image: '04-solving.gif',
       },
     ],
     current_level_index: 0,
