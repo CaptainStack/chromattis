@@ -1,5 +1,5 @@
 import { INITIAL_STATE } from './initial_state';
-import { advance_tile_color, previous_tile_color, preview_tiles, highlight_tiles, clear_highlights, shuffle_colors, navigate_level, undo_move } from './actions';
+import { advance_tile_color, previous_tile_color, preview_tiles, highlight_tiles, clear_highlights, shuffle_colors, navigate_level, undo_move, toggle_tutorial, next_tutorial, previous_tutorial } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -19,6 +19,12 @@ export default function reducer(state = INITIAL_STATE, action) {
       return navigate_level(state, action.level);
     case 'UNDO_MOVE':
       return undo_move(state, action.tile);
+    case 'TOGGLE_TUTORIAL':
+      return toggle_tutorial(state);
+    case 'NEXT_TUTORIAL':
+      return next_tutorial(state);
+    case 'PREVIOUS_TUTORIAL':
+      return previous_tutorial(state);
     default:
       return state;
   }

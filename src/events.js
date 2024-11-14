@@ -8,8 +8,8 @@ let downclick_audio = new Audio(downclick);
 let updownclick_audio = new Audio(updownclick);
 
 export const cliPrintBoard = () => {
-  let board = store.getState().current_level().board;
-  console.log(`LEVEL ${store.getState().current_level_index}, MOVE ${store.getState().current_level().moves}`);
+  let board = store.getState().game.current_level().board;
+  console.log(`LEVEL ${store.getState().game.current_level_index}, MOVE ${store.getState().game.current_level().moves}`);
   let columns = board.length / Math.floor(Math.sqrt(board.length));
 
   let row = '[ ';
@@ -24,7 +24,7 @@ export const cliPrintBoard = () => {
 }
 
 export const cliClick = (tile, reverse) => event => {
-  if (!store.getState().current_level().in_winning_state()) {
+  if (!store.getState().game.current_level().in_winning_state()) {
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
@@ -36,7 +36,7 @@ export const cliClick = (tile, reverse) => event => {
 }
 
 export const cliPreview = (tile) => event => {
-  if (!store.getState().current_level().in_winning_state()) {
+  if (!store.getState().game.current_level().in_winning_state()) {
     console.log(`If you press Tile ${tile.id} the following Tiles will change:`);
     console.log(tile.target_tiles);
   } else {
@@ -45,7 +45,7 @@ export const cliPreview = (tile) => event => {
 }
 
 export const tileUpClicked = (clicked_tile) => event => {
-  let current_level = store.getState().current_level();
+  let current_level = store.getState().game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
   if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
@@ -71,6 +71,9 @@ export const tileDownClicked = (clicked_tile) => event => {
 export const tileHovered = hovered_tile => event => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
 export const tileUnhovered = hovered_tile => event => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
 export const undoButtonClicked = event => store.dispatch({ type: 'UNDO_MOVE' });
+export const nextTutorialButtonClicked = event => store.dispatch({ type: 'NEXT_TUTORIAL' });
+export const previousTutorialButtonClicked = event => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
+export const tutorialButtonClicked = event => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
 
 export const newGameButtonClicked = event => {
   console.log('Shuffling board...')
@@ -81,7 +84,7 @@ export const newGameButtonClicked = event => {
 }
 
 export const navigateLevelButtonClicked = level_index => event => {
-  if (level_index <= store.getState().highest_unlocked_level()) {
+  if (level_index <= store.getState().game.highest_unlocked_level()) {
     store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
     console.log(`Switching to Level ${level_index}...`);
     setTimeout(() => {cliPrintBoard()}, 500);
@@ -89,7 +92,7 @@ export const navigateLevelButtonClicked = level_index => event => {
     console.log(`You haven't unlocked Level ${level_index} yet.`);
   }
   
-  let current_level = store.getState().current_level();
+  let current_level = store.getState().game.current_level();
 
   if (current_level.in_winning_state() && current_level.best_score === 'N/A') {
     store.dispatch({ type: 'SHUFFLE_COLORS' });

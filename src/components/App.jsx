@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
+import { Tutorial } from './Tutorial';
 import { LevelNavigation } from './LevelNavigation';
-import { newGameButtonClicked, undoButtonClicked, cliPrintBoard } from '../events';
+import { newGameButtonClicked, undoButtonClicked, cliPrintBoard, tutorialButtonClicked } from '../events';
 
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
@@ -33,7 +34,7 @@ export const App = ({state}) => {
     }
   });
 
-  let current_level = state.current_level();
+  let current_level = state.game.current_level();
 
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
@@ -51,17 +52,18 @@ export const App = ({state}) => {
           <span id="install" className='flat-button' hidden>Install ⇩</span>
         </div>
         <div className='row'>
-          <p><strong>Solve by making all Tiles the same color/number</strong></p>
+          <p><strong>Solve by making all Tiles the same value</strong></p>
           <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
-          <span id="undo" className={`flat-button ${state.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
+          <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
         </div>
-        <LevelNavigation levels={state.levels} current_level_index={state.current_level_index} highest_unlocked_level={state.highest_unlocked_level()}/>
+        <LevelNavigation levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
-          <Game tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level_index={state.current_level_index}/>
-          <VictoryModal game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.current_level_index } best_score={current_level.best_score} total_levels={state.levels.length} />
+          <Game tiles={current_level.board} tutorial_on={state.tutorial_on} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+          <VictoryModal tutorial_on={state.tutorial_on} game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+          <Tutorial tutorial_on={state.tutorial_on} tutorial={ state.tutorial }/>
         </div>
-        <p><strong>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <p>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton'>@CaptainStack</a>). Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license. <a href='https://forms.gle/YVkRv9uepXTjW46r9'><strong>Submit feedback here</strong>.</a></p>
         {/* SOCIAL MEDIA BUTTONS */}
