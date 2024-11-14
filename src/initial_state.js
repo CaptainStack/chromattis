@@ -34,7 +34,7 @@ let persisted_state = localStorage.getItem('chromattis_saved_state');
 if (persisted_state) {
   persisted_state = JSON.parse(localStorage.getItem('chromattis_saved_state'));
   persisted_state.game.current_level = current_level;
-  persisted_state.highest_unlocked_level = highest_unlocked_level;
+  persisted_state.game.highest_unlocked_level = highest_unlocked_level;
 
   for (let level of persisted_state.game.levels) {
     level.in_winning_state = in_winning_state;
@@ -110,7 +110,7 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
     highest_unlocked_level: highest_unlocked_level,
   },
   tutorial: {
-    lessons: [
+    levels: [
       {
         text: 'Chromattis is a puzzle made up of a grid of tiles',
         image: '00-grid.gif',

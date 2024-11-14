@@ -150,7 +150,7 @@ export const toggle_tutorial = state => {
   return state;
 }
 export const next_tutorial = state => {
-  state.tutorial.current_level_index < state.tutorial.lessons.length - 1 ? state.tutorial.current_level_index += 1 : state.tutorial.current_level_index;
+  state.tutorial.current_level_index < state.tutorial.levels.length - 1 ? state.tutorial.current_level_index += 1 : state.tutorial.current_level_index;
   return state;
 }
 
