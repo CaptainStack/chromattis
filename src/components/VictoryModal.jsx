@@ -8,9 +8,9 @@ export const VictoryModal = ({tutorial_on, game_in_progress, current_moves, curr
     <h1>You solved Level {current_level_index} in <br /> {current_moves} moves!</h1>
     <p>Try to do it in fewer or move on?</p>
     <div className='row'>
-      <span id='previous_puzzle_button' className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index > 0 ? current_level_index - 1 : current_level_index) }>Previous Puzzle</span>
+      <span id='previous_puzzle_button' className={`flat-button ${current_level_index > 0 ? null : 'locked'}`} onClick={ navigateLevelButtonClicked(current_level_index > 0 ? current_level_index - 1 : current_level_index) }>Previous Puzzle</span>
       <span className='flat-button' onClick={ newGameButtonClicked }>Reset Puzzle</span>
-      <span id='next_puzzle_button' className='flat-button' onClick={ navigateLevelButtonClicked(current_level_index < total_levels ? current_level_index + 1 : current_level_index) }>Next Puzzle</span>
+      <span id='next_puzzle_button' className={`flat-button ${current_level_index < total_levels - 1 ? null : 'locked'}`} onClick={ navigateLevelButtonClicked(current_level_index < total_levels ? current_level_index + 1 : current_level_index) }>Next Puzzle</span>
     </div>
     <p>Brag about it:</p>
     <div className='row victory-share' style={{ display: game_in_progress ? 'none' : null }}>
