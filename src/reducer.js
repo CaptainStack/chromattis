@@ -12,6 +12,7 @@ import {
   next_tutorial, 
   previous_tutorial,
   toggle_mute_audio,
+  toggle_mute_music,
   toggle_hide_numbers,
   toggle_hide_colors,
  } from './actions';
@@ -42,6 +43,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return previous_tutorial(state);
     case 'TOGGLE_MUTE_SOUND':
       return toggle_mute_audio(state);
+    case 'TOGGLE_MUTE_MUSIC':
+      return toggle_mute_music(state);
     case 'TOGGLE_HIDE_NUMBERS':
       return toggle_hide_numbers(state);
     case 'TOGGLE_HIDE_COLORS':

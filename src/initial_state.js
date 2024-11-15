@@ -33,6 +33,7 @@ if (persisted_state) {
   persisted_state = JSON.parse(localStorage.getItem('chromattis_saved_state'));
   persisted_state.game.current_level = current_level;
   persisted_state.game.highest_unlocked_level = highest_unlocked_level;
+  persisted_state.mute_music = true;
 
   for (let level of persisted_state.game.levels) {
     level.in_winning_state = in_winning_state;
@@ -54,6 +55,7 @@ let default_content =
 {
   show_tutorial: false,
   mute_audio: false,
+  mute_music: true,
   hide_numbers: false,
   hide_colors: false,
   game: {
@@ -108,13 +110,6 @@ let default_content =
         Tile(8, [8, 9, 10, 11]), Tile(9, [9, 3, 6, 12]), Tile(10, [10, 7, 13]), Tile(11, [11, 14]),
         Tile(12, [12, 13, 14, 15]), Tile(13, [13, 9, 5, 1]), Tile(14, [14, 10, 6, 2]), Tile(15, [15, 11, 7, 3]),
       ], 'a524afce-86b3-4828-be23-af502cb80829'),
-      Level([
-        Tile(0, [0]), Tile(1, [1]), Tile(2, [2]), Tile(3, [3]), Tile(4, [3]),
-        Tile(4, [4]), Tile(5, [5]), Tile(6, [6]), Tile(7, [7]), Tile(7, [7]),
-        Tile(8, [8]), Tile(9, [9]), Tile(10, [10]), Tile(11, [11]), Tile(11, [11]),
-        Tile(12, [12]), Tile(13, [13]), Tile(14, [14]), Tile(15, [15]), Tile(15, [15]),
-        Tile(12, [12]), Tile(13, [13]), Tile(14, [14]), Tile(15, [15]), Tile(15, [15]),
-      ], '7282a7aa-0a00-45da-a928-cc0e080d3870'),
     ],
     current_level_index: 0,
     current_level: current_level,
@@ -229,7 +224,7 @@ if (persisted_state && persisted_state.game.levels.length !== default_content.ga
   for (let index = 0; index < default_levels.length - 1; index++) {
     let level = default_levels[index];
     let matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
-    matched_level ? default_levels[index] = matched_level : default_levels[index];
+    default_levels[index] =  matched_level ? matched_level : default_levels[index];
   }
 
   persisted_state.game.levels = default_levels;

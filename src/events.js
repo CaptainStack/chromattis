@@ -1,11 +1,42 @@
 import { store } from './index';
+
 import downclick from './audio/downclick.ogg';
 import upclick from './audio/upclick.ogg';
 import updownclick from './audio/updownclick.ogg';
 
+import track1 from './audio/song17.ogg';
+import track2 from './audio/song21.ogg';
+import track3 from './audio/charm.ogg';
+import track4 from './audio/island.ogg';
+import track5 from './audio/synthwave.ogg';
+import track6 from './audio/crystalcave.ogg';
+import track7 from './audio/underwater.ogg';
+import track8 from './audio/sevenandeight.ogg';
+
 let upclick_audio = new Audio(upclick);
 let downclick_audio = new Audio(downclick);
 let updownclick_audio = new Audio(updownclick);
+
+let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
+let track_buffer = all_tracks.slice();
+let random_track = Math.floor(Math.random() * track_buffer.length);
+
+// Get random song and remove it from the track buffer
+let track = track_buffer[random_track];
+track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(random_track + 1))
+
+export const GameMusic = new Audio(track);
+
+GameMusic.addEventListener('ended', () => {
+  if (track_buffer.length == 0) {
+    track_buffer = all_tracks.slice();
+  }
+
+  track = track_buffer.pop();
+  let temp = new Audio(track);
+  GameMusic.src = temp.src;
+  GameMusic.play();
+});
 
 export const cliPrintBoard = () => {
   let board = store.getState().game.current_level().board;
@@ -75,6 +106,7 @@ export const nextTutorialButtonClicked = event => store.dispatch({ type: 'NEXT_T
 export const previousTutorialButtonClicked = event => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
 export const tutorialButtonClicked = event => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
 export const muteSoundButtonClicked = event => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
+export const muteMusicButtonClicked = event => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 export const hideNumbersButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
 export const hideColorsButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
 

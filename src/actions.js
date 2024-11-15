@@ -1,4 +1,5 @@
 import { cliPrintBoard } from "./events";
+import { GameMusic } from "./events";
 
 export const advance_tile_color = (state, tile) => {
   let tiles = state.game.current_level().board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
@@ -162,6 +163,12 @@ export const previous_tutorial = state => {
 
 export const toggle_mute_audio = state => {
   state.mute_audio = !state.mute_audio;
+  return state;
+}
+
+export const toggle_mute_music = state => {
+  state.mute_music = !state.mute_music;
+  state.mute_music ? GameMusic.pause() : GameMusic.play();
   return state;
 }
 

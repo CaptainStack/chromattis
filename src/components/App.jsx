@@ -9,6 +9,7 @@ import { newGameButtonClicked,
          cliPrintBoard,
          tutorialButtonClicked,
          muteSoundButtonClicked,
+         muteMusicButtonClicked,
          hideNumbersButtonClicked,
          hideColorsButtonClicked } 
   from '../events';
@@ -74,9 +75,10 @@ export const App = ({state}) => {
         <hr />
         <div className='Settings row'>
           <strong>Settings</strong>
-          <label for="sound-toggle"><input onClick={muteSoundButtonClicked} type="checkbox" id="sound-toggle" name="sounds" value="mute_sounds" />Mute sounds</label>
-          <label for="numbers-toggle"><input onClick={hideNumbersButtonClicked} type="checkbox" id="numbers-toggle" name="vehicle2" value="hide_numbers" />Hide numbers</label>
-          <label for="colors-toggle"><input onClick={hideColorsButtonClicked} type="checkbox" id="colors-toggle" name="vehicle3" value="hide_colors" />Hide colors</label>
+          <label><input onChange={muteSoundButtonClicked} type="checkbox" id="sound-toggle" />Mute sounds</label>
+          <label><input onChange={muteMusicButtonClicked} defaultChecked={true} type="checkbox" id="music-toggle" />Mute music</label>
+          <label><input onChange={hideNumbersButtonClicked} type="checkbox" id="numbers-toggle" />Hide numbers</label>
+          <label><input onChange={hideColorsButtonClicked} type="checkbox" id="colors-toggle" />Hide colors</label>
         </div>
         <hr />
         <p style={{fontSize:'12px'}}>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>).<br/>Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license.<br/><a href='https://forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback here</strong></a>. <a href='https://forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a></p>
