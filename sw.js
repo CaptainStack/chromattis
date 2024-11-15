@@ -7,7 +7,6 @@ const CACHE_NAME = `${APP_PREFIX}-${VERSION}`;
 const APP_STATIC_RESOURCES = [
   `${GHPATH}/`,
   `${GHPATH}/index.html`,
-  `${GHPATH}/chromattis-favicon.png`,
   `${GHPATH}/favicon.svg`,
 ];
 
