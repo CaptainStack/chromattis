@@ -1,20 +1,9 @@
 import { INITIAL_STATE } from './initial_state';
 import { 
-  advance_tile_color, 
-  previous_tile_color, 
-  preview_tiles, 
-  highlight_tiles, 
-  clear_highlights, 
-  shuffle_colors, 
-  navigate_level, 
-  undo_move, 
-  toggle_tutorial, 
-  next_tutorial, 
-  previous_tutorial,
-  toggle_mute_audio,
-  toggle_mute_music,
-  toggle_hide_numbers,
-  toggle_hide_colors,
+  advance_tile_color, previous_tile_color, preview_tiles, highlight_tiles, 
+  clear_highlights, shuffle_colors, navigate_level, undo_move, 
+  toggle_tutorial, next_tutorial, previous_tutorial, toggle_mute_audio,
+  toggle_mute_music, toggle_hide_numbers, toggle_hide_colors,
  } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {

@@ -60,7 +60,7 @@ export const highlight_tiles = (state, clicked_tile) => {
   return state;
 }
 
-export const clear_highlights = (state) => {
+export const clear_highlights = state => {
   for (let tile of state.game.current_level().board) {
     tile.preview = false;
     tile.will_change = false;
@@ -75,7 +75,7 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
   return updated_colors.every(color => color === updated_colors[0]);
 }
 
-export const shuffle_colors = (state) => {
+export const shuffle_colors = state => {
   let board = state.game.current_level().board;
   let keystone = board[Math.floor(Math.random() * board.length)];
   let best_score = state.game.current_level().best_score;
@@ -109,13 +109,6 @@ export const shuffle_colors = (state) => {
   return state;
 }
 
-export const solve_puzzle = (state) => {  
-  for (let tile of state.game.current_level().board) {
-    tile.current_color = 0;
-  }
-  return state;
-}
-
 export const navigate_level = (state, level) => {
   if (state.game.levels.length - 1 >= level) {
     state.game.current_level_index = level;
@@ -123,7 +116,7 @@ export const navigate_level = (state, level) => {
   return state;
 }
 
-export const undo_move = (state) => {
+export const undo_move = state => {
   let current_level = state.game.current_level();
   let last_move = current_level.last_move ? current_level.last_move : null;
 

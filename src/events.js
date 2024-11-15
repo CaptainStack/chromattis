@@ -27,6 +27,7 @@ track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(rando
 
 export const GameMusic = new Audio(track);
 
+// Add event listener for end of track - play the next track and advance the buffer
 GameMusic.addEventListener('ended', () => {
   if (track_buffer.length == 0) {
     track_buffer = all_tracks.slice();
@@ -54,7 +55,7 @@ export const cliPrintBoard = () => {
   console.log(row);
 }
 
-export const cliClick = (tile, reverse) => event => {
+export const cliClick = (tile, reverse) => () => {
   if (!store.getState().game.current_level().in_winning_state()) {
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
@@ -66,7 +67,7 @@ export const cliClick = (tile, reverse) => event => {
   }
 }
 
-export const cliPreview = (tile) => event => {
+export const cliPreview = (tile) => () => {
   if (!store.getState().game.current_level().in_winning_state()) {
     console.log(`If you press Tile ${tile.id} the following Tiles will change:`);
     console.log(tile.target_tiles);
@@ -99,18 +100,18 @@ export const tileDownClicked = (clicked_tile) => event => {
   event.stopPropagation();
 }
 
-export const tileHovered = hovered_tile => event => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
-export const tileUnhovered = hovered_tile => event => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
-export const undoButtonClicked = event => store.dispatch({ type: 'UNDO_MOVE' });
-export const nextTutorialButtonClicked = event => store.dispatch({ type: 'NEXT_TUTORIAL' });
-export const previousTutorialButtonClicked = event => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
-export const tutorialButtonClicked = event => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
-export const muteSoundButtonClicked = event => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
-export const muteMusicButtonClicked = event => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
-export const hideNumbersButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
-export const hideColorsButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
+export const tileHovered = hovered_tile => () => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+export const tileUnhovered = hovered_tile => () => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
+export const undoButtonClicked = () => store.dispatch({ type: 'UNDO_MOVE' });
+export const nextTutorialButtonClicked = () => store.dispatch({ type: 'NEXT_TUTORIAL' });
+export const previousTutorialButtonClicked = () => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
+export const tutorialButtonClicked = () => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
+export const muteSoundButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
+export const muteMusicButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
+export const hideNumbersButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
+export const hideColorsButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
 
-export const newGameButtonClicked = event => {
+export const newGameButtonClicked = () => {
   console.log('Shuffling board...')
   let interval = setInterval(function() {
     store.dispatch({ type: 'SHUFFLE_COLORS' })
@@ -118,7 +119,7 @@ export const newGameButtonClicked = event => {
   setTimeout(function() { clearInterval(interval); cliPrintBoard(); }, 800);
 }
 
-export const navigateLevelButtonClicked = level_index => event => {
+export const navigateLevelButtonClicked = level_index => () => {
   if (level_index <= store.getState().game.highest_unlocked_level()) {
     store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
     console.log(`Switching to Level ${level_index}...`);

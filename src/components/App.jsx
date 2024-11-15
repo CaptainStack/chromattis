@@ -4,15 +4,11 @@ import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { Tutorial } from './Tutorial';
 import { LevelNavigation } from './LevelNavigation';
-import { newGameButtonClicked,
-         undoButtonClicked,
-         cliPrintBoard,
-         tutorialButtonClicked,
-         muteSoundButtonClicked,
-         muteMusicButtonClicked,
-         hideNumbersButtonClicked,
-         hideColorsButtonClicked } 
-  from '../events';
+import { 
+  newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
+  tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
+  hideNumbersButtonClicked, hideColorsButtonClicked,
+} from '../events';
 
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
@@ -44,6 +40,7 @@ export const App = ({state}) => {
 
   let current_level = state.game.current_level();
 
+  // This is the root of the React application
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
