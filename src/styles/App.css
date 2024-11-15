@@ -105,8 +105,13 @@ p {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  .social {
+    font-size: small;
+  }
 }
-
+.Settings {
+  font-size: medium;
+}
 @font-face {
   font-family: "Clear Sans";
   src: url('./ClearSans-Regular.ttf');

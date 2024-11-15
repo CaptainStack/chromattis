@@ -146,7 +146,8 @@ export const undo_move = (state) => {
 }
 
 export const toggle_tutorial = state => {
-  state.tutorial_on = !state.tutorial_on;
+  state.show_tutorial = !state.show_tutorial;
+  state.tutorial.current_level_index = 0;
   return state;
 }
 export const next_tutorial = state => {
@@ -156,5 +157,20 @@ export const next_tutorial = state => {
 
 export const previous_tutorial = state => {
   state.tutorial.current_level_index > 0 ? state.tutorial.current_level_index -= 1 : state.tutorial.current_level_index;
+  return state;
+}
+
+export const toggle_mute_audio = state => {
+  state.mute_audio = !state.mute_audio;
+  return state;
+}
+
+export const toggle_hide_numbers = state => {
+  state.hide_numbers = !state.hide_numbers;
+  return state;
+}
+
+export const toggle_hide_colors = state => {
+  state.hide_colors = !state.hide_colors;
   return state;
 }

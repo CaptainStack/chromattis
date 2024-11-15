@@ -11,7 +11,7 @@ let color_map = {
   5: "#FFFFFF",
 }
 
-export const Tile = ({tile, game_in_progress}) => 
+export const Tile = ({tile, game_in_progress, hide_numbers, hide_colors}) => 
   <div className='Tile'
        onMouseDown={tileDownClicked(tile)}
        onMouseOver={tileHovered(tile)}
@@ -20,7 +20,7 @@ export const Tile = ({tile, game_in_progress}) =>
        onTouchStart={tileDownClicked(tile)}
        onTouchEnd={tileUpClicked(tile)}
        style={{
-          backgroundColor: color_map[tile.current_color],
+          backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color],
           border: tile.preview ? '5px solid #8f7a66' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
@@ -28,7 +28,9 @@ export const Tile = ({tile, game_in_progress}) =>
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
-    <span style={{color: color_map[tile.current_color]}}>{tile.current_color}</span>
+    <span style={{color: hide_colors ? 'dimgrey' : color_map[tile.current_color]}}>
+      {hide_numbers ? null : tile.current_color}
+    </span>
 
     {/* HIDDEN CLI BUTTONS */}
     <span hidden id={`press_tile_${tile.id}`} onClick={cliClick(tile)}></span>

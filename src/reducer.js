@@ -1,5 +1,20 @@
 import { INITIAL_STATE } from './initial_state';
-import { advance_tile_color, previous_tile_color, preview_tiles, highlight_tiles, clear_highlights, shuffle_colors, navigate_level, undo_move, toggle_tutorial, next_tutorial, previous_tutorial } from './actions';
+import { 
+  advance_tile_color, 
+  previous_tile_color, 
+  preview_tiles, 
+  highlight_tiles, 
+  clear_highlights, 
+  shuffle_colors, 
+  navigate_level, 
+  undo_move, 
+  toggle_tutorial, 
+  next_tutorial, 
+  previous_tutorial,
+  toggle_mute_audio,
+  toggle_hide_numbers,
+  toggle_hide_colors,
+ } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -25,6 +40,12 @@ export default function reducer(state = INITIAL_STATE, action) {
       return next_tutorial(state);
     case 'PREVIOUS_TUTORIAL':
       return previous_tutorial(state);
+    case 'TOGGLE_MUTE_SOUND':
+      return toggle_mute_audio(state);
+    case 'TOGGLE_HIDE_NUMBERS':
+      return toggle_hide_numbers(state);
+    case 'TOGGLE_HIDE_COLORS':
+      return toggle_hide_colors(state);
     default:
       return state;
   }

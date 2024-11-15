@@ -58,13 +58,13 @@ export const tileUpClicked = (clicked_tile) => event => {
   }
   cliPrintBoard();
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  upclick_audio.play();
+  if (!store.getState().mute_audio) upclick_audio.play();
   event.stopPropagation();
 }
 
 export const tileDownClicked = (clicked_tile) => event => {
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
-  downclick_audio.play();
+  if (!store.getState().mute_audio) downclick_audio.play();
   event.stopPropagation();
 }
 
@@ -74,6 +74,9 @@ export const undoButtonClicked = event => store.dispatch({ type: 'UNDO_MOVE' });
 export const nextTutorialButtonClicked = event => store.dispatch({ type: 'NEXT_TUTORIAL' });
 export const previousTutorialButtonClicked = event => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
 export const tutorialButtonClicked = event => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
+export const muteSoundButtonClicked = event => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
+export const hideNumbersButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
+export const hideColorsButtonClicked = event => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
 
 export const newGameButtonClicked = event => {
   console.log('Shuffling board...')

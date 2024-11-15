@@ -53,7 +53,10 @@ const Level = (board) => ({
 
 // If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
 export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors({
-  tutorial_on: false,
+  show_tutorial: false,
+  mute_audio: false,
+  hide_numbers: false,
+  hide_colors: false,
   game: {
     levels: [
       Level([Tile(0, [0]), Tile(1, [1])]),
@@ -194,6 +197,10 @@ export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(
       {
         text: 'Reduce the number of nonconforming tiles from there',
         image: '17-reduce.gif',
+      },
+      {
+        text: 'Install Chromattis as an app for the best experience',
+        image: '18-install.gif',
       },
       {
         text: 'Good luck have fun!',

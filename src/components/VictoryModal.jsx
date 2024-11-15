@@ -2,8 +2,8 @@ import React from 'react';
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 
-export const VictoryModal = ({tutorial_on, game_in_progress, current_moves, current_level_index, best_score, total_levels}) =>
-  <div className='VictoryModal' style={{ display: game_in_progress || tutorial_on ? 'none' : null }}>
+export const VictoryModal = ({show_tutorial, game_in_progress, current_moves, current_level_index, best_score, total_levels}) =>
+  <div className='VictoryModal' style={{ display: game_in_progress || show_tutorial ? 'none' : null }}>
     { current_moves <= best_score ? <h3>High score!</h3> : null }
     <h1>You solved Level {current_level_index} in <br /> {current_moves} moves!</h1>
     <p>Try to do it in fewer or move on?</p>

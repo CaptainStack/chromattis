@@ -3,9 +3,9 @@ import '../styles/Tutorial.css';
 import { Lesson } from './Lesson'
 import { tutorialButtonClicked, previousTutorialButtonClicked, nextTutorialButtonClicked } from '../events';
 
-export const Tutorial = ({tutorial_on, tutorial}) => {
+export const Tutorial = ({show_tutorial, tutorial}) => {
   return(
-    <div className='Tutorial' style={{ display: tutorial_on ? null : 'none' }}>
+    <div className='Tutorial' style={{ display: show_tutorial ? null : 'none' }}>
       <strong >Lesson {tutorial.current_level_index}</strong >
       <Lesson lesson={tutorial.levels[tutorial.current_level_index]}></Lesson>
       <div className='row' style={{marginTop:'8px'}}>
