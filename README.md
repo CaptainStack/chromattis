@@ -39,6 +39,33 @@ Chromattis is a new kind of puzzle and can be counterintuitive to solve. While c
 
 8. Try clicking on the same `Tile` in bursts of 3 to "invert" that set's colors.
 
+## Chromattis Command Line Interface (CLI)
+Chromattis comes with a built in command line interface which can be used from the browser developer tools (often accessed with F12 or Ctrl + i). Look for a "Console" tab. The CLI is made up of JavaScript functions loaded in `index.html` and therefore can be run directly from the console. Because they are JavaScript functions, all commands must be entered with open and close parenthesis `()`. Some functions take a parameter.
+
+Below is a list of all available commands:
+
+`help()` - displays all CLI commands.
+
+`show_board()` - Prints the current state of the game board to the console.
+
+`shuffle()` - Resets the board by shuffling, also sets movecount back to 0.
+
+`press(index)` - Takes an integer corresponding to a Tile on the board. Triggers a press of that tile.
+
+`reverse(index)` - Takes an integer corresponding to a Tile on the board. Triggers a reverse-press of that tile.
+
+`preview(index)` - Takes an integer corresponding to a Tile on the board and prints all the tiles that pressing it would impact.
+
+`undo()` - Undoes the last move taken - cannot be used twice in a row.
+
+`next_level()` - Navigates the game to the next level if unlocked.
+
+`previous_level()` - Navigates the game to the previous level.
+
+`goto_level(index)` - Takes a level index and navigates the game to it.
+
+`install()` - Installs Chromattis to your device. Requires Progressive Web Application (PWA) support.
+
 # Developers
 Chromattis is an open source project under the permissive MIT license. Those interested should feel empowered and encouraged to clone or fork the repository, experiment with changes, and to send in pull requests (see the Contributing to Chromattis section for more information).
 
