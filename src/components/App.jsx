@@ -17,7 +17,7 @@ export const App = ({state}) => {
     let installPrompt = null;
     const installButton = document.querySelector("#install");
 
-    window.addEventListener("beforeinstallprompt", (event) => {
+    window.addEventListener("beforeinstallprompt", event => {
       event.preventDefault();
       installPrompt = event;
       installButton.removeAttribute("hidden");

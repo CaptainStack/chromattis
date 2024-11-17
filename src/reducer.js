@@ -12,8 +12,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return advance_tile_color(state, action.tile);
     case 'PREVIOUS_TILE_COLOR':
       return previous_tile_color(state, action.tile);
-      case 'PREVIEW_TILES':
-        return preview_tiles(state, action.tile);
+    case 'PREVIEW_TILES':
+      return preview_tiles(state, action.tile);
     case 'HIGHLIGHT_TILES':
       return highlight_tiles(state, action.tile);
     case 'CLEAR_HIGHLIGHTS':
