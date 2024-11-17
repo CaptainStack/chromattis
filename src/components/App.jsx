@@ -3,7 +3,7 @@ import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { Tutorial } from './Tutorial';
-import { LevelNavigation } from './LevelNavigation';
+import { LevelNavBar } from './LevelNavBar';
 import { 
   newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
   tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
@@ -62,7 +62,7 @@ export const App = ({state}) => {
           <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
         </div>
-        <LevelNavigation levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+        <LevelNavBar levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
           <Game hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} show_tutorial={state.show_tutorial} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
           <VictoryModal show_tutorial={state.show_tutorial} game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
