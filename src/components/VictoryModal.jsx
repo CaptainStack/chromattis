@@ -4,20 +4,20 @@ import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 
 export const VictoryModal = ({show_tutorial, game_in_progress, current_moves, current_level_index, best_score, total_levels}) =>
   <div className='VictoryModal bounce-container' style={{ display: game_in_progress || show_tutorial ? 'none' : null }}>
-    <div>
-    { current_moves <= best_score ? <h3 className='bounce'>
-                <span>H</span>
-                <span>I</span>
-                <span>G</span>
-                <span>H</span>
-                <span>&nbsp;</span>
-                <span>S</span>
-                <span>C</span>
-                <span>O</span>
-                <span>R</span>
-                <span>E</span>
-                <span>!</span>
-                </h3> : null }
+    <div style={{visibility: current_moves <= best_score ? null : 'hidden'}}>
+      <h2 className='bounce'>
+        <span>H</span>
+        <span>I</span>
+        <span>G</span>
+        <span>H</span>
+        <span>&nbsp;</span>
+        <span>S</span>
+        <span>C</span>
+        <span>O</span>
+        <span>R</span>
+        <span>E</span>
+        <span>!</span>
+      </h2>
     </div>
     <h1>You solved Level {current_level_index} in <br /> {current_moves} moves!</h1>
     <p>Try to do it in fewer or move on?</p>
