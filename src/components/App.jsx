@@ -10,14 +10,14 @@ import {
   hideNumbersButtonClicked, hideColorsButtonClicked,
 } from '../events';
 
-import track1 from '../audio/song17.ogg';
-import track2 from '../audio/song21.ogg';
-import track3 from '../audio/charm.ogg';
-import track4 from '../audio/island.ogg';
-import track5 from '../audio/synthwave.ogg';
-import track6 from '../audio/crystalcave.ogg';
-import track7 from '../audio/underwater.ogg';
-import track8 from '../audio/sevenandeight.ogg';
+let track1 = 'song17.ogg';
+let track2 = 'song21.ogg';
+let track3 = 'charm.ogg';
+let track4 = 'island.ogg';
+let track5 = 'synthwave.ogg';
+let track6 = 'crystalcave.ogg';
+let track7 = 'underwater.ogg';
+let track8 = 'sevenandeight.ogg';
 
 let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
 let track_buffer = all_tracks.slice();
@@ -27,7 +27,7 @@ let random_track = Math.floor(Math.random() * track_buffer.length);
 let track = track_buffer[random_track];
 track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(random_track + 1))
 
-export const GameMusic = new Audio(track);
+export const GameMusic = new Audio(`${process.env.PUBLIC_URL}/audio/${track}`);
 
 // Add event listener for end of track - play the next track and advance the buffer
 GameMusic.addEventListener('ended', () => {
