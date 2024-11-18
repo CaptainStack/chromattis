@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/chromattis/static/css/main.c314abd3.css",
-    "main.js": "/chromattis/static/js/main.60cde076.js",
+    "main.js": "/chromattis/static/js/main.5c48b67c.js",
     "static/media/charm.ogg": "/chromattis/static/media/charm.a979eb3d3bc5a63d0161.ogg",
     "static/media/underwater.ogg": "/chromattis/static/media/underwater.266320cf2466ace6513c.ogg",
     "static/media/synthwave.ogg": "/chromattis/static/media/synthwave.98e1f034abc22b4c908a.ogg",
@@ -16,10 +16,10 @@
     "static/media/upclick.ogg": "/chromattis/static/media/upclick.e8f23728f1b3d48d4d98.ogg",
     "index.html": "/chromattis/index.html",
     "main.c314abd3.css.map": "/chromattis/static/css/main.c314abd3.css.map",
-    "main.60cde076.js.map": "/chromattis/static/js/main.60cde076.js.map"
+    "main.5c48b67c.js.map": "/chromattis/static/js/main.5c48b67c.js.map"
   },
   "entrypoints": [
     "static/css/main.c314abd3.css",
-    "static/js/main.60cde076.js"
+    "static/js/main.5c48b67c.js"
   ]
 }
