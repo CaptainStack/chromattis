@@ -23,7 +23,6 @@ export const cliClick = (tile, reverse, updownclick_audio) => () => {
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
-    console.log('play updownclick')
     updownclick_audio.play();
     cliPrintBoard();
   } else {
