@@ -222,8 +222,7 @@ let default_content =
 if (persisted_state && persisted_state.game.levels.length !== default_content.game.levels.length) {
   let default_levels = default_content.game.levels.slice();
 
-  for (let index = 0; index < default_levels.length - 1; index++) {
-    let level = default_levels[index];
+  for (let [index, level] of default_levels) {
     let matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
     default_levels[index] =  matched_level ? matched_level : default_levels[index];
   }

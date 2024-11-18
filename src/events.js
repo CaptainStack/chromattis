@@ -40,8 +40,10 @@ GameMusic.addEventListener('ended', () => {
 });
 
 export const cliPrintBoard = () => {
-  let board = store.getState().game.current_level().board;
-  console.log(`LEVEL ${store.getState().game.current_level_index}, MOVE ${store.getState().game.current_level().moves}`);
+  let game = store.getState().game;
+  let level = game.current_level();
+  let board = level.board;
+  console.log(`LEVEL ${game.current_level_index}, MOVE ${level.moves}`);
   let columns = board.length / Math.floor(Math.sqrt(board.length));
 
   let row = '[ ';
@@ -77,7 +79,8 @@ export const cliPreview = (tile) => () => {
 }
 
 export const tileUpClicked = (clicked_tile) => event => {
-  let current_level = store.getState().game.current_level();
+  let application = store.getState();
+  let current_level = application.game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
   if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
@@ -90,7 +93,7 @@ export const tileUpClicked = (clicked_tile) => event => {
   }
   cliPrintBoard();
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  if (!store.getState().mute_audio) upclick_audio.play();
+  if (!application.mute_audio) upclick_audio.play();
   event.stopPropagation();
 }
 
@@ -113,14 +116,15 @@ export const hideColorsButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE
 
 export const newGameButtonClicked = () => {
   console.log('Shuffling board...')
-  let interval = setInterval(function() {
+  let interval = setInterval(() => {
     store.dispatch({ type: 'SHUFFLE_COLORS' })
   }, 50);
-  setTimeout(function() { clearInterval(interval); cliPrintBoard(); }, 800);
+  setTimeout(() => { clearInterval(interval); cliPrintBoard(); }, 800);
 }
 
 export const navigateLevelButtonClicked = level_index => () => {
-  if (level_index <= store.getState().game.highest_unlocked_level()) {
+  let game = store.getState().game;
+  if (level_index <= game.highest_unlocked_level()) {
     store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
     console.log(`Switching to Level ${level_index}...`);
     setTimeout(() => {cliPrintBoard()}, 500);
@@ -128,7 +132,7 @@ export const navigateLevelButtonClicked = level_index => () => {
     console.log(`You haven't unlocked Level ${level_index} yet.`);
   }
   
-  let current_level = store.getState().game.current_level();
+  let current_level = game.current_level();
 
   if (current_level.in_winning_state() && current_level.best_score === 'N/A') {
     store.dispatch({ type: 'SHUFFLE_COLORS' });
