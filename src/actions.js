@@ -1,5 +1,5 @@
 import { cliPrintBoard } from "./events";
-import { GameMusic } from "./events";
+import { GameMusic } from "./components/App";
 
 export const advance_tile_color = (state, tile) => {
   let current_level = state.game.current_level();
