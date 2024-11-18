@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 render();
 store.subscribe(render);
 
-if (window.matchMedia('(display-mode: standalone)').matches) {
-  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application)));
-} else {
+window.matchMedia('(display-mode: standalone)').matches ? 
+  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application))) : 
   store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(application)));
-}
