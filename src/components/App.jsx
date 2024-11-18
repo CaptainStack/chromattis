@@ -21,23 +21,24 @@ let track7 = 'underwater.ogg';
 let track8 = 'sevenandeight.ogg';
 
 let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
-let track_buffer = all_tracks.slice();
-let random_track = Math.floor(Math.random() * track_buffer.length);
+let playlist = all_tracks.slice();
+let random_track = Math.floor(Math.random() * playlist.length);
 
-// Get random song and remove it from the track buffer
-let track = track_buffer[random_track];
-track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(random_track + 1));
-
-export const GameMusic = new Audio(`${process.env.PUBLIC_URL}/audio/${track}`);
+// Get random song and remove it from the playlist
+let track_name = playlist[random_track];
+playlist = playlist.slice(0, random_track).concat(all_tracks.slice(random_track + 1));
+let track_path = `${process.env.PUBLIC_URL}/audio/`;
+export const GameMusic = new Audio(track_path + track_name);
 
 // Add event listener for end of track - play the next track and advance the buffer
 GameMusic.addEventListener('ended', () => {
-  if (track_buffer.length === 0) {
-    track_buffer = all_tracks.slice();
+  if (playlist.length === 0) {
+    playlist = all_tracks.slice();
   }
 
-  track = track_buffer.pop();
-  let temp = new Audio(track);
+  track_name = playlist.pop();
+  
+  let temp = new Audio(track_path + track_name);
   GameMusic.src = temp.src;
   GameMusic.play();
 });
@@ -105,10 +106,10 @@ export const App = ({state}) => {
         <hr />
         <div className='Settings row'>
           <strong>Settings</strong>
-          <label><input onChange={muteSoundButtonClicked} type="checkbox" id="sound-toggle" />Mute sounds</label>
-          <label><input onChange={muteMusicButtonClicked} defaultChecked={true} type="checkbox" id="music-toggle" />Mute music</label>
-          <label><input onChange={hideNumbersButtonClicked} type="checkbox" id="numbers-toggle" />Hide numbers</label>
-          <label><input onChange={hideColorsButtonClicked} type="checkbox" id="colors-toggle" />Hide colors</label>
+          <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Mute sounds</label>
+          <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Mute music</label>
+          <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Hide numbers</label>
+          <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Hide colors</label>
         </div>
         <hr />
         <p style={{fontSize:'12px'}}>Created by <a href='https://captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>).<br/>Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license.<br/><a href='https://forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback here</strong></a>. <a href='https://forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a></p>
