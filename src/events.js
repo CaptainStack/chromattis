@@ -45,27 +45,23 @@ export const tileUpClicked = (clicked_tile, upclick_audio) => event => {
   let current_level = application.game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
-  if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
-    // console.log(`Press Tile ${clicked_tile.id}`);
+  if (event.button === 0 || (event.touches && event.touches.length === 0) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+    console.log(`Press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
-    console.log('play upclick')
     if (!application.mute_audio) upclick_audio.play();
   }
-  else if ((event.button === 2 || (event.touches && event.touches.length == 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+  else if ((event.button === 2 || (event.touches && event.touches.length === 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
     if (!application.mute_audio) upclick_audio.play();
   }
-  // cliPrintBoard();
+  cliPrintBoard();
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  
-  event.stopPropagation();
 }
 
 export const tileDownClicked = (clicked_tile, downclick_audio) => event => {
-  if (!store.getState().mute_audio && (event.button === 0 || (event.touches))) downclick_audio.play();
+  if (!store.getState().mute_audio) downclick_audio.play();
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
-  event.stopPropagation();
 }
 
 export const tileHovered = hovered_tile => () => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });

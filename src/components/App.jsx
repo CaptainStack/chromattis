@@ -31,7 +31,7 @@ export const GameMusic = new Audio(`${process.env.PUBLIC_URL}/audio/${track}`);
 
 // Add event listener for end of track - play the next track and advance the buffer
 GameMusic.addEventListener('ended', () => {
-  if (track_buffer.length == 0) {
+  if (track_buffer.length === 0) {
     track_buffer = all_tracks.slice();
   }
 
