@@ -10,10 +10,10 @@ const APP_STATIC_RESOURCES = [
   `${GHPATH}/favicon.svg`,
 ];
 
-self.addEventListener('fetch', function (e) {
+self.addEventListener('fetch', e => {
   console.log('Fetch request : ' + e.request.url);
   e.respondWith(
-    caches.match(e.request).then(function (request) {
+    caches.match(e.request).then(request => {
       if (request) { 
         console.log('Responding with cache : ' + e.request.url);
         return request
@@ -25,23 +25,23 @@ self.addEventListener('fetch', function (e) {
   )
 })
 
-self.addEventListener('install', function (e) {
+self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
+    caches.open(CACHE_NAME).then(cache => {
       console.log('Installing cache : ' + CACHE_NAME);
       return cache.addAll(APP_STATIC_RESOURCES)
     })
   )
 })
 
-self.addEventListener('activate', function (e) {
+self.addEventListener('activate', e => {
   e.waitUntil(
-    caches.keys().then(function (keyList) {
-      var cacheWhitelist = keyList.filter(function (key) {
+    caches.keys().then(keyList => {
+      var cacheWhitelist = keyList.filter(key => {
         return key.indexOf(APP_PREFIX)
       })
       cacheWhitelist.push(CACHE_NAME);
-      return Promise.all(keyList.map(function (key, i) {
+      return Promise.all(keyList.map((key, i) => {
         if (cacheWhitelist.indexOf(key) === -1) {
           console.log('Deleting cache : ' + keyList[i] );
           return caches.delete(keyList[i])
