@@ -26,11 +26,12 @@ let highest_unlocked_level =
     return highest_level;
   }
 
-let persisted_state = localStorage.getItem('chromattis_saved_state');
+let device_is_pwa = window.matchMedia('(display-mode: standalone)').matches ? true : false;
+let persisted_state = device_is_pwa ? localStorage.getItem('gamestate_pwa') : localStorage.getItem('gamestate_browser');
 
 // Rebuild the redux state by parsing the JSON string in localStorage
 if (persisted_state) {
-  persisted_state = JSON.parse(localStorage.getItem('chromattis_saved_state'));
+  persisted_state = JSON.parse(persisted_state);
   persisted_state.game.current_level = current_level;
   persisted_state.game.highest_unlocked_level = highest_unlocked_level;
   persisted_state.mute_music = true;

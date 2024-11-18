@@ -16,4 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 render();
 store.subscribe(render);
-store.subscribe(() => localStorage.setItem('chromattis_saved_state', JSON.stringify(store.getState())));
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(store.getState())));
+} else {
+  store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(store.getState())));
+}
