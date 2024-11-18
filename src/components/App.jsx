@@ -43,6 +43,8 @@ GameMusic.addEventListener('ended', () => {
   GameMusic.play();
 });
 
+export const UIClick = new Audio(`${process.env.PUBLIC_URL}/audio/uiclick.ogg`);
+
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
   // Logic should show button conditionally on support for PWA installation
@@ -57,6 +59,7 @@ export const App = ({state}) => {
     });
 
     installButton.addEventListener("click", async () => {
+      if (!state.mute_audio) UIClick.play();
       if (!installPrompt) {
         return;
       }
