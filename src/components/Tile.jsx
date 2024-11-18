@@ -11,14 +11,14 @@ let color_map = {
   5: "#FFFFFF",
 }
 
-export const Tile = ({tile, game_in_progress, hide_numbers, hide_colors}) => 
+export const Tile = ({tile, game_in_progress, hide_numbers, hide_colors, upclick_audio, downclick_audio, updownclick_audio}) => 
   <div className='Tile'
-       onMouseDown={tileDownClicked(tile)}
+       onMouseDown={tileDownClicked(tile, downclick_audio)}
        onMouseOver={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
-       onMouseUp={tileUpClicked(tile)}
-       onTouchStart={tileDownClicked(tile)}
-       onTouchEnd={tileUpClicked(tile)}
+       onMouseUp={tileUpClicked(tile, upclick_audio)}
+       onTouchStart={tileDownClicked(tile, downclick_audio)}
+       onTouchEnd={tileUpClicked(tile, upclick_audio)}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color],
           border: tile.preview ? '5px solid #8f7a66' : null,

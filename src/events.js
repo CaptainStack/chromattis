@@ -1,13 +1,5 @@
 import { store } from './index';
 
-import downclick from './audio/downclick.ogg';
-import upclick from './audio/upclick.ogg';
-import updownclick from './audio/updownclick.ogg';
-
-let upclick_audio = new Audio(upclick);
-let downclick_audio = new Audio(downclick);
-let updownclick_audio = new Audio(updownclick);
-
 export const cliPrintBoard = () => {
   let game = store.getState().game;
   let level = game.current_level();
@@ -26,13 +18,14 @@ export const cliPrintBoard = () => {
   console.log(row);
 }
 
-export const cliClick = (tile, reverse) => () => {
+export const cliClick = (tile, reverse, updownclick_audio) => () => {
   if (!store.getState().game.current_level().in_winning_state()) {
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
+    console.log('play updownclick')
     updownclick_audio.play();
-    cliPrintBoard();
+    // cliPrintBoard();
   } else {
     console.log(`This level is currently solved. \nSelect a new level using the next_level(), previous_level(), or goto_level(index) commands. \nReset the puzzle using the shuffle() command.`);
   }
@@ -47,28 +40,31 @@ export const cliPreview = (tile) => () => {
   }
 }
 
-export const tileUpClicked = (clicked_tile) => event => {
+export const tileUpClicked = (clicked_tile, upclick_audio) => event => {
   let application = store.getState();
   let current_level = application.game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
   if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
-    console.log(`Press Tile ${clicked_tile.id}`);
+    // console.log(`Press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
+    console.log('play upclick')
+    if (!application.mute_audio) upclick_audio.play();
   }
   else if ((event.button === 2 || (event.touches && event.touches.length == 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
+    if (!application.mute_audio) upclick_audio.play();
   }
-  cliPrintBoard();
+  // cliPrintBoard();
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
-  if (!application.mute_audio) upclick_audio.play();
+  
   event.stopPropagation();
 }
 
-export const tileDownClicked = (clicked_tile) => event => {
+export const tileDownClicked = (clicked_tile, downclick_audio) => event => {
+  if (!store.getState().mute_audio && (event.button === 0 || (event.touches))) downclick_audio.play();
   store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
-  if (!store.getState().mute_audio) downclick_audio.play();
   event.stopPropagation();
 }
 
