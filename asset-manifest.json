@@ -1,25 +1,14 @@
 {
   "files": {
     "main.css": "/chromattis/static/css/main.c314abd3.css",
-    "main.js": "/chromattis/static/js/main.5c48b67c.js",
-    "static/media/charm.ogg": "/chromattis/static/media/charm.a979eb3d3bc5a63d0161.ogg",
-    "static/media/underwater.ogg": "/chromattis/static/media/underwater.266320cf2466ace6513c.ogg",
-    "static/media/synthwave.ogg": "/chromattis/static/media/synthwave.98e1f034abc22b4c908a.ogg",
-    "static/media/island.ogg": "/chromattis/static/media/island.ed3cf19f8ff1f6f7f9da.ogg",
-    "static/media/sevenandeight.ogg": "/chromattis/static/media/sevenandeight.f0ca50d7a636a80f8bd2.ogg",
-    "static/media/crystalcave.ogg": "/chromattis/static/media/crystalcave.b66c9a307a7ecffe669a.ogg",
-    "static/media/song21.ogg": "/chromattis/static/media/song21.81cb88eeede9932a87af.ogg",
-    "static/media/song17.ogg": "/chromattis/static/media/song17.54642550cc58b8e24dd7.ogg",
+    "main.js": "/chromattis/static/js/main.2f947dc0.js",
     "static/media/ClearSans-Regular.ttf": "/chromattis/static/media/ClearSans-Regular.43ea7d2123718b0cfd2c.ttf",
-    "static/media/updownclick.ogg": "/chromattis/static/media/updownclick.f903ccce714138890602.ogg",
-    "static/media/downclick.ogg": "/chromattis/static/media/downclick.c1bb0b8a905364f6a116.ogg",
-    "static/media/upclick.ogg": "/chromattis/static/media/upclick.e8f23728f1b3d48d4d98.ogg",
     "index.html": "/chromattis/index.html",
     "main.c314abd3.css.map": "/chromattis/static/css/main.c314abd3.css.map",
-    "main.5c48b67c.js.map": "/chromattis/static/js/main.5c48b67c.js.map"
+    "main.2f947dc0.js.map": "/chromattis/static/js/main.2f947dc0.js.map"
   },
   "entrypoints": [
     "static/css/main.c314abd3.css",
-    "static/js/main.5c48b67c.js"
+    "static/js/main.2f947dc0.js"
   ]
 }
