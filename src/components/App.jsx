@@ -4,6 +4,7 @@ import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { Tutorial } from './Tutorial';
 import { LevelNavBar } from './LevelNavBar';
+import { LevelNavMenu } from './LevelNavMenu';
 import { 
   newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
   tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
@@ -25,7 +26,7 @@ let random_track = Math.floor(Math.random() * track_buffer.length);
 
 // Get random song and remove it from the track buffer
 let track = track_buffer[random_track];
-track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(random_track + 1))
+track_buffer = track_buffer.slice(0, random_track).concat(all_tracks.slice(random_track + 1));
 
 export const GameMusic = new Audio(`${process.env.PUBLIC_URL}/audio/${track}`);
 
@@ -95,11 +96,12 @@ export const App = ({state}) => {
         </div>
         <LevelNavBar levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         <div className='row' id='game-row'>
-          <Game hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} show_tutorial={state.show_tutorial} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
-          <VictoryModal show_tutorial={state.show_tutorial} game_in_progress={ !current_level.in_winning_state() } current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
-          <Tutorial show_tutorial={state.show_tutorial} tutorial={ state.tutorial }/>
+          <Game show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+          <VictoryModal show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+          <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
+          <LevelNavMenu page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
-        <p style={{fontSize:'13zpx'}}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p style={{fontSize:'13px'}}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <div className='Settings row'>
           <strong>Settings</strong>

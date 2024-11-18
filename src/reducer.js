@@ -4,6 +4,7 @@ import {
   clear_highlights, shuffle_colors, navigate_level, undo_move, 
   toggle_tutorial, next_tutorial, previous_tutorial, toggle_mute_audio,
   toggle_mute_music, toggle_hide_numbers, toggle_hide_colors,
+  next_level_nav_page, previous_level_nav_page, toggle_level_nav_menu,
  } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -38,6 +39,12 @@ export default function reducer(state = INITIAL_STATE, action) {
       return toggle_hide_numbers(state);
     case 'TOGGLE_HIDE_COLORS':
       return toggle_hide_colors(state);
+    case 'NEXT_LEVEL_NAVIGATION_PAGE':
+      return next_level_nav_page(state);
+    case 'PREVIOUS_LEVEL_NAVIGATION_PAGE':
+      return previous_level_nav_page(state);
+    case 'TOGGLE_LEVEL_NAVIGATION_MENU':
+      return toggle_level_nav_menu(state);
     default:
       return state;
   }

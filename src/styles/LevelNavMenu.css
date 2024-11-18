@@ -1,0 +1,36 @@
+.LevelNavMenu {
+  background: #cabfb4;
+  width: 540px;
+  height: 540px;
+  border: 15px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 6px;
+  .level-navigation-button {
+    margin: 20px;
+  }
+  .current-level {
+    margin:13px;
+  }
+  .row {
+    h1 { margin: 0 }
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .nav-button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 403px;
+    align-content: flex-start;
+  }
+  .hide-in-menu {
+    display: none;
+  }
+  .flat-button {
+    width: 65px;
+    align-self: center;
+  }
+}

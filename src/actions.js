@@ -1,5 +1,6 @@
 import { cliPrintBoard } from "./events";
 import { GameMusic } from "./components/App";
+import { num_displayed_levels } from "./components/LevelNavMenu";
 
 export const advance_tile_color = (state, tile) => {
   let current_level = state.game.current_level();
@@ -145,7 +146,7 @@ export const undo_move = state => {
 }
 
 export const toggle_tutorial = state => {
-  state.show_tutorial = !state.show_tutorial;
+  state.current_display = state.current_display === 'tutorial' ? 'game' : 'tutorial';
   state.tutorial.current_level_index = 0;
   return state;
 }
@@ -177,5 +178,23 @@ export const toggle_hide_numbers = state => {
 
 export const toggle_hide_colors = state => {
   state.hide_colors = !state.hide_colors;
+  return state;
+}
+
+export const next_level_nav_page = state => {
+  state.level_nav_page = 
+    state.level_nav_page * num_displayed_levels + num_displayed_levels >= state.game.levels.length ? 
+      state.level_nav_page : 
+      state.level_nav_page += 1;
+  return state;
+}
+
+export const previous_level_nav_page = state => {
+  state.level_nav_page = state.level_nav_page > 0 ? state.level_nav_page -= 1 : 0;
+  return state;
+}
+
+export const toggle_level_nav_menu = state => {
+  state.current_display = state.current_display === 'nav' ? 'game' : 'nav';
   return state;
 }

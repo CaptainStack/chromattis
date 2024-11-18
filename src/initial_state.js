@@ -54,7 +54,9 @@ const Level = (board, id) => ({
 
 let default_content = 
 {
-  show_tutorial: false,
+  current_display: 'game',
+  show_level_nav: true,
+  level_nav_page: 0,
   mute_audio: false,
   mute_music: true,
   hide_numbers: false,

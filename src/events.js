@@ -77,6 +77,9 @@ export const muteSoundButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_
 export const muteMusicButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 export const hideNumbersButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
 export const hideColorsButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
+export const nextLevelSelectPageClicked = () => store.dispatch({ type: 'NEXT_LEVEL_NAVIGATION_PAGE' });
+export const previousLevelSelectPageClicked = () => store.dispatch({ type: 'PREVIOUS_LEVEL_NAVIGATION_PAGE' });
+export const toggleLevelNavMenu = () => store.dispatch({ type: 'TOGGLE_LEVEL_NAVIGATION_MENU' });
 
 export const newGameButtonClicked = () => {
   console.log('Shuffling board...')

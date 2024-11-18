@@ -4,7 +4,7 @@ import '../styles/Game.css';
 
 
 
-export const Game = ({tiles, show_tutorial, game_in_progress, hide_numbers, hide_colors}) => {
+export const Game = ({tiles, show_game, game_in_progress, hide_numbers, hide_colors}) => {
   let upclick_audio = new Audio(`${process.env.PUBLIC_URL}/audio/upclick.ogg`);
   let downclick_audio = new Audio(`${process.env.PUBLIC_URL}/audio/downclick.ogg`);
   let updownclick_audio = new Audio(`${process.env.PUBLIC_URL}/audio/updownclick.ogg`);
@@ -22,7 +22,7 @@ export const Game = ({tiles, show_tutorial, game_in_progress, hide_numbers, hide
   return (
     <div className='Game' 
          style={{ 
-           display: game_in_progress && !show_tutorial ? null : 'none',
+          display: show_game ? null : 'none',
            gridTemplateColumns: `repeat(${ tiles.length / Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
            gridTemplateRows: `repeat(${ Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
            gridGap: '15px' }} >
