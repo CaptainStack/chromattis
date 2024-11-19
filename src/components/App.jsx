@@ -43,7 +43,7 @@ GameMusic.addEventListener('ended', () => {
   GameMusic.play();
 });
 
-export const UIClick = new Audio(`${process.env.PUBLIC_URL}/audio/uiclick.ogg`);
+export const UIClick = new Audio(`${process.env.PUBLIC_URL}/audio/upclick.ogg`);
 
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
