@@ -1,6 +1,6 @@
 import { cliPrintBoard } from "./events";
 import { GameMusic } from "./components/App";
-import { UIClick } from "./components/App";
+import { DownClickSound } from "./components/App";
 import { num_displayed_levels } from "./components/LevelNavMenu";
 
 export const advance_tile_color = (state, tile) => {
@@ -82,7 +82,6 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
 }
 
 export const shuffle_colors = state => {
-  if (!state.mute_audio) UIClick.play();
   let current_level = state.game.current_level()
   let board = current_level.board;
   let keystone = board[Math.floor(Math.random() * board.length)];
@@ -118,7 +117,7 @@ export const shuffle_colors = state => {
 }
 
 export const navigate_level = (state, level) => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   if (state.game.levels.length - 1 >= level) {
     state.game.current_level_index = level;
   }
@@ -126,7 +125,7 @@ export const navigate_level = (state, level) => {
 }
 
 export const undo_move = state => {
-  if (!state.mute_audio) UIClick.play();if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   let current_level = state.game.current_level();
   let last_move = current_level.last_move ? current_level.last_move : null;
 
@@ -150,50 +149,50 @@ export const undo_move = state => {
 }
 
 export const toggle_tutorial = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.current_display = state.current_display === 'tutorial' ? 'game' : 'tutorial';
   state.tutorial.current_level_index = 0;
   return state;
 }
 export const next_tutorial = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.tutorial.current_level_index < state.tutorial.levels.length - 1 ? state.tutorial.current_level_index += 1 : state.tutorial.current_level_index;
   return state;
 }
 
 export const previous_tutorial = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.tutorial.current_level_index > 0 ? state.tutorial.current_level_index -= 1 : state.tutorial.current_level_index;
   return state;
 }
 
 export const toggle_mute_audio = state => {
   state.mute_audio = !state.mute_audio;
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   return state;
 }
 
 export const toggle_mute_music = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.mute_music = !state.mute_music;
   state.mute_music ? GameMusic.pause() : GameMusic.play();
   return state;
 }
 
 export const toggle_hide_numbers = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.hide_numbers = !state.hide_numbers;
   return state;
 }
 
 export const toggle_hide_colors = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.hide_colors = !state.hide_colors;
   return state;
 }
 
 export const next_level_nav_page = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.level_nav_page = 
     state.level_nav_page * num_displayed_levels + num_displayed_levels >= state.game.levels.length ? 
       state.level_nav_page : 
@@ -202,13 +201,13 @@ export const next_level_nav_page = state => {
 }
 
 export const previous_level_nav_page = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.level_nav_page = state.level_nav_page > 0 ? state.level_nav_page -= 1 : 0;
   return state;
 }
 
 export const toggle_level_nav_menu = state => {
-  if (!state.mute_audio) UIClick.play();
+  if (!state.mute_audio) DownClickSound.play();
   state.current_display = state.current_display === 'nav' ? 'game' : 'nav';
   return state;
 }
