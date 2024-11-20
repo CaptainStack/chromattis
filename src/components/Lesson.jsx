@@ -1,10 +1,10 @@
 
 
-export const Lesson = ({lesson}) => {
+export const Lesson = ({lesson, current_level}) => {
   return(
     <div className='Lesson'>
-      <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`} style={{width:'400px', height:'400px', marginBottom:'10px', borderRadius:'10px', border: '10px solid transparent'}}/><br/>
-      <span>{lesson.text}</span>
+      <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`} style={{width:'390px', height:'390px', margin:0, borderRadius:'10px'}}/><br/>
+      <strong>LESSON {current_level}: {lesson.text}</strong>
     </div>
   )
 }
