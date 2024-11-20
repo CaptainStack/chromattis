@@ -13,6 +13,7 @@
   
 .VictoryModal {
   h1 {
+    margin: 0;
     font-size: 48px;
   }
   p {
@@ -24,7 +25,11 @@
 .victory-share {
   width: 60%;
 }
-  
+
+img {
+  width: 75px;
+}
+
 .VictoryModal .flat-button {
   margin-right: 10px;
 }
@@ -48,6 +53,9 @@
   25% {
       transform: translateY(-25px);
   }
+}
+.bounce-container {
+  margin-top: 0px;
 }
 .bounce-container span:nth-of-type(1) {
   animation-delay: 0.0s;
