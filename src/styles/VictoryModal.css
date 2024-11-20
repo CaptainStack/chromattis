@@ -10,8 +10,8 @@
   align-items: center;
   border-radius: 6px;
 }
-  
-h1 {
+
+.VictoryModal > h1 {
   margin: 0;
   font-size: 48px;
 }
