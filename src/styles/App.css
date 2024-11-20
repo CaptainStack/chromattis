@@ -33,7 +33,7 @@ div:focus {
 h1 {
   font-weight: bold;
   font-size: 52px;
-  margin-top: 12px;
+  margin: 12px 0 12px 0;
 }
 
 ul {

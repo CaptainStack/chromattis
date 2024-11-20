@@ -1,7 +1,7 @@
 .LevelNavBar {
   display: flex;
   align-items: center;
-  margin-bottom:16px;
+  margin:12px 0 12px 0;
   .hide-in-nav {
     display:none;
   }
