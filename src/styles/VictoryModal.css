@@ -13,15 +13,12 @@
   
 .VictoryModal {
   h1 {
-    margin: 0;
     font-size: 48px;
   }
   p {
     font-size: large;
   }
 }
-
-  
 .victory-share {
   width: 60%;
 }
