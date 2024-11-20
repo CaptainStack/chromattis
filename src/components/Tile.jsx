@@ -11,7 +11,7 @@ let color_map = {
   5: {hex: "#FFFFFF", string: 'White'},
 }
 
-export const Tile = ({tile, index, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
+export const Tile = ({tile, index, currently_selected, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
   <div className='Tile'
        onMouseDown={tileDownClicked(tile)}
        onMouseOver={tileHovered(tile)}
@@ -22,10 +22,10 @@ export const Tile = ({tile, index, game_in_progress, hide_numbers, hide_colors, 
        title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
-          border: tile.preview ? '5px solid #8f7a66' : null,
+          outline: currently_selected ? '5px solid violet' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
-          opacity: tile.will_change ? 0.25 : tile.preview ? 0.5 : 1,
+          opacity: tile.will_change ? 0.25 : tile.preview ? 0.6 : 1,
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>

@@ -67,10 +67,12 @@ export const highlight_tiles = (state, clicked_tile) => {
 }
 
 export const clear_highlights = state => {
-  for (let tile of state.game.current_level().board) {
+  let level = state.game.current_level();
+  for (let tile of level.board) {
     tile.preview = false;
     tile.will_change = false;
   }
+  level.currently_selected = null;
   return state;
 }
 
