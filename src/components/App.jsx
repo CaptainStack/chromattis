@@ -22,9 +22,9 @@ let track8 = 'sevenandeight.ogg';
 
 let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
 let playlist = all_tracks.slice();
-let random_track = Math.floor(Math.random() * playlist.length);
 
 // Get random song and remove it from the playlist
+let random_track = Math.floor(Math.random() * playlist.length);
 let track_name = playlist[random_track];
 playlist = playlist.slice(0, random_track).concat(all_tracks.slice(random_track + 1));
 let track_path = `${process.env.PUBLIC_URL}/audio/`;
@@ -36,8 +36,13 @@ GameMusic.addEventListener('ended', () => {
     playlist = all_tracks.slice();
   }
 
-  track_name = playlist.pop();
-  
+  while (GameMusic.src.includes(track_name)) {
+    random_track = Math.floor(Math.random() * playlist.length);
+    track_name = playlist[random_track];
+  }
+
+  playlist = playlist.slice(0, random_track).concat(playlist.slice(random_track + 1));
+
   let temp = new Audio(track_path + track_name);
   GameMusic.src = temp.src;
   GameMusic.play();
@@ -94,7 +99,7 @@ export const App = ({state}) => {
           <span id="install" className='flat-button' hidden>Install ⇩</span>
         </div>
         <div className='row'>
-          <p><strong>Solve by making all Tiles the same value</strong></p>
+          <p><strong style={{fontSize:'20px'}}>Solve by making all Tiles the same value</strong></p>
           <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
           <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
@@ -106,7 +111,7 @@ export const App = ({state}) => {
           <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
           <LevelNavMenu page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
-        <p style={{fontSize:'15px'}}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <div className='Settings row'>
           <strong>Settings</strong>
