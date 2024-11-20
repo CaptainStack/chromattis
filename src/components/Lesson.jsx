@@ -1,7 +1,9 @@
+import { IMAGE_URLS } from "../image_urls";
+
 export const Lesson = ({lesson}) => {
   return(
     <div className='Lesson'>
-      <img src={`${process.env.PUBLIC_URL}/tutorial/${lesson.image}`} style={{width:'400px', height:'400px', marginBottom:'10px', borderRadius:'10px', border: '10px solid transparent'}}/><br/>
+      <img src={IMAGE_URLS[lesson.image]} style={{width:'400px', height:'400px', marginBottom:'10px', borderRadius:'10px', border: '10px solid transparent'}}/><br/>
       <span>{lesson.text}</span>
     </div>
   )
