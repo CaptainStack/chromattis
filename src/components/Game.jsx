@@ -4,14 +4,16 @@ import '../styles/Game.css';
 
 
 
-export const Game = ({tiles, show_game, game_in_progress, hide_numbers, hide_colors}) => {
-  tiles = tiles.map(tile => 
+export const Game = ({tiles, show_game, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => {
+  tiles = tiles.map((tile, index) => 
     <Tile 
+      index={index}
       key={tile.id} 
       tile={tile} 
       game_in_progress={game_in_progress} 
       hide_numbers={hide_numbers} 
       hide_colors={hide_colors}
+      hide_tooltips={hide_tooltips}
       />);
   return (
     <div className='Game' 

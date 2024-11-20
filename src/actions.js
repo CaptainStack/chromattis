@@ -211,3 +211,9 @@ export const toggle_level_nav_menu = state => {
   state.current_display = state.current_display === 'nav' ? 'game' : 'nav';
   return state;
 }
+
+export const toggle_hide_tooltips = state => {
+  if (!state.mute_audio) DownClickSound.play();
+  state.hide_tooltips = !state.hide_tooltips;
+  return state;
+}

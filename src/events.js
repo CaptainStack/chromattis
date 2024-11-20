@@ -82,6 +82,7 @@ export const hideColorsButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE
 export const nextLevelSelectPageClicked = () => store.dispatch({ type: 'NEXT_LEVEL_NAVIGATION_PAGE' });
 export const previousLevelSelectPageClicked = () => store.dispatch({ type: 'PREVIOUS_LEVEL_NAVIGATION_PAGE' });
 export const toggleLevelNavMenu = () => store.dispatch({ type: 'TOGGLE_LEVEL_NAVIGATION_MENU' });
+export const toggleHideTooltips = () => store.dispatch({ type: 'TOGGLE_HIDE_TOOLTIPS' });
 
 export const newGameButtonClicked = () => {
   console.log('Shuffling board...');

@@ -8,27 +8,26 @@ import { LevelNavMenu } from './LevelNavMenu';
 import { 
   newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
   tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
-  hideNumbersButtonClicked, hideColorsButtonClicked,
+  hideNumbersButtonClicked, hideColorsButtonClicked, toggleHideTooltips,
 } from '../events';
 
-let track1 = 'song17.ogg';
-let track2 = 'song21.ogg';
-let track3 = 'charm.ogg';
-let track4 = 'island.ogg';
-let track5 = 'synthwave.ogg';
-let track6 = 'crystalcave.ogg';
-let track7 = 'underwater.ogg';
-let track8 = 'sevenandeight.ogg';
+let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
+let track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
+let track3 = `${process.env.PUBLIC_URL}/audio/charm.ogg`;
+let track4 = `${process.env.PUBLIC_URL}/audio/island.ogg`;
+let track5 = `${process.env.PUBLIC_URL}/audio/synthwave.ogg`;
+let track6 = `${process.env.PUBLIC_URL}/audio/crystalcave.ogg`;
+let track7 = `${process.env.PUBLIC_URL}/audio/underwater.ogg`;
+let track8 = `${process.env.PUBLIC_URL}/audio/sevenandeight.ogg`;
 
 let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
 let playlist = all_tracks.slice();
 
 // Get random song and remove it from the playlist
 let random_track = Math.floor(Math.random() * playlist.length);
-let track_name = playlist[random_track];
+let track = playlist[random_track];
 playlist = playlist.slice(0, random_track).concat(all_tracks.slice(random_track + 1));
-let track_path = `${process.env.PUBLIC_URL}/audio/`;
-export const GameMusic = new Audio(track_path + track_name);
+export const GameMusic = new Audio(track);
 
 // Add event listener for end of track - play the next track and advance the buffer
 GameMusic.addEventListener('ended', () => {
@@ -36,14 +35,14 @@ GameMusic.addEventListener('ended', () => {
     playlist = all_tracks.slice();
   }
 
-  while (GameMusic.src.includes(track_name)) {
+  while (GameMusic.src.includes(track)) {
     random_track = Math.floor(Math.random() * playlist.length);
-    track_name = playlist[random_track];
+    track = playlist[random_track];
   }
 
   playlist = playlist.slice(0, random_track).concat(playlist.slice(random_track + 1));
 
-  let temp = new Audio(track_path + track_name);
+  let temp = new Audio(track);
   GameMusic.src = temp.src;
   GameMusic.play();
 });
@@ -86,6 +85,7 @@ export const App = ({state}) => {
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
+
         <div className='row'>
           <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
           <div className='score-container'>
@@ -98,30 +98,40 @@ export const App = ({state}) => {
           </div>
           <span id="install" className='flat-button' hidden>Install ⇩</span>
         </div>
+
         <div className='row'>
           <p><strong style={{fontSize:'20px'}}>Solve by making all Tiles the same value</strong></p>
           <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
           <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
           <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
         </div>
-        <LevelNavBar levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+
+        <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+
         <div className='row' id='game-row'>
-          <Game show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+          <Game hide_tooltips={state.hide_tooltips} show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
           <VictoryModal show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
           <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
-          <LevelNavMenu page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+          <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
-        <p><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+
+        <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+
         <hr />
+
         <div className='Settings row'>
           <strong>Settings</strong>
-          <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Mute sounds</label>
-          <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Mute music</label>
-          <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Hide numbers</label>
-          <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Hide colors</label>
+          <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds off</label>
+          <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music off</label>
+          <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers off</label>
+          <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors off</label>
+          <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips off</label>
         </div>
+
         <hr />
+
         <p style={{fontSize:'12px'}}>Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>).<br/>Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license.<br/><a href='https://forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback here</strong></a>. <a href='https://forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a></p>
+
         {/* SOCIAL MEDIA BUTTONS */}
         <div className='row social'>
           <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count="true" target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
@@ -129,6 +139,7 @@ export const App = ({state}) => {
           <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s fun but very challenging (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
           <a style={{fontSize:'small'}} className='flat-button' href="//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me" target='_blank'>Support on Open Collective</a>
         </div>
+
       </div>
     </div>
   );

@@ -61,6 +61,7 @@ let default_content =
   mute_music: true,
   hide_numbers: false,
   hide_colors: false,
+  hide_tooltips: false,
   game: {
     levels: [
       Level([

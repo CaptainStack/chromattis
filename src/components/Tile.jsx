@@ -3,24 +3,25 @@ import '../styles/Tile.css';
 import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview } from '../events';
 
 let color_map = {
-  0: "#B71234",
-  1: "#FF5800",
-  2: "#FFD500",
-  3: "#009B48",
-  4: "#0046AD",
-  5: "#FFFFFF",
+  0: {hex: "#B71234", string: 'Red'},
+  1: {hex: "#FF5800", string: 'Orange'},
+  2: {hex: "#FFD500", string: 'Yellow'},
+  3: {hex: "#009B48", string: 'Green'},
+  4: {hex: "#0046AD", string: 'Blue'},
+  5: {hex: "#FFFFFF", string: 'White'},
 }
 
-export const Tile = ({tile, game_in_progress, hide_numbers, hide_colors, upclick_audio, downclick_audio, updownclick_audio}) => 
+export const Tile = ({tile, index, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
   <div className='Tile'
-       onMouseDown={tileDownClicked(tile, downclick_audio)}
+       onMouseDown={tileDownClicked(tile)}
        onMouseOver={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
-       onMouseUp={tileUpClicked(tile, upclick_audio)}
-       onTouchStart={tileDownClicked(tile, downclick_audio)}
-       onTouchEnd={tileUpClicked(tile, upclick_audio)}
+       onMouseUp={tileUpClicked(tile)}
+       onTouchStart={tileDownClicked(tile)}
+       onTouchEnd={tileUpClicked(tile)}
+       title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles}]`}
        style={{
-          backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color],
+          backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
           border: tile.preview ? '5px solid #8f7a66' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
@@ -28,7 +29,7 @@ export const Tile = ({tile, game_in_progress, hide_numbers, hide_colors, upclick
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
-    <span style={{color: hide_colors ? 'dimgrey' : color_map[tile.current_color]}}>
+    <span style={{color: hide_colors ? 'dimgrey' : color_map[tile.current_color].hex}}>
       {hide_numbers ? null : tile.current_color}
     </span>
 
