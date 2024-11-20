@@ -23,9 +23,10 @@ export const Tile = ({tile, index, currently_selected, game_in_progress, hide_nu
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
           outline: currently_selected ? '5px solid violet' : null,
+          borderRadius: currently_selected ? '10px' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
-          opacity: tile.will_change ? 0.25 : tile.preview ? 0.6 : 1,
+          opacity: tile.will_change ? 0.35 : tile.preview ? 0.6 : 1,
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
