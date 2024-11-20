@@ -12,7 +12,7 @@ export const Game = ({tiles, show_game, game_in_progress, hide_numbers, hide_col
       game_in_progress={game_in_progress} 
       hide_numbers={hide_numbers} 
       hide_colors={hide_colors}
-      updownclick_audio={updownclick_audio}/>);
+      />);
   return (
     <div className='Game' 
          style={{ 
