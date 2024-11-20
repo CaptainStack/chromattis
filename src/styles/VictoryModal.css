@@ -11,14 +11,9 @@
   border-radius: 6px;
 }
   
-.VictoryModal {
-  h1 {
-    margin: 0;
-    font-size: 48px;
-  }
-  p {
-    font-size: large;
-  }
+h1 {
+  margin: 0;
+  font-size: 48px;
 }
 
 .victory-share {
