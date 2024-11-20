@@ -18,7 +18,7 @@ export const LevelNavBar = ({levels, current_level_index, highest_unlocked_level
     return (<LevelNavButton display_in_nav_bar={index > nav_levels_lowest && index < nav_levels_highest} key={`${level.id}-NavButton`} level={level} index={index} current_level_index={current_level_index} locked_class={locked_class} current_level_class={current_level_class}/>)
   })
 
-  return(<p className='LevelNavBar' style={{fontSize:'24px'}}><strong onClick={toggleLevelNavMenu} style={{textDecoration: 'underline', cursor:'pointer'}}>SELECT LEVEL</strong>:{buttons}</p>);
+  return(<p className='LevelNavBar' style={{fontSize:'24px'}}><strong onClick={toggleLevelNavMenu} style={{textDecoration: 'underline', cursor:'pointer'}}>SELECT LEVEL</strong>{buttons}</p>);
 }
 
 export default LevelNavBar;

@@ -89,11 +89,11 @@ export const App = ({state}) => {
         <div className='row'>
           <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
           <div className='score-container'>
-            <h3>MOVES:</h3> 
+            <h3>MOVES</h3> 
             <p>{current_level.moves}</p>
           </div>
           <div className='score-container'>
-            <h3>BEST:</h3> 
+            <h3>BEST</h3> 
             <p>{current_level.best_score}</p>
           </div>
           <span id="install" className='flat-button' hidden>Install ⇩</span>
@@ -111,7 +111,7 @@ export const App = ({state}) => {
           <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
           <LevelNavMenu page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
-        <p><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY:</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
         <hr />
         <div className='Settings row'>
           <strong>Settings</strong>
