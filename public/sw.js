@@ -16,8 +16,6 @@ const APP_STATIC_RESOURCES = [
   `${GHPATH}/audio/crystalcave.ogg`,
   `${GHPATH}/audio/underwater.ogg`,
   `${GHPATH}/audio/sevenandeight.ogg`,
-  `${GHPATH}/audio/upclick.ogg`,
-  `${GHPATH}/audio/downclick.ogg`,
   `${GHPATH}/audio/updownclick.ogg`,
   `${GHPATH}/tutorial/00-grid.gif`,
   `${GHPATH}/tutorial/01-values.gif`,
