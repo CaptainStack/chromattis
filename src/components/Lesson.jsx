@@ -1,7 +1,9 @@
-export const Lesson = ({lesson, image_url}) => {
+
+
+export const Lesson = ({lesson}) => {
   return(
     <div className='Lesson'>
-      <img src={`data:image/gif;base64,${image_url}`} style={{width:'400px', height:'400px', marginBottom:'10px', borderRadius:'10px', border: '10px solid transparent'}}/><br/>
+      <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`} style={{width:'400px', height:'400px', marginBottom:'10px', borderRadius:'10px', border: '10px solid transparent'}}/><br/>
       <span>{lesson.text}</span>
     </div>
   )

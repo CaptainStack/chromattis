@@ -122,95 +122,95 @@ let default_content =
     levels: [
       {
         text: 'Chromattis is a puzzle made up of a grid of tiles',
-        image: 'grid',
+        image: '00-grid.gif',
       },
       {
         text: 'Each tile has a value represented as both a color and a number',
-        image: 'values',
+        image: '01-values.gif',
       },
       {
         text: 'Tap/click a tile to advance a set of tiles to the next color',
-        image: 'tap',
+        image: '02-tap.gif',
       },
       {
         text: 'There are six colors that tiles can cycle through',
-        image: 'cycle',
+        image: '03-cycle.gif',
       },
       {
         text: '0 = red, 1 = orange, 2 = yellow, 3 = green, 4 = blue, 5 = white',
-        image: 'cycle',
+        image: '03-cycle.gif',
       },
       {
         text: 'The goal of the puzzle is to get every tile to share the same value',
-        image: 'solving',
+        image: '04-solving.gif',
       },
       {
         text: 'Try to solve in as few moves as possible for a challenge',
-        image: 'moves',
+        image: '05-moves.gif',
       },
       {
         text: 'A tile can impact one or more tiles in the grid',
-        image: 'multiple',
+        image: '06-multiple.gif',
       },
       {
         text: "The selected tile isn't always one that changes",
-        image: 'others',
+        image: '07-others.gif',
       },
       {
         text: "Hover your cursor or long press to preview which tiles will change",
-        image: 'preview',
+        image: '08-preview.gif',
       },
       {
         text: 'Drag your finger off the tile to cancel a move',
-        image: 'cancel',
+        image: '09-cancel.gif',
       },
       {
         text: 'Right click or two-finger tap to go in the reverse direction',
-        image: 'reverse',
+        image: '10-reverse.gif',
       },
       {
         text: 'Undo your last move with the undo button',
-        image: 'undo',
+        image: '11-undo.gif',
       },
       {
         text: 'The reset button shuffles the board and resets the move counter',
-        image: 'shuffle',
+        image: '12-shuffle.gif',
       },
       {
         text: 'Those are the basics, keep going for tips and strategies',
-        image: 'solving',
+        image: '04-solving.gif',
       },
       {
         text: 'Six taps on one tile returns the board where it started',
-        image: 'sixpress',
+        image: '13-sixpress.gif',
       },
       {
         text: 'Three consecutive taps "inverts" a set\'s colors',
-        image: 'invert',
+        image: '14-invert.gif',
       },
       {
         text: "Don't try and solve everything at once, start with smaller goals",
-        image: 'solving',
+        image: '04-solving.gif',
       },
       {
         text: 'Try getting the corners of the puzzle to match',
-        image: 'corners',
+        image: '15-corners.gif',
       },
       {
         text: 'Try reducing the board to just two colors',
-        image: 'twocolors',
+        image: '16-twocolors.gif',
       },
       {
         text: 'Reduce the number of nonconforming tiles from there',
-        image: 'reduce',
+        image: '17-reduce.gif',
       },
       {
         text: 'Install Chromattis as an app for the best experience',
-        image: 'install',
+        image: '18-install.gif',
       },
       {
         text: 'Good luck have fun!',
-        image: 'solving',
+        image: '04-solving.gif',
       },
     ],
     current_level_index: 0,
@@ -235,3 +235,9 @@ if (persisted_state && persisted_state.game.levels.length !== default_content.ga
 
 // If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
 export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(default_content);
+
+
+
+
+
+
