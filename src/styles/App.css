@@ -33,7 +33,7 @@ div:focus {
 h1 {
   font-weight: bold;
   font-size: 52px;
-  margin: 12px 0 12px 0;
+  margin: 15px 0 12px 0;
 }
 
 ul {
@@ -115,4 +115,12 @@ p {
 @font-face {
   font-family: "Clear Sans";
   src: url('./ClearSans-Regular.ttf');
+}
+
+.social-share {
+  display: flex;
+  align-items: center;
+  img {
+    height: 25px;
+  }
 }
