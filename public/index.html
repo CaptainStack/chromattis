@@ -72,11 +72,13 @@
 
     ga('create', 'UA-98665036-1', 'auto');
     ga('send', 'pageview');
-    
-    if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('/chromattis/sw.js', {scope: '/chromattis/'});
-    }
-    
   </script>
+
+  <script>
+    if (navigator.serviceWorker) { 
+      navigator.serviceWorker.register('/chromattis/sw.js', {scope: '/chromattis/'}); 
+    }
+  </script>
+
   <script src="%PUBLIC_URL%/command_line.js"></script>
 </html>
