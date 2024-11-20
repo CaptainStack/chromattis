@@ -1,6 +1,7 @@
 import { store } from './index';
 import { DownClickSound } from './components/App';
 import { UpClickSound } from './components/App';
+import { UpDownClickSound } from './components/App';
 
 export const cliPrintBoard = () => {
   let game = store.getState().game;
@@ -20,9 +21,9 @@ export const cliPrintBoard = () => {
   console.log(row);
 }
 
-export const cliClick = (tile, reverse, updownclick_audio) => () => {
+export const cliClick = (tile, reverse) => () => {
   if (!store.getState().game.current_level().in_winning_state()) {
-    updownclick_audio.play();
+    UpDownClickSound.play();
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
