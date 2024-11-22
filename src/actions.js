@@ -84,6 +84,7 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
 }
 
 export const shuffle_colors = state => {
+  state.current_display = 'game';
   let current_level = state.game.current_level()
   let board = current_level.board;
   let keystone = board[Math.floor(Math.random() * board.length)];
@@ -132,6 +133,7 @@ export const undo_move = state => {
   let last_move = current_level.last_move ? current_level.last_move : null;
 
   if (last_move) {
+    state.current_display = 'game';
     console.log('Undoing last move...');
     if (last_move.reverse) {
       advance_tile_color(state, last_move.tile);
