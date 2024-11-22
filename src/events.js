@@ -69,7 +69,16 @@ export const tileDownClicked = (clicked_tile) => event => {
   event.stopPropagation();
 }
 
-export const tileHovered = hovered_tile => () => store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+export const tileHovered = hovered_tile => () => {
+  // Keep pulse animations synchronized
+  let anims = document.getAnimations();
+  for (let animation of anims) {
+    animation.currentTime = 0;
+  }
+
+  store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+}
+
 export const tileUnhovered = hovered_tile => () => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
 export const undoButtonClicked = () => store.dispatch({ type: 'UNDO_MOVE' });
 export const nextTutorialButtonClicked = () => store.dispatch({ type: 'NEXT_TUTORIAL' });

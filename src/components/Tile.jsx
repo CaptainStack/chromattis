@@ -22,7 +22,7 @@ export const Tile = ({tile, index, currently_selected, game_in_progress, hide_nu
        title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
-          outline: currently_selected ? '5px solid violet' : null,
+          outline: currently_selected ? '8px solid violet' : tile.preview ? '3px solid violet' : null,
           borderRadius: currently_selected ? '10px' : null,
           transform: tile.will_change ? 'scale(0.95)' : null,
           animation: tile.preview ? 'pulse 2s infinite' : null,
