@@ -130,13 +130,18 @@ export const App = ({state}) => {
 
         <hr />
 
-        <p style={{fontSize:'12px'}}>Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>).<br/>Open source code on <a href='https://github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an MIT license.<br/><a href='https://forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback here</strong></a>. <a href='https://forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a></p>
+        <p style={{fontSize:'12px'}}>
+          Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
+          Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
+          Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
+          <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
+        </p>
 
         {/* SOCIAL MEDIA BUTTONS */}
         <div className='row social'>
           <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count="true" target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-          <a className='social-share' href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse"><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook' target="_blank" rel="noopener noreferrer" /></a>
-          <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s fun but very challenging (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
+          <a className='social-share' href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse" target="_blank" rel="noopener noreferrer"><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
+          <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
           <a style={{fontSize:'small'}} className='flat-button' href="//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me" target='_blank'>Support on Open Collective</a>
         </div>
 
