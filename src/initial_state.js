@@ -114,6 +114,13 @@ let default_content =
         Tile(8, [8, 9, 10, 11]), Tile(9, [9, 3, 6, 12]), Tile(10, [10, 7, 13]), Tile(11, [11, 14]),
         Tile(12, [12, 13, 14, 15]), Tile(13, [13, 9, 5, 1]), Tile(14, [14, 10, 6, 2]), Tile(15, [15, 11, 7, 3]),
       ], 'a524afce-86b3-48be23-af502cb80829'),
+      Level([
+        Tile(0, [0,1,2, 5,6, 10]), Tile(1, [1,7,13,19]), Tile(2, [1,2,3, 7,]), Tile(3, [3,7,11,15]), Tile(4, [4,3,2, 9,8, 14]),
+        Tile(5, [5,11,17,23]), Tile(6, [0,1,2, 5,6,7, 10,11,12]), Tile(7, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(8, [4,3,2, 9,8,7, 14,13,12]), Tile(9, [9,13,17,21]),
+        Tile(10, [5,10,15, 11]), Tile(11, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(12, [0,4,6,8, 12, 16,18,20,24]), Tile(13, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(14, [9,14,19, 13,]),
+        Tile(15, [3,7,11,15]), Tile(16, [20,21,22, 15,16,17, 10,11,12]), Tile(17, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(18, [24,23,22, 19,18,17, 14,13,12]), Tile(19, [1,7,13,19]),
+        Tile(20, [20,21,22, 15,16, 10,]), Tile(21, [9,13,17,21]), Tile(22, [21,22,23, 17]), Tile(23, [5,11,17,23]), Tile(24, [24,23,22, 19,18, 14]),
+      ], 'b16b2728-ec5e-4391-a371-147d2138f52e'),
     ],
     current_level_index: 0,
     current_level: current_level,
@@ -225,7 +232,7 @@ let default_content =
 if (persisted_state && persisted_state.game.levels.length !== default_content.game.levels.length) {
   let default_levels = default_content.game.levels.slice();
 
-  for (let [index, level] of default_levels) {
+  for (let [index, level] of default_levels.entries()) {
     let matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
     default_levels[index] =  matched_level ? matched_level : default_levels[index];
   }
@@ -236,9 +243,3 @@ if (persisted_state && persisted_state.game.levels.length !== default_content.ga
 
 // If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
 export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(default_content);
-
-
-
-
-
-
