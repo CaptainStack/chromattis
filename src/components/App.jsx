@@ -19,8 +19,10 @@ let track5 = `${process.env.PUBLIC_URL}/audio/synthwave.ogg`;
 let track6 = `${process.env.PUBLIC_URL}/audio/crystalcave.ogg`;
 let track7 = `${process.env.PUBLIC_URL}/audio/underwater.ogg`;
 let track8 = `${process.env.PUBLIC_URL}/audio/sevenandeight.ogg`;
+let track9 = `${process.env.PUBLIC_URL}/audio/lofi.ogg`;
+let track10 = `${process.env.PUBLIC_URL}/audio/chiptune.ogg`;
 
-let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8];
+let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8, track9, track10];
 let playlist = all_tracks.slice();
 
 // Get random song and remove it from the playlist
