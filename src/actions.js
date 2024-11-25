@@ -1,20 +1,23 @@
 import { cliPrintBoard } from "./events";
 import { GameMusic } from "./components/App";
 import { DownClickSound } from "./components/App";
+import { VictorySound } from "./components/App";
 import { num_displayed_levels } from "./components/LevelNavMenu";
 
 export const advance_tile_color = (state, tile) => {
   let current_level = state.game.current_level();
   let tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
-
   for (let updated_tile of tiles) {
     updated_tile.current_color < 5 ? updated_tile.current_color += 1 : updated_tile.current_color = 0;
   }
   
   current_level.moves++;
 
-  if (current_level.in_winning_state() && (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves)) {
+  if (current_level.in_winning_state()) {
+    if (!state.mute_audio) VictorySound.play();
+    if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
     current_level.best_score = current_level.moves;
+    }
   }
 
   current_level.currently_selected = null;
