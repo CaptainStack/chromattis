@@ -62,6 +62,7 @@ let default_content =
   hide_numbers: false,
   hide_colors: false,
   hide_tooltips: false,
+  last_action: null,
   game: {
     levels: [
       Level([

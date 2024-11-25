@@ -20,6 +20,8 @@ export const advance_tile_color = (state, tile) => {
   current_level.currently_selected = null;
   current_level.last_move = { tile: tile, reverse: false };
 
+  state.last_action = 'clicktile';
+
   return state;
 }
 
@@ -38,6 +40,7 @@ export const previous_tile_color = (state, tile) => {
   }
 
   current_level.last_move = { tile: tile, reverse: true };
+  state.last_action = 'clicktile';
   return state;
 }
 
@@ -124,6 +127,7 @@ export const navigate_level = (state, level) => {
   if (state.game.levels.length - 1 >= level) {
     state.game.current_level_index = level;
   }
+  state.last_action = 'nav';
   return state;
 }
 

@@ -2,8 +2,8 @@ import React from 'react';
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 
-export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels}) =>
-  <div className='VictoryModal bounce-container' style={{ display: show_victory ? null : 'none' }}>
+export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels, last_action}) =>
+  <div className={`VictoryModal bounce-container ${show_victory ? 'show' : 'hide'} ${last_action === 'clicktile' ? 'fade-in' : 'instant'}`}>
     <h2 className='bounce' style={{visibility: current_moves <= best_score ? null : 'hidden'}}>
       <span>H</span>
       <span>I</span>

@@ -14,7 +14,7 @@ let color_map = {
 export const Tile = ({tile, index, currently_selected, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
   <div className='Tile'
        onMouseDown={tileDownClicked(tile)}
-       onMouseOver={tileHovered(tile)}
+       onMouseEnter={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
        onMouseUp={tileUpClicked(tile)}
        onTouchStart={tileDownClicked(tile)}
@@ -31,7 +31,8 @@ export const Tile = ({tile, index, currently_selected, game_in_progress, hide_nu
           userSelect: 'none'
         }}>
     <span style={{color: hide_colors ? 'dimgrey' : color_map[tile.current_color].hex}}>
-      {hide_numbers ? null : tile.current_color}
+    { hide_numbers ? null : game_in_progress ? tile.current_color : null }
+    { !game_in_progress ? '✓' : '' }
     </span>
 
     {/* HIDDEN CLI BUTTONS */}

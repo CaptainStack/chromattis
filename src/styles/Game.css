@@ -10,4 +10,17 @@
   margin-left: auto;
   margin-right: auto;
   touch-action: none;
+  position: absolute;
+}
+
+.Game.solved {
+  transition: all 2s;
+  transition-delay: 2s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Game.unsolved {
+  visibility: visible;
+  opacity: 1;
 }

@@ -17,9 +17,8 @@ export const Game = ({tiles, current_level, show_game, game_in_progress, hide_nu
       hide_tooltips={hide_tooltips}
       />);
   return (
-    <div className='Game' 
-         style={{ 
-            display: show_game ? null : 'none',
+    <div className={`Game ${game_in_progress ? 'unsolved' : 'solved'}`}
+         style={{
             gridTemplateColumns: `repeat(${ tiles.length / Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
             gridTemplateRows: `repeat(${ Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
             gridGap: '15px' }} >

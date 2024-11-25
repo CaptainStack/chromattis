@@ -112,7 +112,7 @@ export const App = ({state}) => {
 
         <div className='row' id='game-row'>
           <Game hide_tooltips={state.hide_tooltips} show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
-          <VictoryModal show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+          <VictoryModal last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
           <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
           <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
