@@ -73,6 +73,7 @@ export const tileHovered = hovered_tile => () => {
   // Keep pulse animations synchronized
   let anims = document.getAnimations();
   for (let animation of anims) {
+    if (animation.animationName === 'pulse')
     animation.currentTime = 0;
   }
 
