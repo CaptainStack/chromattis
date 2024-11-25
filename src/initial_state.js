@@ -69,8 +69,8 @@ let default_content =
         Tile(0, [0]), Tile(1, [1])
       ], '9a3c75b1-4d4176-83dc-ca53a6220071'),
       Level([
-        Tile(0, [0, 1]), Tile(1, [1]),
-      ], 'aa7427ca-96b4-4bf3-86d3b05c398704'),
+        Tile(0, [1]), Tile(1, [0, 1]),
+      ], 'd5b2cd45-4ff7-4a8b-bf1d-82a64a0d5ea0'),
       Level([
         Tile(0, [0, 1]), Tile(1, [0, 2]), Tile(2, [2, 1]),
       ], '1a49af532c-4bbd-bfb0-a6ab2094c3c1'),
