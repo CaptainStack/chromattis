@@ -38,8 +38,11 @@ export const previous_tile_color = (state, tile) => {
   
   current_level.moves++;
 
-  if (current_level.in_winning_state() && (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves)) {
+  if (current_level.in_winning_state()) {
+    if (!state.mute_audio) VictorySound.play();
+    if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
     current_level.best_score = current_level.moves;
+    }
   }
 
   current_level.last_move = { tile: tile, reverse: true };
