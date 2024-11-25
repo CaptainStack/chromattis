@@ -160,6 +160,7 @@ export const toggle_tutorial = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.current_display = state.current_display === 'tutorial' ? 'game' : 'tutorial';
   state.tutorial.current_level_index = 0;
+  state.last_action = 'nav';
   return state;
 }
 export const next_tutorial = state => {
