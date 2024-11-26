@@ -17,5 +17,5 @@
   
 .Tutorial .flat-button {
   margin-right: 10px;
-  width: 146px;
+  min-width: 112px;
 }
