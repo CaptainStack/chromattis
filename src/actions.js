@@ -189,7 +189,7 @@ export const toggle_mute_audio = state => {
 export const toggle_mute_music = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.mute_music = !state.mute_music;
-  GameMusic.volume = 0.25; 
+  GameMusic.volume = 0.5; 
   state.mute_music ? GameMusic.pause() : GameMusic.play();
   state.last_action = 'settings';
   return state;
