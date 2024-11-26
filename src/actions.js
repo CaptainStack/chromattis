@@ -14,7 +14,6 @@ export const advance_tile_color = (state, tile) => {
   current_level.moves++;
 
   if (current_level.in_winning_state()) {
-    if (!state.mute_audio) VictorySound.play();
     if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
     current_level.best_score = current_level.moves;
     }
@@ -39,7 +38,6 @@ export const previous_tile_color = (state, tile) => {
   current_level.moves++;
 
   if (current_level.in_winning_state()) {
-    if (!state.mute_audio) VictorySound.play();
     if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
     current_level.best_score = current_level.moves;
     }
@@ -230,5 +228,35 @@ export const toggle_level_nav_menu = state => {
 export const toggle_hide_tooltips = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.hide_tooltips = !state.hide_tooltips;
+  return state;
+}
+
+export const select_previous_tile = (state, key) => {
+  // alert('hi')
+  let current_level = state.game.current_level();
+
+  let new_index = current_level.currently_selected ? current_level.currently_selected : 0;
+
+  console.log(key)
+
+  let currently_selected_tile = current_level.board[key - 48];
+  // clear_highlights(state);
+  // console.log(currently_selected_tile);
+  // currently_selected_tile = currently_selected_tile === 0 ? current_level.length : currently_selected_tile--;
+  // console.log(state.game.current_level().board[state.game.current_level().currently_selected])
+  preview_tiles(state, currently_selected_tile)
+  return state;
+}
+
+export const select_next_tile = state => {
+  // alert('hi')
+  let current_level = state.game.current_level();
+  let new_index = current_level.currently_selected ? current_level.currently_selected === 0 ? current_level.board.length - 1 : current_level.currently_selected + 1 : 0;
+  let currently_selected_tile = current_level.board[new_index];
+  clear_highlights(state);
+  // console.log(currently_selected_tile);
+  // currently_selected_tile = currently_selected_tile === 0 ? current_level.length : currently_selected_tile--;
+  // console.log(state.game.current_level().board[state.game.current_level().currently_selected])
+  preview_tiles(state, currently_selected_tile)
   return state;
 }
