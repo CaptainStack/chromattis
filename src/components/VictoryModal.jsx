@@ -1,9 +1,11 @@
 import React from 'react';
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
+import { VictorySound } from './App';
 
-export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels, last_action}) =>
-  <div className={`VictoryModal bounce-container ${show_victory ? 'show' : 'hide'} ${last_action === 'clicktile' ? 'fade-in' : 'instant'}`}>
+export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels, last_action}) => {
+  if (last_action === 'clicktile' && show_victory) VictorySound.play();
+  return(<div className={`VictoryModal bounce-container ${show_victory ? 'show' : 'hide'} ${last_action === 'clicktile' ? 'fade-in' : 'instant'}`}>
     <h2 className='bounce' style={{visibility: current_moves <= best_score ? null : 'hidden'}}>
       <span>H</span>
       <span>I</span>
@@ -30,6 +32,6 @@ export const VictoryModal = ({show_victory, game_in_progress, current_moves, cur
       <a className='social-share' href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse" target="_blank" rel="noopener noreferrer" ><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook' target="_blank" rel="noopener noreferrer" /></a>
       <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
     </div>
-  </div>
-
+  </div>)
+}
 export default VictoryModal;

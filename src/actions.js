@@ -1,7 +1,6 @@
 import { cliPrintBoard } from "./events";
 import { GameMusic } from "./components/App";
 import { DownClickSound } from "./components/App";
-import { VictorySound } from "./components/App";
 import { num_displayed_levels } from "./components/LevelNavMenu";
 
 export const advance_tile_color = (state, tile) => {
