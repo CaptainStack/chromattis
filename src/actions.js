@@ -122,6 +122,7 @@ export const shuffle_colors = state => {
   
   current_level.best_score = best_score;
   current_level.last_move = null;
+  state.last_action = 'shuffle';
   return state;
 }
 
@@ -181,25 +182,30 @@ export const previous_tutorial = state => {
 export const toggle_mute_audio = state => {
   state.mute_audio = !state.mute_audio;
   if (!state.mute_audio) DownClickSound.play();
+  state.last_action = 'settings';
   return state;
 }
 
 export const toggle_mute_music = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.mute_music = !state.mute_music;
+  GameMusic.volume = 0.25; 
   state.mute_music ? GameMusic.pause() : GameMusic.play();
+  state.last_action = 'settings';
   return state;
 }
 
 export const toggle_hide_numbers = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.hide_numbers = !state.hide_numbers;
+  state.last_action = 'settings';
   return state;
 }
 
 export const toggle_hide_colors = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.hide_colors = !state.hide_colors;
+  state.last_action = 'settings';
   return state;
 }
 
@@ -221,41 +227,14 @@ export const previous_level_nav_page = state => {
 export const toggle_level_nav_menu = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.current_display = state.current_display === 'nav' ? 'game' : 'nav';
+  state.last_action = 'nav';
   return state;
 }
 
 export const toggle_hide_tooltips = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.hide_tooltips = !state.hide_tooltips;
+  state.last_action = 'settings';
   return state;
 }
 
-export const select_previous_tile = (state, key) => {
-  // alert('hi')
-  let current_level = state.game.current_level();
-
-  let new_index = current_level.currently_selected ? current_level.currently_selected : 0;
-
-  console.log(key)
-
-  let currently_selected_tile = current_level.board[key - 48];
-  // clear_highlights(state);
-  // console.log(currently_selected_tile);
-  // currently_selected_tile = currently_selected_tile === 0 ? current_level.length : currently_selected_tile--;
-  // console.log(state.game.current_level().board[state.game.current_level().currently_selected])
-  preview_tiles(state, currently_selected_tile)
-  return state;
-}
-
-export const select_next_tile = state => {
-  // alert('hi')
-  let current_level = state.game.current_level();
-  let new_index = current_level.currently_selected ? current_level.currently_selected === 0 ? current_level.board.length - 1 : current_level.currently_selected + 1 : 0;
-  let currently_selected_tile = current_level.board[new_index];
-  clear_highlights(state);
-  // console.log(currently_selected_tile);
-  // currently_selected_tile = currently_selected_tile === 0 ? current_level.length : currently_selected_tile--;
-  // console.log(state.game.current_level().board[state.game.current_level().currently_selected])
-  preview_tiles(state, currently_selected_tile)
-  return state;
-}
