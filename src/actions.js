@@ -238,3 +238,7 @@ export const toggle_hide_tooltips = state => {
   return state;
 }
 
+export const null_last_action = state => {
+  state.last_action = null;
+  return state;
+}

@@ -9,6 +9,7 @@ import {
   newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
   tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
   hideNumbersButtonClicked, hideColorsButtonClicked, toggleHideTooltips,
+  nullLastActionOnInitialPageLoad,
 } from '../events';
 
 let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
@@ -60,7 +61,7 @@ export const App = ({state}) => {
   // Will only run on first render because of empty array passed as second param
   useEffect(() => {
     // Set last_action to null to suppress victory sound on first load (should only play after a user action)
-    state.last_action = null;
+    nullLastActionOnInitialPageLoad();
     let installPrompt = null;
     const installButton = document.querySelector("#install");
 

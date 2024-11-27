@@ -5,7 +5,7 @@ import {
   toggle_tutorial, next_tutorial, previous_tutorial, toggle_mute_audio,
   toggle_mute_music, toggle_hide_numbers, toggle_hide_colors,
   next_level_nav_page, previous_level_nav_page, toggle_level_nav_menu,
-  toggle_hide_tooltips,
+  toggle_hide_tooltips, null_last_action,
  } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -48,6 +48,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return toggle_level_nav_menu(state);
     case 'TOGGLE_HIDE_TOOLTIPS':
       return toggle_hide_tooltips(state);
+    case 'NULL_LAST_ACTION':
+      return null_last_action(state);
     default:
       return state;
   }
