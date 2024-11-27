@@ -57,7 +57,10 @@ export const VictorySound = new Audio("data:audio/flac;base64,ZkxhQwAAACIQABAAAA
 export const App = ({state}) => {
   // Add event listeners for custom install button/prompt
   // Logic should show button conditionally on support for PWA installation
+  // Will only run on first render because of empty array passed as second param
   useEffect(() => {
+    // Set last_action to null to suppress victory sound on first load (should only play after a user action)
+    state.last_action = null;
     let installPrompt = null;
     const installButton = document.querySelector("#install");
 
@@ -80,7 +83,7 @@ export const App = ({state}) => {
       installPrompt = null;
       installButton.setAttribute("hidden", "");
     }
-  });
+  }, []);
 
   let current_level = state.game.current_level();
 
