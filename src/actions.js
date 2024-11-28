@@ -116,10 +116,18 @@ export const shuffle_colors = state => {
     } else {
       previous_tile_color(state, shuffle_tile);
     }
-
-    current_level.moves = 0;
   }
-  
+
+  // Don't leave the board within one click of solving the puzzle
+  for (let shuffle_tile of board) {
+    let target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
+    if (tiles_would_solve_puzzle(board, target_tiles)) {
+      previous_tile_color(state, shuffle_tile);
+      previous_tile_color(state, shuffle_tile);
+    }
+  }
+
+  current_level.moves = 0;
   current_level.best_score = best_score;
   current_level.last_move = null;
   state.last_action = 'shuffle';
