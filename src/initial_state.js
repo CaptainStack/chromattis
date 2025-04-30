@@ -54,7 +54,7 @@ const Level = (board, id) => ({
 
 let default_content = 
 {
-  current_display: 'game',
+  current_display: 'tutorial',
   show_level_nav: true,
   level_nav_page: 0,
   mute_audio: false,
@@ -130,6 +130,10 @@ let default_content =
   tutorial: {
     levels: [
       {
+        text: 'Welcome to Chromattis! Tap "OPEN TUTORIAL" below to restart this tutorial any time.',
+        image: '00-grid.gif',
+      },
+      {
         text: 'Chromattis is a puzzle made up of a grid of tiles',
         image: '00-grid.gif',
       },
@@ -186,11 +190,11 @@ let default_content =
         image: '12-shuffle.gif',
       },
       {
-        text: 'Those are the basics, keep going for tips and strategies',
+        text: 'Those are the basics! Keep going for tips and strategies',
         image: '04-solving.gif',
       },
       {
-        text: 'Six taps on one tile returns the board where it started',
+        text: 'Six consecutive taps on one tile returns the board where it started',
         image: '13-sixpress.gif',
       },
       {

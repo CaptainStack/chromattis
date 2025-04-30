@@ -122,7 +122,7 @@ export const App = ({state}) => {
           <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
         </div>
 
-        <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>HOW TO PLAY</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+        <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
         <hr/>
 

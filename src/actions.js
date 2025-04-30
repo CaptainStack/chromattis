@@ -90,7 +90,7 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
 }
 
 export const shuffle_colors = state => {
-  state.current_display = 'game';
+  state.current_display = state.last_action === null ? 'tutorial' : 'game';
   let current_level = state.game.current_level()
   let board = current_level.board;
   let keystone = board[Math.floor(Math.random() * board.length)];
@@ -139,6 +139,7 @@ export const navigate_level = (state, level) => {
   if (state.game.levels.length - 1 >= level) {
     state.game.current_level_index = level;
   }
+  state.current_display = 'game';
   state.last_action = 'nav';
   return state;
 }
