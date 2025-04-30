@@ -247,4 +247,4 @@ if (persisted_state && persisted_state.game.levels.length !== default_content.ga
 }
 
 // If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
-export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(default_content);
+export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(default_content, persisted_state);

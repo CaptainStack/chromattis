@@ -89,8 +89,8 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
   return updated_colors.every(color => color === updated_colors[0]);
 }
 
-export const shuffle_colors = state => {
-  state.current_display = state.last_action === null ? 'tutorial' : 'game';
+export const shuffle_colors = (state, first_load) => {
+  state.current_display = first_load === null ? 'tutorial' : 'game';
   let current_level = state.game.current_level()
   let board = current_level.board;
   let keystone = board[Math.floor(Math.random() * board.length)];

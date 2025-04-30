@@ -11,7 +11,7 @@ let color_map = {
   5: {hex: "#FFFFFF", string: 'White'},
 }
 
-export const Tile = ({tile, index, currently_selected, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
+export const Tile = ({tile, index, currently_selected, preview_mode, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
   <div className='Tile'
        onMouseDown={tileDownClicked(tile)}
        onMouseEnter={tileHovered(tile)}
@@ -22,15 +22,15 @@ export const Tile = ({tile, index, currently_selected, game_in_progress, hide_nu
        title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
-          outline: currently_selected ? '8px solid violet' : tile.preview ? '3px solid violet' : null,
+          outline: currently_selected ? '3px solid violet' : tile.preview || tile.will_change ? '3px dashed violet' : null,
           borderRadius: currently_selected ? '10px' : null,
-          transform: tile.will_change ? 'scale(0.95)' : null,
-          animation: tile.preview ? 'pulse 2s infinite' : null,
-          opacity: tile.will_change ? 0.35 : tile.preview ? 0.6 : 1,
+          transform: tile.will_change ? 'scale(1.03)' : null,
+          animation: tile.preview ? 'pulse 1s infinite' : null,
+          opacity: tile.will_change ? 1 : tile.preview || !preview_mode ? 1 : 0.6,
           pointerEvents: !game_in_progress ? 'none' : null,
           userSelect: 'none'
         }}>
-    <span style={{color: hide_colors ? 'dimgrey' : color_map[tile.current_color].hex}}>
+    <span style={{color: hide_colors ? 'dimgrey' : currently_selected ? 'violet' : color_map[tile.current_color].hex}}>
     { hide_numbers ? null : game_in_progress ? tile.current_color : null }
     { !game_in_progress ? '✓' : '' }
     </span>
