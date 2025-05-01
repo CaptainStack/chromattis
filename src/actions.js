@@ -100,6 +100,7 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
 }
 
 export const shuffle_colors = (state, first_load) => {
+  clear_highlights(state);
   state.current_display = first_load === null ? 'tutorial' : 'game';
   let current_level = state.game.current_level()
   let board = current_level.board;
