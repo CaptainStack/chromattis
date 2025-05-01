@@ -135,30 +135,32 @@ p {
     align-items: center;
   }
   .main-container {
-    min-width: 1280px;
+    min-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     margin: 0;
     padding: 15px;
-    height: 100vh;
+    height: 96vh;
   }
   .first {
     grid-column-start: 1;
     grid-column-end: 1;
+    height: 49vh;
   }
   .second {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
+    height: 49vh;
   }
   .third {
     grid-column-start: 1;
     grid-column-end: 1;
   }
   #game-row {
-    min-height: 720px;
+    min-height: 96vh;
     justify-content: center;
   }
 }
