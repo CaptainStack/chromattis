@@ -2,6 +2,64 @@ import { store } from './index';
 import { DownClickSound } from './components/App';
 import { UpClickSound } from './components/App';
 import { UpDownClickSound } from './components/App';
+import { sync_pulse_animations } from './actions';
+
+export const escapeKeyPressed = () => {
+  if (!store.getState().mute_audio) UpDownClickSound.play();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: null });
+}
+
+export const backspaceKeyPressed = () => {
+  let selected_tile_id = store.getState().game.current_level().currently_selected;
+  document.getElementById(`reverse_tile_${selected_tile_id}`).click();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile_id });
+}
+
+export const enterKeyPressed = () => {
+  let selected_tile_id = store.getState().game.current_level().currently_selected;
+  document.getElementById(`press_tile_${selected_tile_id}`).click();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile_id });
+}
+
+export const upArrowKeyPressed = () => {
+  let application = store.getState();
+  let level = application.game.current_level();
+  let row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  let num_rows = Math.floor(Math.sqrt(level.board.length));
+  let tile_id = level.currently_selected !== null ? level.currently_selected - num_rows >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
+  if (!application.mute_audio) UpClickSound.play();
+  sync_pulse_animations();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+}
+
+export const downArrowKeyPressed = () => {
+  let application = store.getState();
+  let level = application.game.current_level();
+  let row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  let num_rows = Math.floor(Math.sqrt(level.board.length));
+  let tile_id = level.currently_selected !== null ? level.currently_selected < row_length * (num_rows - 1) ? level.currently_selected + row_length : level.currently_selected : 0;
+  if (!application.mute_audio) DownClickSound.play();
+  sync_pulse_animations();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+}
+
+export const rightArrowKeyPressed = () => {
+  let application = store.getState();
+  let level = application.game.current_level();
+  let tile_id = level.currently_selected !== null ? level.currently_selected === null || level.currently_selected === level.board.length - 1 ? level.currently_selected : level.currently_selected + 1 : 0;
+  if (!application.mute_audio) UpClickSound.play();
+  sync_pulse_animations();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+}
+
+export const leftArrowKeyPressed = () => {
+  let application = store.getState();
+  let level = application.game.current_level();
+  let tile_id = level.currently_selected !== null ? level.currently_selected === 0 ? level.currently_selected : level.currently_selected - 1 : level.board.length - 1;
+  sync_pulse_animations();
+  if (!application.mute_audio) DownClickSound.play();
+  store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+}
 
 export const cliPrintBoard = () => {
   let game = store.getState().game;
@@ -35,6 +93,7 @@ export const cliClick = (tile, reverse) => () => {
 
 export const cliPreview = (tile) => () => {
   if (!store.getState().game.current_level().in_winning_state()) {
+    store.dispatch({ type: 'SELECT_TILE', tile_id: tile ? tile.id : null });
     console.log(`If you press Tile ${tile.id} the following Tiles will change:`);
     console.log(tile.target_tiles);
   } else {
@@ -70,12 +129,7 @@ export const tileDownClicked = (clicked_tile) => event => {
 }
 
 export const tileHovered = hovered_tile => () => {
-  // Keep pulse animations synchronized
-  let anims = document.getAnimations();
-  for (let animation of anims) {
-    if (animation.animationName === 'pulse')
-    animation.currentTime = 0;
-  }
+  sync_pulse_animations();
 
   store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
 }
