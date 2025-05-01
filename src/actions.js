@@ -3,6 +3,14 @@ import { GameMusic } from "./components/App";
 import { DownClickSound } from "./components/App";
 import { num_displayed_levels } from "./components/LevelNavMenu";
 
+export const select_tile = (state, tile_id) => {
+  let current_level = state.game.current_level();
+  current_level.currently_selected = tile_id;
+  clear_highlights(state);
+  preview_tiles(state, current_level.board[tile_id]);
+  return state;
+}
+
 export const advance_tile_color = (state, tile) => {
   let current_level = state.game.current_level();
   let tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
@@ -47,19 +55,21 @@ export const previous_tile_color = (state, tile) => {
   return state;
 }
 
-export const preview_tiles = (state, hovered_tile) => {
-  let current_level = state.game.current_level();
-  for (let tile of current_level.board) {
-    if (hovered_tile.target_tiles.includes(tile.id)) {
-      tile.preview = true;
+export const preview_tiles = (state, selected_tile) => {
+  if (selected_tile) {
+    let current_level = state.game.current_level();
+    for (let tile of current_level.board) {
+      if (selected_tile.target_tiles.includes(tile.id)) {
+        tile.preview = true;
+      }
     }
+    current_level.currently_selected = selected_tile.id;
   }
-  current_level.currently_selected = hovered_tile.id;
-
   return state;
 }
 
 export const highlight_tiles = (state, clicked_tile) => {
+  clear_highlights(state);
   let current_level = state.game.current_level();
   for (let tile of current_level.board) {
     if (clicked_tile.target_tiles.includes(tile.id)) {
@@ -250,4 +260,12 @@ export const toggle_hide_tooltips = state => {
 export const null_last_action = state => {
   state.last_action = null;
   return state;
+}
+
+export const sync_pulse_animations = () => {
+  let anims = document.getAnimations();
+  for (let animation of anims) {
+    if (animation.animationName === 'pulse')
+    animation.currentTime = 0;
+  }
 }
