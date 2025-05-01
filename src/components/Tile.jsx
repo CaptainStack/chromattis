@@ -19,7 +19,7 @@ export const Tile = ({tile, index, currently_selected, preview_mode, game_in_pro
        onMouseUp={tileUpClicked(tile)}
        onTouchStart={tileDownClicked(tile)}
        onTouchEnd={tileUpClicked(tile)}
-       title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles}]`}
+       title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles.sort((a, b) => a - b)}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
           outline: currently_selected ? '3px solid violet' : tile.preview || tile.will_change ? '3px dashed violet' : null,
