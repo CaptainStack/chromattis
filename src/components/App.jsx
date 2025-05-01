@@ -9,7 +9,9 @@ import {
   newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
   tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
   hideNumbersButtonClicked, hideColorsButtonClicked, toggleHideTooltips,
-  nullLastActionOnInitialPageLoad,
+  nullLastActionOnInitialPageLoad, rightArrowKeyPressed, leftArrowKeyPressed, 
+  enterKeyPressed, backspaceKeyPressed, escapeKeyPressed, upArrowKeyPressed, 
+  downArrowKeyPressed,
 } from '../events';
 
 let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
@@ -84,6 +86,29 @@ export const App = ({state}) => {
       installPrompt = null;
       installButton.setAttribute("hidden", "");
     }
+
+    function keyboardControls(event) {
+      switch(event.key) {
+        case 'ArrowLeft': leftArrowKeyPressed(); break;
+        case 'ArrowRight': rightArrowKeyPressed(); break;
+        case 'ArrowUp': upArrowKeyPressed(); break;
+        case 'ArrowDown': downArrowKeyPressed(); break;
+        case 'Enter': enterKeyPressed(); break;
+        case 'Backspace': backspaceKeyPressed(); break;
+        case 'Escape': escapeKeyPressed(); break;
+        case 'r': newGameButtonClicked(); break;
+        case 't': tutorialButtonClicked(); break;
+        case 'u': undoButtonClicked(); break;
+        case 'PageUp': document.getElementById('next_puzzle_button').click(); break;
+        case 'PageDown': document.getElementById('previous_puzzle_button').click(); break;
+        case '~': localStorage.clear(); location.reload(); break;
+        default:
+          break;
+      }
+    }
+
+    document.addEventListener('keydown', keyboardControls);
+    return () => document.removeEventListener('keydown', keyboardControls);
   }, []);
 
   let current_level = state.game.current_level();
