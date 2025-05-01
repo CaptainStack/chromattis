@@ -141,26 +141,26 @@ p {
     grid-gap: 20px;
     margin: 0;
     padding: 15px;
-    height: 96vh;
+    height: 95vh;
   }
   .first {
     grid-column-start: 1;
     grid-column-end: 1;
-    height: 49vh;
+    height: 48vh;
   }
   .second {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
-    height: 49vh;
+    height: 48vh;
   }
   .third {
     grid-column-start: 1;
     grid-column-end: 1;
   }
   #game-row {
-    min-height: 96vh;
+    min-height: 95vh;
     justify-content: center;
   }
 }
