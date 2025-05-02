@@ -108,6 +108,55 @@ export const App = ({state}) => {
     }
 
     document.addEventListener('keydown', keyboardControls);
+
+    function gamepadControls(buttonIndex) {
+      switch(buttonIndex) {
+        case 14: leftArrowKeyPressed(); break;
+        case 15: rightArrowKeyPressed(); break;
+        case 12: upArrowKeyPressed(); break;
+        case 13: downArrowKeyPressed(); break;
+        case 0: enterKeyPressed(); break;
+        case 1: backspaceKeyPressed(); break;
+        case 9: tutorialButtonClicked(); break;
+        case 2: newGameButtonClicked(); break;
+        case 8: escapeKeyPressed(); break;
+        case 3: undoButtonClicked(); break;
+        case 4: document.getElementById('next_puzzle_button').click(); break;
+        case 5: document.getElementById('previous_puzzle_button').click(); break;
+        default: break;
+      }
+    }
+
+    let previousButtonStates = {};
+    function updateGamepadState() {
+      const gamepads = navigator.getGamepads();
+
+      for (let i = 0; i < gamepads.length; i++) {
+        const gamepad = gamepads[i];
+        if (gamepad) {
+          const gamepadIndex = gamepad.index;
+          if (!previousButtonStates[gamepadIndex]) {
+            previousButtonStates[gamepadIndex] = {};
+          }
+          // Process button presses
+          gamepad.buttons.forEach((button, index) => {
+            const wasPressed = previousButtonStates[gamepadIndex][index] ? previousButtonStates[gamepadIndex][index].pressed : false;
+            const isPressed = button.pressed;
+            if (isPressed && !wasPressed) {
+              // Button is currently pressed
+              // You might want to check for specific button indices
+              gamepadControls(index);
+            }
+            previousButtonStates[gamepadIndex][index] = { pressed: isPressed, value: button.value };
+          });
+        }
+      }
+      // Request the next frame to continue polling
+      requestAnimationFrame(updateGamepadState);
+    }
+    // Start the polling loop
+    requestAnimationFrame(updateGamepadState);
+
     return () => document.removeEventListener('keydown', keyboardControls);
   }, []);
 
