@@ -121,8 +121,8 @@ export const App = ({state}) => {
         case 2: newGameButtonClicked(); break;
         case 8: escapeKeyPressed(); break;
         case 3: undoButtonClicked(); break;
-        case 4: document.getElementById('next_puzzle_button').click(); break;
-        case 5: document.getElementById('previous_puzzle_button').click(); break;
+        case 5: document.getElementById('next_puzzle_button').click(); break;
+        case 4: document.getElementById('previous_puzzle_button').click(); break;
         default: break;
       }
     }
