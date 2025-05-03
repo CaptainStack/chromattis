@@ -109,6 +109,36 @@ export const App = ({state}) => {
 
     document.addEventListener('keydown', keyboardControls);
 
+    let connectedGamepads = {};
+
+    window.addEventListener("gamepadconnected", (event) => {
+      const gamepad = event.gamepad;
+      console.log(`Gamepad connected at index ${gamepad.index}: ${gamepad.id}. ${gamepad.buttons.length} buttons, ${gamepad.axes.length} axes.`);
+    });
+
+    window.addEventListener('gamepaddisconnected', (event) => {
+      console.log('Gamepad disconnected:', event.gamepad);
+      gamepadDisconnectedHandler(event.gamepad);
+    });
+
+    window.addEventListener('gamepaddisconnected', (event) => {
+      console.log('Gamepad disconnected:', event.gamepad);
+      gamepadDisconnectedHandler(event.gamepad);
+    });
+
+    function gamepadConnectedHandler(gamepad) {
+      connectedGamepads[gamepad.index] = gamepad;
+      console.log('Connected gamepads:', connectedGamepads);
+      // You might want to start polling for button/axis updates here
+    }
+
+    function gamepadDisconnectedHandler(gamepad) {
+      delete connectedGamepads[gamepad.index];
+      console.log('Connected gamepads:', connectedGamepads);
+      // You might want to stop polling for this gamepad here
+      stopPolling();
+    }
+
     function gamepadControls(buttonIndex) {
       switch(buttonIndex) {
         case 14: leftArrowKeyPressed(); break;
@@ -127,6 +157,10 @@ export const App = ({state}) => {
       }
     }
 
+    let isPolling = true;
+    function stopPolling() {
+      isPolling = false;
+    }
     let previousButtonStates = {};
     function updateGamepadState() {
       const gamepads = navigator.getGamepads();
@@ -152,7 +186,7 @@ export const App = ({state}) => {
         }
       }
       // Request the next frame to continue polling
-      requestAnimationFrame(updateGamepadState);
+      if (isPolling) requestAnimationFrame(updateGamepadState);
     }
     // Start the polling loop
     requestAnimationFrame(updateGamepadState);
@@ -183,7 +217,7 @@ export const App = ({state}) => {
             </div>
 
             <div className='row'>
-              <p><strong style={{fontSize:'20px'}}>Solve by making all Tiles the </strong></p>
+              <p><strong style={{fontSize:'20px'}}>Solve by making all Tiles the same value</strong></p>
               <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
               <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
               <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
@@ -208,19 +242,19 @@ export const App = ({state}) => {
 
             <div className='Settings row'>
               <strong>Settings</strong>
-              <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds</label>
-              <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music</label>
-              <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers</label>
-              <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors</label>
-              {window.matchMedia('(pointer:fine)').matches ? <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips</label> : null}
+              <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds off</label>
+              <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music off</label>
+              <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers off</label>
+              <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors off</label>
+              {window.matchMedia('(pointer:fine)').matches ? <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips off</label> : null}
             </div>
 
             <hr />
 
             <p style={{fontSize:'12px'}}>
-              Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>) 
-              Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a> 
-              Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a> 
+              Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
+              Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
+              Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
               <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
             </p>
 
