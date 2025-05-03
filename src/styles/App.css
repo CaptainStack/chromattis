@@ -1,5 +1,14 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.vertical-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .main-container {
@@ -128,12 +137,7 @@ p {
   }
 }
 
-@media screen and (max-height: 1092px) and (orientation: landscape) {
-  .App {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+@media screen and (max-height: 1000px) and (min-width: 1280px) and (orientation: landscape) {
   .main-container {
     min-width: 1200px;
     display: grid;
@@ -141,26 +145,25 @@ p {
     grid-gap: 20px;
     margin: 0;
     padding: 15px;
-    height: 95vh;
+  }
+  .vertical-container {
+    justify-content: space-around;
   }
   .first {
     grid-column-start: 1;
-    grid-column-end: 1;
-    height: 48vh;
+    grid-column-end: 2;
   }
   .second {
     grid-column-start: 2;
-    grid-column-end: 2;
+    grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
-    height: 48vh;
   }
   .third {
     grid-column-start: 1;
-    grid-column-end: 1;
+    grid-column-end: 2;
   }
   #game-row {
-    min-height: 95vh;
     justify-content: center;
   }
 }
