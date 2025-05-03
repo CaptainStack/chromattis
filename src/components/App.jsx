@@ -110,15 +110,15 @@ export const App = ({state}) => {
     document.addEventListener('keydown', keyboardControls);
 
     let connectedGamepads = {};
+    let isPolling = true;
 
+    function stopPolling() {
+      isPolling = false;
+    }
     window.addEventListener("gamepadconnected", (event) => {
       const gamepad = event.gamepad;
       console.log(`Gamepad connected at index ${gamepad.index}: ${gamepad.id}. ${gamepad.buttons.length} buttons, ${gamepad.axes.length} axes.`);
-    });
-
-    window.addEventListener('gamepaddisconnected', (event) => {
-      console.log('Gamepad disconnected:', event.gamepad);
-      gamepadDisconnectedHandler(event.gamepad);
+      gamepadConnectedHandler(event.gamepad)
     });
 
     window.addEventListener('gamepaddisconnected', (event) => {
@@ -130,6 +130,8 @@ export const App = ({state}) => {
       connectedGamepads[gamepad.index] = gamepad;
       console.log('Connected gamepads:', connectedGamepads);
       // You might want to start polling for button/axis updates here
+      // Start the polling loop
+      requestAnimationFrame(updateGamepadState);
     }
 
     function gamepadDisconnectedHandler(gamepad) {
@@ -157,10 +159,6 @@ export const App = ({state}) => {
       }
     }
 
-    let isPolling = true;
-    function stopPolling() {
-      isPolling = false;
-    }
     let previousButtonStates = {};
     function updateGamepadState() {
       const gamepads = navigator.getGamepads();
@@ -188,8 +186,6 @@ export const App = ({state}) => {
       // Request the next frame to continue polling
       if (isPolling) requestAnimationFrame(updateGamepadState);
     }
-    // Start the polling loop
-    requestAnimationFrame(updateGamepadState);
 
     return () => document.removeEventListener('keydown', keyboardControls);
   }, []);
