@@ -89,21 +89,20 @@ export const App = ({state}) => {
 
     function keyboardControls(event) {
       switch(event.key) {
-        case 'ArrowLeft': leftArrowKeyPressed(); break;
-        case 'ArrowRight': rightArrowKeyPressed(); break;
-        case 'ArrowUp': upArrowKeyPressed(); break;
-        case 'ArrowDown': downArrowKeyPressed(); break;
+        case 'ArrowLeft': leftArrowKeyPressed(); event.preventDefault(); break;
+        case 'ArrowRight': rightArrowKeyPressed(); event.preventDefault(); break;
+        case 'ArrowUp': upArrowKeyPressed(); event.preventDefault(); event.preventDefault(); break;
+        case 'ArrowDown': downArrowKeyPressed(); event.preventDefault(); break;
         case 'Enter': enterKeyPressed(); break;
         case 'Backspace': backspaceKeyPressed(); break;
         case 'Escape': escapeKeyPressed(); break;
         case 'r': newGameButtonClicked(); break;
         case 't': tutorialButtonClicked(); break;
         case 'u': undoButtonClicked(); break;
-        case 'PageUp': document.getElementById('next_puzzle_button').click(); break;
-        case 'PageDown': document.getElementById('previous_puzzle_button').click(); break;
+        case '=': document.getElementById('next_puzzle_button').click(); break;
+        case '-': document.getElementById('previous_puzzle_button').click(); break;
         case '~': localStorage.clear(); location.reload(); break;
-        default:
-          break;
+        default: break;
       }
     }
 
