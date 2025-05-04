@@ -25,8 +25,7 @@ export const upArrowKeyPressed = () => {
   let application = store.getState();
   let level = application.game.current_level();
   let row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
-  let num_rows = Math.floor(Math.sqrt(level.board.length));
-  let tile_id = level.currently_selected !== null ? level.currently_selected - num_rows >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
+  let tile_id = level.currently_selected !== null ? level.currently_selected - row_length >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
   if (!application.mute_audio) UpClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
