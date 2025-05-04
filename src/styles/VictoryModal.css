@@ -6,7 +6,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   border-radius: 6px;
   position: absolute;
@@ -27,7 +27,6 @@
 }
 
 .VictoryModal > h1 {
-  margin: 0;
   font-size: 48px;
 }
 

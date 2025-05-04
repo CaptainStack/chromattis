@@ -1,24 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 100%;
+  min-width: 600px;
 }
-.vertical-container {
-  height: 90vh;
+.main-container {
+  font-size: large;
+  width: 570px;
+  gap: 12px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.main-container {
-  font-size: large;
-  width: 570px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 12px;
+.first, .third {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-around;
 }
 
 #game-row {
@@ -42,7 +48,6 @@ div:focus {
 h1 {
   font-weight: bold;
   font-size: 52px;
-  margin: 15px 0 12px 0;
 }
 
 ul {
@@ -104,24 +109,23 @@ p {
   color: #eee4da;
 }
 
-.score-container * {
-  margin: 0;
-  padding: 0;
-}
-
 .row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  .social {
+  &.social {
     font-size: small;
   }
 }
+
 .Settings {
   font-size: medium;
   label, input {
     cursor: pointer;
+  }
+  input {
+    margin: 3px;
   }
 }
 @font-face {
@@ -138,13 +142,14 @@ p {
 }
 
 @media screen and (max-height: 910px) and (min-width: 1200px) and (orientation: landscape) {
+  .App {
+    height: 100vh;
+  }
   .main-container {
     min-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
-    margin: 0;
-    padding: 15px;
   }
   .vertical-container {
     justify-content: space-around;

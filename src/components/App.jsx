@@ -194,72 +194,70 @@ export const App = ({state}) => {
   // This is the root of the React application
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
-      <div className='vertical-container'>
-        <div className="main-container">
+      <div className="main-container">
 
-          <div className='first'>
-            <div className='row'>
-              <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
-              <div className='score-container'>
-                <h3>MOVES</h3> 
-                <p>{current_level.moves}</p>
-              </div>
-              <div className='score-container'>
-                <h3>BEST</h3> 
-                <p>{current_level.best_score}</p>
-              </div>
-              <span id="install" className='flat-button' hidden>Install ⇩</span>
+        <div className='first'>
+          <div className='row'>
+            <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
+            <div className='score-container'>
+              <h3>MOVES</h3> 
+              <p>{current_level.moves}</p>
             </div>
-
-            <div className='row'>
-              <p><strong style={{fontSize:'20px'}}>Solve by making all Tiles the same value</strong></p>
-              <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
-              <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
-              <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
-            </div>
-
-            <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
-          </div>
-
-          <div className='second'>
-            <div className='row' id='game-row'>
-              <Game hide_tooltips={state.hide_tooltips} show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
-              <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
-              <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
-              <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+            <div className='score-container'>
+              <h3>BEST</h3>
+              <p>{current_level.best_score}</p>
             </div>
           </div>
 
-          <div className='third'>
-            <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+          <div className='row'>
+            <span><strong style={{fontSize:'20px'}}>Make all Tiles the same value</strong></span>
+            <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
+            <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
+            <span id="install" className='flat-button' hidden>Install ⇩</span>
+            <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
+          </div>
 
-            <hr/>
+          <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+        </div>
 
-            <div className='Settings row'>
-              <strong>Settings</strong>
-              <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds off</label>
-              <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music off</label>
-              <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers off</label>
-              <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors off</label>
-              {window.matchMedia('(pointer:fine)').matches ? <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips off</label> : null}
-            </div>
+        <div className='second'>
+          <div className='row' id='game-row'>
+            <Game hide_tooltips={state.hide_tooltips} show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+            <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+            <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
+            <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
+          </div>
+        </div>
 
-            <hr />
+        <div className='third'>
+          <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
-            <p style={{fontSize:'12px'}}>
-              Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
-              Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
-              Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
-              <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
-            </p>
+          <hr/>
 
-            {/* SOCIAL MEDIA BUTTONS */}
-            <div className='row social'>
-              <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count="true" target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-              <a className='social-share' href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse" target="_blank" rel="noopener noreferrer"><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
-              <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
-              <a style={{fontSize:'small'}} className='flat-button' href="//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me" target='_blank'>Support on Open Collective</a>
-            </div>
+          <div className='Settings row'>
+            <strong>Settings</strong>
+            <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds off</label>
+            <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music off</label>
+            <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers off</label>
+            <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors off</label>
+            {window.matchMedia('(pointer:fine)').matches ? <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips off</label> : null}
+          </div>
+
+          <hr />
+
+          <p style={{fontSize:'12px'}}>
+            Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
+            Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
+            Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
+            <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
+          </p>
+
+          {/* SOCIAL MEDIA BUTTONS */}
+          <div className='row social'>
+            <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count="true" target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
+            <a className='social-share' href="//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse" target="_blank" rel="noopener noreferrer"><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
+            <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt="submit to reddit"/></a>
+            <a style={{fontSize:'small'}} className='flat-button' href="//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me" target='_blank'>Support on Open Collective</a>
           </div>
         </div>
       </div>
