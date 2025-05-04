@@ -137,7 +137,7 @@ p {
   }
 }
 
-@media screen and (max-height: 1000px) and (min-width: 1280px) and (orientation: landscape) {
+@media screen and (max-height: 910px) and (min-width: 1200px) and (orientation: landscape) {
   .main-container {
     min-width: 1200px;
     display: grid;
