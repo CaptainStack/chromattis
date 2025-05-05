@@ -1,6 +1,7 @@
 .LevelNavBar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   .hide-in-nav {
     display:none;
   }
