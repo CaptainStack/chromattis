@@ -42,6 +42,5 @@ const previous_level = () => document.getElementById('previous_puzzle_button').c
 const goto_level = (index) => document.getElementsByClassName('level-navigation-button')[index].click();
 const show_board = () => document.getElementById('show_board').click();
 const undo = () => document.getElementById('undo').click();
-const music = () => document.getElementById('music').click();
 
 help()
