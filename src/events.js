@@ -79,8 +79,10 @@ export const cliPrintBoard = () => {
 }
 
 export const cliClick = (tile, reverse) => () => {
-  if (!store.getState().game.current_level().in_winning_state()) {
-    UpDownClickSound.play();
+  let application = store.getState();
+  let current_level = application.game.current_level();
+  if (!current_level.in_winning_state()) {
+    if (!application.mute_audio) UpDownClickSound.play();
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
