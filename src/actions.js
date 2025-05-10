@@ -26,7 +26,7 @@ export const advance_tile_color = (state, tile) => {
     }
   }
 
-  current_level.currently_selected = null;
+  preview_tiles(state, current_level.board[tile.id]);
   current_level.last_move = { tile: tile, reverse: false };
 
   state.last_action = 'clicktile';

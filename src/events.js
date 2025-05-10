@@ -118,7 +118,6 @@ export const tileUpClicked = (clicked_tile) => event => {
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
   cliPrintBoard();
-  store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
 
   event.stopPropagation();
 }
