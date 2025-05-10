@@ -21,6 +21,10 @@
   user-select: none;
   margin-left: 10px;
 }
+
+.level-navigation-button:active {
+  transform: scale(0.95);
+}
   
 .level-navigation-button.current-level {
   width: 35px;
