@@ -39,8 +39,14 @@ const shuffle = () => document.getElementById('reset_game').click();
 const install = () => document.getElementById('install').click();
 const next_level = () => document.getElementById('next_puzzle_button').click();
 const previous_level = () => document.getElementById('previous_puzzle_button').click();
+const next_tutorial = () => document.getElementById('next_puzzle_button').click();
+const previous_tutorial = () => document.getElementById('previous_puzzle_button').click();
 const goto_level = (index) => document.getElementsByClassName('level-navigation-button')[index].click();
 const show_board = () => document.getElementById('show_board').click();
 const undo = () => document.getElementById('undo').click();
+const toggle_music = () => document.getElementById('music_toggle').click();
+const toggle_sounds = () => document.getElementById('sound_toggle').click();
+const toggle_numbers = () => document.getElementById('numbers_toggle').click();
+const toggle_colors = () => document.getElementById('colors_toggle').click();
 
 help()
