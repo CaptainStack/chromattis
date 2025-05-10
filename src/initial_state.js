@@ -52,6 +52,20 @@ const Level = (board, id) => ({
   in_winning_state: in_winning_state,
 });
 
+const RandomLevel = () => {
+  let size = 20;
+  let tiles = [];
+  for (let i = 0; i < size; i++) {
+    let number_of_change_tiles = Math.random() * (size - 2 + 1) + 2;
+    let will_change_tiles = [];
+    for (let j = 0; j < number_of_change_tiles; j++) {
+      will_change_tiles.push(Math.floor(Math.random() * size));
+    }
+    tiles.push(Tile(i, will_change_tiles));
+  }
+  return Level(tiles, '9a3c75b1-23423-83dc-ca53a6220071');
+}
+
 let default_content = 
 {
   current_display: 'tutorial',
@@ -122,6 +136,7 @@ let default_content =
         Tile(15, [3,7,11,15]), Tile(16, [20,21,22, 15,16,17, 10,11,12]), Tile(17, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(18, [24,23,22, 19,18,17, 14,13,12]), Tile(19, [1,7,13,19]),
         Tile(20, [20,21,22, 15,16, 10,]), Tile(21, [9,13,17,21]), Tile(22, [21,22,23, 17]), Tile(23, [5,11,17,23]), Tile(24, [24,23,22, 19,18, 14]),
       ], 'b16b2728-ec5e-4391-a371-147d2138f52e'),
+      RandomLevel(),
     ],
     current_level_index: 0,
     current_level: current_level,
