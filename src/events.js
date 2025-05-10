@@ -86,6 +86,9 @@ export const cliClick = (tile, reverse) => () => {
     reverse ? 
       store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile }) : 
       store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
+    if (current_level.in_winning_state()) {
+      store.dispatch({ type: 'NAVIGATE_LEVEL', level: current_level.id + 2 });
+    }
     cliPrintBoard();
   } else {
     console.log(`This level is currently solved. \nSelect a new level using the next_level(), previous_level(), or goto_level(index) commands. \nReset the puzzle using the shuffle() command.`);
