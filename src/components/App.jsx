@@ -6,11 +6,11 @@ import { Tutorial } from './Tutorial';
 import { LevelNavBar } from './LevelNavBar';
 import { LevelNavMenu } from './LevelNavMenu';
 import { 
-  newGameButtonClicked, undoButtonClicked, cliPrintBoard, 
-  tutorialButtonClicked, muteSoundButtonClicked, muteMusicButtonClicked, 
-  hideNumbersButtonClicked, hideColorsButtonClicked, toggleHideTooltips,
-  nullLastActionOnInitialPageLoad, rightArrowKeyPressed, leftArrowKeyPressed, 
-  enterKeyPressed, backspaceKeyPressed, escapeKeyPressed, upArrowKeyPressed, 
+  newGameButtonClicked, undoButtonClicked, tutorialButtonClicked, 
+  muteSoundButtonClicked, muteMusicButtonClicked, hideNumbersButtonClicked, 
+  hideColorsButtonClicked, toggleHideTooltips, nullLastActionOnInitialPageLoad, 
+  rightArrowKeyPressed, leftArrowKeyPressed, enterKeyPressed, 
+  backspaceKeyPressed, escapeKeyPressed, upArrowKeyPressed, 
   downArrowKeyPressed,
 } from '../events';
 
@@ -99,8 +99,15 @@ export const App = ({state}) => {
         case 'r': newGameButtonClicked(); break;
         case 't': tutorialButtonClicked(); break;
         case 'u': undoButtonClicked(); break;
+        case 'm': document.getElementById('music_toggle').click(); break;
+        case 's': document.getElementById('sound_toggle').click(); break;
+        case 'n': document.getElementById('numbers_toggle').click(); break;
+        case 'c': document.getElementById('colors_toggle').click(); break;
+        case 'i': document.getElementById('tooltips_toggle').click(); break;
         case '=': document.getElementById('next_puzzle_button').click(); break;
         case '-': document.getElementById('previous_puzzle_button').click(); break;
+        case '[': document.getElementById('previous_tutorial_button').click(); break;
+        case ']': document.getElementById('next_tutorial_button').click(); break;
         case '~': localStorage.clear(); location.reload(); break;
         default: break;
       }
@@ -211,10 +218,9 @@ export const App = ({state}) => {
 
           <div className='row'>
             <span><strong style={{fontSize:'20px'}}>Make all Tiles the same value</strong></span>
-            <span id='reset_game' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
-            <span id="undo" className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
-            <span id="install" className='flat-button' hidden>Install ⇩</span>
-            <span id="show_board" className='flat-button' onClick={cliPrintBoard} hidden>Show Board</span>
+            <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button'  onClick={newGameButtonClicked}>Reset ⇵</span>
+            <span id="undo" title='Click to undo last move [u]' className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
+            <span id="install" title='Click to install Chromattis' className='flat-button'  hidden>Install ⇩</span>
           </div>
 
           <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
@@ -230,17 +236,17 @@ export const App = ({state}) => {
         </div>
 
         <div className='third'>
-          <p title={state.hide_tooltips ? null : 'Open tutorial'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+          <p title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
           <hr/>
 
           <div className='Settings row'>
             <strong>Settings</strong>
-            <label><input onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" id="sound-toggle" />Sounds off</label>
-            <label><input onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" id="music-toggle" />Music off</label>
-            <label><input onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" id="numbers-toggle" />Numbers off</label>
-            <label><input onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" id="colors-toggle" />Colors off</label>
-            {window.matchMedia('(pointer:fine)').matches ? <label><input onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" id="tooltips-toggle" />Tooltips off</label> : null}
+            <label title='Toggle sound effects [s]'><input id="sound_toggle" onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" />Sounds off</label>
+            <label title='Toggle music [m]'><input id="music_toggle" onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" />Music off</label>
+            <label title='Enable/disable numbers on tiles [n]'><input id="numbers_toggle" onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" />Numbers off</label>
+            <label title='Enable/disable colors on tiles [c]'><input id="colors_toggle" onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" />Colors off</label>
+            {window.matchMedia('(pointer:fine)').matches ? <label title='Enable/disable info tooltips on tiles [i]'><input id="tooltips_toggle" onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" />Tooltips off</label> : null}
           </div>
 
           <hr />
