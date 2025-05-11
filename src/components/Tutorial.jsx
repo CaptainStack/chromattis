@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/Tutorial.css';
 import { tutorialButtonClicked, previousTutorialButtonClicked, nextTutorialButtonClicked } from '../events';
 

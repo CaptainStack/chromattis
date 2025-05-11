@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/Tile.css';
 import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview } from '../events';
 

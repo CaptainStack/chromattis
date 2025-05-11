@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/LevelNavMenu.css';
 import { LevelNavButton } from './LevelNavButton';
 import { nextLevelSelectPageClicked, previousLevelSelectPageClicked, toggleLevelNavMenu } from '../events';

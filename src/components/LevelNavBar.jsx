@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/LevelNavBar.css';
 import { LevelNavButton } from './LevelNavButton';
 import { toggleLevelNavMenu } from '../events';

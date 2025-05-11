@@ -1,4 +1,3 @@
-import React from 'react';
 import { navigateLevelButtonClicked } from '../events';
 
 export const LevelNavButton = ({display_in_nav_menu, display_in_nav_bar, index, current_level_class, is_unlocked, hide_tooltips}) => {

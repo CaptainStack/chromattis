@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
 import { VictorySound } from './App';

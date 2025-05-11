@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
