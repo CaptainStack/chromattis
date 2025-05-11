@@ -120,6 +120,7 @@ export const tileUpClicked = (clicked_tile) => event => {
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
+  if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
 
   event.stopPropagation();
