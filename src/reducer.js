@@ -6,6 +6,7 @@ import {
   toggle_mute_music, toggle_hide_numbers, toggle_hide_colors,
   next_level_nav_page, previous_level_nav_page, toggle_level_nav_menu,
   toggle_hide_tooltips, null_last_action, select_tile, toggle_achievements,
+  update_achievement_text,
  } from './actions';
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -30,6 +31,8 @@ export default function reducer(state = INITIAL_STATE, action) {
       return toggle_tutorial(state);
     case 'TOGGLE_ACHIEVEMENTS':
       return toggle_achievements(state);
+    case 'UPDATE_ACHIEVEMENT_TEXT':
+      return update_achievement_text(state, action.text);
     case 'NEXT_TUTORIAL':
       return next_tutorial(state);
     case 'PREVIOUS_TUTORIAL':

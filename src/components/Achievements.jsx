@@ -1,3 +1,4 @@
+import { achievementsButtonClicked } from '../events';
 import '../styles/Achievements.css';
 
 export const Achievements = ({state, achievements}) => {
@@ -14,6 +15,7 @@ export const Achievements = ({state, achievements}) => {
       <ul>
         {achievement_labels}
       </ul>
+      <span className='flat-button' onClick={achievementsButtonClicked}>Back to game ↩</span>
     </div>
   )
 }

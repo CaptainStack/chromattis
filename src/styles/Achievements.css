@@ -16,3 +16,17 @@
     align-items: flex-start;
   }
 }
+
+#AchievementNotification.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s;
+  transition-delay: 1s;
+}
+#AchievementNotification.show {
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  transition: all 1s;
+  transition-delay: 1s;
+}

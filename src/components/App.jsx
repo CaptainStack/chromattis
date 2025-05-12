@@ -3,6 +3,7 @@ import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
 import { Achievements } from './Achievements';
+import { AchievementNotification } from './AchievementNotification';
 import { Tutorial } from './Tutorial';
 import { LevelNavBar } from './LevelNavBar';
 import { LevelNavMenu } from './LevelNavMenu';
@@ -204,7 +205,7 @@ export const App = ({state}) => {
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
-
+        <AchievementNotification state={state} show={state.show_achievement_notification} />
         <div className='first'>
           <div className='row'>
             <div className='row'><h1>Chromattis</h1><small>alpha</small></div>

@@ -34,6 +34,11 @@ export const advance_tile_color = (state, tile) => {
   return state;
 }
 
+export const update_achievement_text = (state, text) => {
+  state.achievement_text = text;
+  return state;
+}
+
 export const previous_tile_color = (state, tile) => {
   let current_level = state.game.current_level();
   let tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));

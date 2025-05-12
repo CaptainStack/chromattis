@@ -67,6 +67,8 @@ let default_content =
   hide_tooltips: false,
   last_action: null,
   music_enabled_once: false,
+  show_achievement_notification: true,
+  achievement_text: null,
   game: {
     levels: [
       Level([
@@ -276,7 +278,6 @@ let default_content =
     //   text: 'Solve a puzzle using the command line',
     //   condition: () => false,
     // },
-    // Solve a puzzle in two moves
     // Solve a puzzle using the keyboard
     // Solve a puzzle on mobile
     {

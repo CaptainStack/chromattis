@@ -104,6 +104,7 @@ export const cliPreview = (tile) => () => {
 
 export const tileUpClicked = (clicked_tile) => event => {
   let application = store.getState();
+  let achievements = application.achievements.filter(achievement => achievement.condition(application));
   let current_level = application.game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
@@ -120,6 +121,14 @@ export const tileUpClicked = (clicked_tile) => event => {
   if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
 
+  let new_achievements = application.achievements.filter(achievement => achievement.condition(application));
+  if (achievements.length !== new_achievements.length) {
+    store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
+    document.getElementById('AchievementNotification').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('AchievementNotification').classList.remove('show');
+    }, 4000);
+  }
   event.stopPropagation();
 }
 
@@ -135,6 +144,22 @@ export const tileHovered = hovered_tile => () => {
   store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
 }
 
+export const muteMusicButtonClicked = () => {
+  let application = store.getState();
+  let achievements = application.achievements.filter(achievement => achievement.condition(application));
+
+  store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
+
+  let new_achievements = application.achievements.filter(achievement => achievement.condition(application));
+  if (achievements.length !== new_achievements.length) {
+    store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
+    document.getElementById('AchievementNotification').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('AchievementNotification').classList.remove('show');
+    }, 4000);
+  }
+}
+
 export const tileUnhovered = hovered_tile => () => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
 export const undoButtonClicked = () => store.dispatch({ type: 'UNDO_MOVE' });
 export const nextTutorialButtonClicked = () => store.dispatch({ type: 'NEXT_TUTORIAL' });
@@ -142,7 +167,6 @@ export const previousTutorialButtonClicked = () => store.dispatch({ type: 'PREVI
 export const tutorialButtonClicked = () => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
 export const achievementsButtonClicked = () => store.dispatch({ type: 'TOGGLE_ACHIEVEMENTS' });
 export const muteSoundButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
-export const muteMusicButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 export const hideNumbersButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });
 export const hideColorsButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_COLORS' });
 export const nextLevelSelectPageClicked = () => store.dispatch({ type: 'NEXT_LEVEL_NAVIGATION_PAGE' });
