@@ -99,6 +99,11 @@ p {
   font-weight: bold;
 }
 
+.score-container.achievements {
+  cursor: pointer;
+  background-color: #8f7a66;
+}
+
 .score-container h3 {
   width: 100%;
   top: 8px;

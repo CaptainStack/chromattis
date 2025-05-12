@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import '../styles/App.css';
 import { Game } from './Game';
 import { VictoryModal } from './VictoryModal';
+import { Achievements } from './Achievements';
 import { Tutorial } from './Tutorial';
 import { LevelNavBar } from './LevelNavBar';
 import { LevelNavMenu } from './LevelNavMenu';
@@ -11,7 +12,7 @@ import {
   hideColorsButtonClicked, toggleHideTooltips, nullLastActionOnInitialPageLoad, 
   rightArrowKeyPressed, leftArrowKeyPressed, enterKeyPressed, 
   backspaceKeyPressed, escapeKeyPressed, upArrowKeyPressed, 
-  downArrowKeyPressed,
+  downArrowKeyPressed, achievementsButtonClicked
 } from '../events';
 
 let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
@@ -99,6 +100,7 @@ export const App = ({state}) => {
         case 'r': newGameButtonClicked(); break;
         case 't': tutorialButtonClicked(); break;
         case 'u': undoButtonClicked(); break;
+        case 'a': achievementsButtonClicked(); break;
         case 'm': document.getElementById('music_toggle').click(); break;
         case 's': document.getElementById('sound_toggle').click(); break;
         case 'n': document.getElementById('numbers_toggle').click(); break;
@@ -214,6 +216,10 @@ export const App = ({state}) => {
               <h3>BEST</h3>
               <p>{current_level.best_score}</p>
             </div>
+            <div className='score-container achievements' onClick={achievementsButtonClicked}>
+              <h3>ACHIEVEMENTS</h3>
+              <p>🏆</p>
+            </div>
           </div>
 
           <div className='row'>
@@ -228,8 +234,9 @@ export const App = ({state}) => {
 
         <div className='second'>
           <div className='row' id='game-row'>
-            <Game hide_tooltips={state.hide_tooltips} show_game={state.current_display === 'game' && !current_level.in_winning_state()} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+            <Game hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
             <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+            <Achievements state={state} achievements={state.achievements} show_achievements={state.current_display === 'achievements'}/>
             <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
             <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
           </div>

@@ -181,6 +181,13 @@ export const undo_move = state => {
   return state;
 }
 
+export const toggle_achievements = state => {
+  if (!state.mute_audio) DownClickSound.play();
+  state.current_display = state.current_display === 'achievements' ? 'game' : 'achievements';
+  state.last_action = 'nav';
+  return state;
+}
+
 export const toggle_tutorial = state => {
   if (!state.mute_audio) DownClickSound.play();
   state.current_display = state.current_display === 'tutorial' ? 'game' : 'tutorial';
@@ -213,6 +220,7 @@ export const toggle_mute_music = state => {
   GameMusic.volume = 0.5; 
   state.mute_music ? GameMusic.pause() : GameMusic.play();
   state.last_action = 'settings';
+  state.music_enabled_once = true;
   return state;
 }
 

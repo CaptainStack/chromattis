@@ -140,6 +140,7 @@ export const undoButtonClicked = () => store.dispatch({ type: 'UNDO_MOVE' });
 export const nextTutorialButtonClicked = () => store.dispatch({ type: 'NEXT_TUTORIAL' });
 export const previousTutorialButtonClicked = () => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });
 export const tutorialButtonClicked = () => store.dispatch({ type: 'TOGGLE_TUTORIAL' });
+export const achievementsButtonClicked = () => store.dispatch({ type: 'TOGGLE_ACHIEVEMENTS' });
 export const muteSoundButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_SOUND' });
 export const muteMusicButtonClicked = () => store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 export const hideNumbersButtonClicked = () => store.dispatch({ type: 'TOGGLE_HIDE_NUMBERS' });

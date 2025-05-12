@@ -29,17 +29,6 @@ let highest_unlocked_level =
 let device_is_pwa = window.matchMedia('(display-mode: standalone)').matches ? true : false;
 let persisted_state = device_is_pwa ? localStorage.getItem('gamestate_pwa') : localStorage.getItem('gamestate_browser');
 
-// Rebuild the redux state by parsing the JSON string in localStorage
-if (persisted_state) {
-  persisted_state = JSON.parse(persisted_state);
-  persisted_state.game.current_level = current_level;
-  persisted_state.game.highest_unlocked_level = highest_unlocked_level;
-  persisted_state.mute_music = true;
-
-  for (let level of persisted_state.game.levels) {
-    level.in_winning_state = in_winning_state;
-  }
-}
 
 const Tile = (id, target_tiles, current_color, will_change, preview) => ({id: id, target_tiles: target_tiles, current_color: current_color, will_change: will_change, preview: preview});
 const Level = (board, id) => ({
@@ -77,6 +66,7 @@ let default_content =
   hide_colors: false,
   hide_tooltips: false,
   last_action: null,
+  music_enabled_once: false,
   game: {
     levels: [
       Level([
@@ -244,6 +234,64 @@ let default_content =
     current_level_index: 0,
     current_level: current_level,
     highest_unlocked_level: highest_unlocked_level,
+  },
+  achievements: [
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220072',
+      text: 'Solve your first puzzle',
+      condition: state => state.game.highest_unlocked_level() > 0,
+    },
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220073',
+      text: 'Turn music on',
+      condition: state => state.music_enabled_once,
+    },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220075',
+    //   text: 'Solve a puzzle using only reverse presses',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220077',
+    //   text: 'Solve a puzzle with numbers turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220078',
+    //   text: 'Solve a puzzle with colors turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220079',
+    //   text: 'Solve a puzzle with numbers and colors turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220076',
+    //   text: 'Solve a puzzle using the command line',
+    //   condition: () => false,
+    // },
+    // Solve a puzzle in two moves
+    // Solve a puzzle using the keyboard
+    // Solve a puzzle on mobile
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220074',
+      text: 'Solve every puzzle',
+      condition: state => state.game.highest_unlocked_level() === state.game.levels.length,
+    },
+  ],
+}
+
+// Rebuild the redux state by parsing the JSON string in localStorage
+if (persisted_state) {
+  persisted_state = JSON.parse(persisted_state);
+  persisted_state.game.current_level = current_level;
+  persisted_state.game.highest_unlocked_level = highest_unlocked_level;
+  persisted_state.mute_music = true;
+  persisted_state.achievements = default_content.achievements;
+
+  for (let level of persisted_state.game.levels) {
+    level.in_winning_state = in_winning_state;
   }
 }
 
