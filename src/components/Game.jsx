@@ -1,7 +1,7 @@
 import { Tile } from './Tile';
 import '../styles/Game.css';
 
-export const Game = ({tiles, current_level, show_game, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => {
+export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => {
   tiles = tiles.map((tile, index) => 
     <Tile 
       index={index}
