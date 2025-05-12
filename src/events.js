@@ -112,11 +112,13 @@ export const tileUpClicked = (clicked_tile) => event => {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
+    if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   }
   else if ((event.button === 2 || (event.touches && event.touches.length === 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
+    if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   }
   if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
