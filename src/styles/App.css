@@ -21,6 +21,7 @@
 }
 
 .first, .third {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -160,7 +161,6 @@ p {
     justify-content: space-around;
   }
   .first {
-    position: relative;
     grid-column-start: 1;
     grid-column-end: 2;
   }
