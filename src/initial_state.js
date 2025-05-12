@@ -246,6 +246,11 @@ let default_content =
       text: 'Turn music on',
       condition: state => state.music_enabled_once,
     },
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220080',
+      text: 'Solve a puzzle in two moves',
+      condition: state => state.game.levels.filter(level => level.moves === 2 && level.in_winning_state()).length > 0,
+    },
     // {
     //   id: '9a3c75b1-4d4176-83dc-ca53a6220075',
     //   text: 'Solve a puzzle using only reverse presses',
