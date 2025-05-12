@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/chromattis/static/css/main.8b859a5a.chunk.css",
-    "main.js": "/chromattis/static/js/main.ff4b4d8d.chunk.js",
-    "main.js.map": "/chromattis/static/js/main.ff4b4d8d.chunk.js.map",
+    "main.js": "/chromattis/static/js/main.167c2039.chunk.js",
+    "main.js.map": "/chromattis/static/js/main.167c2039.chunk.js.map",
     "runtime-main.js": "/chromattis/static/js/runtime-main.ca479772.js",
     "runtime-main.js.map": "/chromattis/static/js/runtime-main.ca479772.js.map",
     "static/js/2.0b1ae6cf.chunk.js": "/chromattis/static/js/2.0b1ae6cf.chunk.js",
@@ -16,6 +16,6 @@
     "static/js/runtime-main.ca479772.js",
     "static/js/2.0b1ae6cf.chunk.js",
     "static/css/main.8b859a5a.chunk.css",
-    "static/js/main.ff4b4d8d.chunk.js"
+    "static/js/main.167c2039.chunk.js"
   ]
 }
