@@ -42,7 +42,7 @@ const Level = (board, id) => ({
 });
 
 const RandomLevel = () => {
-  let size = 20;
+  let size = 6;
   let tiles = [];
   for (let i = 0; i < size; i++) {
     let number_of_change_tiles = Math.random() * (size - 2 + 1) + 2;
