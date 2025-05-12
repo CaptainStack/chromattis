@@ -1,14 +1,21 @@
 {
   "files": {
-    "main.css": "/chromattis/static/css/main.aeace9e2.css",
-    "main.js": "/chromattis/static/js/main.815a81bc.js",
-    "static/media/ClearSans-Regular.ttf": "/chromattis/static/media/ClearSans-Regular.43ea7d2123718b0cfd2c.ttf",
+    "main.css": "/chromattis/static/css/main.f3f8bc42.chunk.css",
+    "main.js": "/chromattis/static/js/main.336dd4d1.chunk.js",
+    "main.js.map": "/chromattis/static/js/main.336dd4d1.chunk.js.map",
+    "runtime-main.js": "/chromattis/static/js/runtime-main.ca479772.js",
+    "runtime-main.js.map": "/chromattis/static/js/runtime-main.ca479772.js.map",
+    "static/js/2.0b1ae6cf.chunk.js": "/chromattis/static/js/2.0b1ae6cf.chunk.js",
+    "static/js/2.0b1ae6cf.chunk.js.map": "/chromattis/static/js/2.0b1ae6cf.chunk.js.map",
     "index.html": "/chromattis/index.html",
-    "main.aeace9e2.css.map": "/chromattis/static/css/main.aeace9e2.css.map",
-    "main.815a81bc.js.map": "/chromattis/static/js/main.815a81bc.js.map"
+    "static/css/main.f3f8bc42.chunk.css.map": "/chromattis/static/css/main.f3f8bc42.chunk.css.map",
+    "static/js/2.0b1ae6cf.chunk.js.LICENSE.txt": "/chromattis/static/js/2.0b1ae6cf.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/chromattis/static/media/ClearSans-Regular.43ea7d21.ttf"
   },
   "entrypoints": [
-    "static/css/main.aeace9e2.css",
-    "static/js/main.815a81bc.js"
+    "static/js/runtime-main.ca479772.js",
+    "static/js/2.0b1ae6cf.chunk.js",
+    "static/css/main.f3f8bc42.chunk.css",
+    "static/js/main.336dd4d1.chunk.js"
   ]
 }
