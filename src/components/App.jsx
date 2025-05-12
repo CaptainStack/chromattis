@@ -205,8 +205,8 @@ export const App = ({state}) => {
   return(
     <div className="App" onContextMenu={event => event.preventDefault() } >
       <div className="main-container">
-        <AchievementNotification state={state} show={state.show_achievement_notification} />
         <div className='first'>
+          <AchievementNotification state={state} show={state.show_achievement_notification} />
           <div className='row'>
             <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
             <div className='score-container'>
