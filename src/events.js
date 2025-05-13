@@ -4,21 +4,41 @@ import { UpClickSound } from './components/App';
 import { UpDownClickSound } from './components/App';
 import { sync_pulse_animations } from './actions';
 
+let processAchievemeNotifications = (achievements, new_achievements) => {
+  if (achievements.length !== new_achievements.length) {
+    store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
+    document.getElementById('AchievementNotification').classList.add('show');
+    setTimeout(() => {
+      document.getElementById('AchievementNotification').classList.remove('show');
+    }, 4000);
+  }
+}
+
 export const escapeKeyPressed = () => {
   if (!store.getState().mute_audio) UpDownClickSound.play();
   store.dispatch({ type: 'SELECT_TILE', tile_id: null });
 }
 
 export const backspaceKeyPressed = () => {
-  let selected_tile_id = store.getState().game.current_level().currently_selected;
-  document.getElementById(`reverse_tile_${selected_tile_id}`).click();
-  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile_id });
+  let application = store.getState();
+  let current_level = application.game.current_level();
+  let achievements = application.completed_achievements();
+  let selected_tile = current_level.board[current_level.currently_selected];
+  store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile })
+  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
+  let new_achievements = application.completed_achievements();
+  processAchievemeNotifications(achievements, new_achievements);
 }
 
 export const enterKeyPressed = () => {
-  let selected_tile_id = store.getState().game.current_level().currently_selected;
-  document.getElementById(`press_tile_${selected_tile_id}`).click();
-  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile_id });
+  let application = store.getState();
+  let achievements = application.completed_achievements();
+  let current_level = application.game.current_level();
+  let selected_tile = current_level.board[current_level.currently_selected];
+  store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile })
+  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
+  let new_achievements = application.completed_achievements();
+  processAchievemeNotifications(achievements, new_achievements);
 }
 
 export const upArrowKeyPressed = () => {
@@ -104,7 +124,7 @@ export const cliPreview = (tile) => () => {
 
 export const tileUpClicked = (clicked_tile) => event => {
   let application = store.getState();
-  let achievements = application.achievements.filter(achievement => achievement.condition(application));
+  let achievements = application.completed_achievements();
   let current_level = application.game.current_level();
   let down_clicked_tile = current_level.board[current_level.currently_selected];
 
@@ -112,25 +132,17 @@ export const tileUpClicked = (clicked_tile) => event => {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
-    if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   }
   else if ((event.button === 2 || (event.touches && event.touches.length === 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
-    if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   }
   if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
 
-  let new_achievements = application.achievements.filter(achievement => achievement.condition(application));
-  if (achievements.length !== new_achievements.length) {
-    store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
-    document.getElementById('AchievementNotification').classList.add('show');
-    setTimeout(() => {
-      document.getElementById('AchievementNotification').classList.remove('show');
-    }, 4000);
-  }
+  let new_achievements = application.completed_achievements();
+  processAchievemeNotifications(achievements, new_achievements);
   event.stopPropagation();
 }
 
@@ -148,18 +160,12 @@ export const tileHovered = hovered_tile => () => {
 
 export const muteMusicButtonClicked = () => {
   let application = store.getState();
-  let achievements = application.achievements.filter(achievement => achievement.condition(application));
+  let achievements = application.completed_achievements();
 
   store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 
-  let new_achievements = application.achievements.filter(achievement => achievement.condition(application));
-  if (achievements.length !== new_achievements.length) {
-    store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
-    document.getElementById('AchievementNotification').classList.add('show');
-    setTimeout(() => {
-      document.getElementById('AchievementNotification').classList.remove('show');
-    }, 4000);
-  }
+  let new_achievements = application.completed_achievements();
+  processAchievemeNotifications(achievements, new_achievements);
 }
 
 export const tileUnhovered = hovered_tile => () => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });

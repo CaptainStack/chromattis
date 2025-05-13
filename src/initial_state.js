@@ -55,6 +55,10 @@ const RandomLevel = () => {
   return Level(tiles, '9a3c75b1-23423-83dc-ca53a6220071');
 }
 
+const completed_achievements = function() {
+  return this.achievements.filter(achievement => achievement.condition(this));
+}
+
 let default_content = 
 {
   current_display: 'tutorial',
@@ -69,6 +73,7 @@ let default_content =
   music_enabled_once: false,
   show_achievement_notification: true,
   achievement_text: null,
+  completed_achievements: completed_achievements,
   game: {
     levels: [
       Level([
@@ -295,6 +300,7 @@ if (persisted_state) {
   persisted_state.game.highest_unlocked_level = highest_unlocked_level;
   persisted_state.mute_music = true;
   persisted_state.achievements = default_content.achievements;
+  persisted_state.completed_achievements = completed_achievements;
 
   for (let level of persisted_state.game.levels) {
     level.in_winning_state = in_winning_state;
