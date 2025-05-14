@@ -87,11 +87,11 @@ export const App = () => {
             <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
             <div className='score-container'>
               <h3>MOVES</h3> 
-              {/* <p>{current_level.moves}</p> */}
+              <p>{current_level.moves}</p>
             </div>
             <div className='score-container'>
               <h3>BEST</h3>
-              {/* <p>{current_level.best_score}</p> */}
+              <p>{current_level.best_score}</p>
             </div>
             {/* <div className='score-container achievements' onClick={achievementsButtonClicked}>
               <h3>ACHIEVEMENTS</h3>
