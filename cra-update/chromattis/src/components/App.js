@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { useSelector } from 'react-redux';
 import { Tutorial } from './Tutorial';
-import { tutorialButtonClicked } from '../events';
+import { 
+  tutorialButtonClicked, 
+  muteSoundButtonClicked, muteMusicButtonClicked, hideNumbersButtonClicked, 
+  hideColorsButtonClicked, toggleHideTooltips, 
+} from '../events';
 
 let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
 let track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
@@ -128,12 +132,12 @@ export const App = () => {
           <hr/>
 
           <div className='Settings row'>
-            {/* <strong>Settings</strong>
+            <strong>Settings</strong>
             <label title='Toggle sound effects [s]'><input id="sound_toggle" onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type="checkbox" />Sounds off</label>
             <label title='Toggle music [m]'><input id="music_toggle" onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type="checkbox" />Music off</label>
             <label title='Enable/disable numbers on tiles [n]'><input id="numbers_toggle" onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type="checkbox" />Numbers off</label>
             <label title='Enable/disable colors on tiles [c]'><input id="colors_toggle" onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type="checkbox" />Colors off</label>
-            {window.matchMedia('(pointer:fine)').matches ? <label title='Enable/disable info tooltips on tiles [i]'><input id="tooltips_toggle" onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" />Tooltips off</label> : null} */}
+            {window.matchMedia('(pointer:fine)').matches ? <label title='Enable/disable info tooltips on tiles [i]'><input id="tooltips_toggle" onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type="checkbox" />Tooltips off</label> : null}
           </div>
 
           <hr />
