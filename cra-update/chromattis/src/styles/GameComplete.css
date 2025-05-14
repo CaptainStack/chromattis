@@ -1,0 +1,61 @@
+.GameComplete {
+  background: #cabfb4;
+  width: 540px;
+  height: 540px;
+  border: 15px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  position: absolute;
+  .flat-button {
+    margin-right: 10px;
+  }
+}
+
+/* .VictoryModal.show.fade-in {
+  opacity: 1;
+  visibility: visible;
+  transition: all 2s;
+  transition-delay: 2s;
+}
+
+.VictoryModal.hide {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0s;
+  transition-delay: 0s;
+} */
+
+/* 
+  Turn music on
+  Solve a puzzle with color turned off
+  Solve a puzzle with numbers turned off
+  Solve a puzzle with colors and numbers turned off
+  Solve a puzzle using only reverse clicks
+  Solve a puzzle in two moves
+  Solve a puzzle using the keyboard
+  Solve a puzzle using the command line
+  Solve a puzzle on mobile
+  Solve every puzzle
+*/
+
+/*
+  Crowdfunding goals
+    $100 - Steam developer license
+    $25 - Play Store
+    $19 - Windows Store
+    $99 - iOS / Mac
+    $100 - Epic Games
+
+  Features:
+    Time trials
+    Daily challenge
+    Randomized puzzles
+    Load puzzle file
+    Create puzzle
+    Leaderboards
+    Progress sync
+*/
