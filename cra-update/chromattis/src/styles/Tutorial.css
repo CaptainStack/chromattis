@@ -1,0 +1,21 @@
+.Tutorial {
+  background: #cabfb4;
+  width: 510px;
+  height: 510px;
+  border: 15px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  padding: 15px;
+  position: absolute;
+  transition: all 2s;
+  transition-delay: 1s;
+}
+  
+.Tutorial .flat-button {
+  margin-right: 10px;
+  min-width: 112px;
+}

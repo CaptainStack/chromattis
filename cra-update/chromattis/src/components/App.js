@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../styles/App.css';
 import { useSelector } from 'react-redux';
+import { Tutorial } from './Tutorial';
+import { tutorialButtonClicked } from '../events';
 
 let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
 let track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
@@ -112,16 +114,16 @@ export const App = () => {
 
         <div className='second'>
           <div className='row' id='game-row'>
-            {/* <Game hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
-            <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
-            <Achievements state={state} achievements={state.achievements} show_achievements={state.current_display === 'achievements'}/>
+            {/* <Game hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/> */}
+            {/* <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} /> */}
+            {/* <Achievements state={state} achievements={state.achievements} show_achievements={state.current_display === 'achievements'}/> */}
             <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
-            <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/> */}
+            {/* <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/> */}
           </div>
         </div>
 
         <div className='third'>
-          {/* <p title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p> */}
+          <p title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong onClick={tutorialButtonClicked} style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
           <hr/>
 
