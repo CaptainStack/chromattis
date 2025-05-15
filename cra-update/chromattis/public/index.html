@@ -1,20 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=600, user-scalable=no">
+    <link rel="icon" href="%PUBLIC_URL%/favicon.svg">
+    <link rel="manifest" href="%PUBLIC_URL%/app.webmanifest" />
+
+    <meta property="og:url" content="https://captainstack.github.io/chromattis/">
+    <meta property="og:description" content="A simple, fun, challenging puzzle game by Andre Stackhouse." />
+    <meta property="og:image" content="https://captainstack.github.io/chromattis/chromattis-social-preview.png">
+    <meta property="og:title" content="Are you smart enough to solve Chromattis?">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@CaptainStack">
+    <meta name="twitter:image:alt" content="A 3 by 3 grid of shuffled colors.">
+
+    <meta name="theme-color" content="#8f7a66">
+    <meta name="description" content="A simple, fun, challenging puzzle game by Andre Stackhouse.">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.svg">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,7 +27,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Chromattis</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -40,4 +43,12 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script>
+    if (navigator.serviceWorker) { 
+      navigator.serviceWorker.register('%PUBLIC_URL%/sw.js', {scope: '/chromattis/'}); 
+    }
+  </script>
+
+  <script src="%PUBLIC_URL%/command_line.js"></script>
 </html>

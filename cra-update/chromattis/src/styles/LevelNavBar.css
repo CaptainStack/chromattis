@@ -1,0 +1,40 @@
+.LevelNavBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .hide-in-nav {
+    display:none;
+  }
+}
+
+.level-navigation-button {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 50%;
+  background-color: #8f7a66;
+  display: inline-block;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  user-select: none;
+  margin-left: 10px;
+}
+
+.level-navigation-button:active {
+  transform: scale(0.95);
+}
+  
+.level-navigation-button.current-level {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 25px;
+  outline: 2px solid #776e65;
+}
+
+.locked {
+  background-color: #bbada0;
+  cursor: not-allowed;
+}

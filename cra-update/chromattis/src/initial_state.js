@@ -1,3 +1,5 @@
+import { shuffle_colors } from './actions';
+
 let in_winning_state = 
   function() {
     for (let i = 1; i < this.board.length; i++) {
@@ -24,15 +26,11 @@ let highest_unlocked_level =
     return highest_level;
   }
 
-let persisted_state = localStorage.getItem('gamestate_browser');
+let device_is_pwa = window.matchMedia('(display-mode: standalone)').matches ? true : false;
+let persisted_state = device_is_pwa ? localStorage.getItem('gamestate_pwa') : localStorage.getItem('gamestate_browser');
 
-const Tile = (id, target_tiles, current_color, will_change, preview) => ({
-  id: id, 
-  target_tiles: target_tiles, 
-  current_color: current_color, 
-  will_change: will_change, 
-  preview: preview
-});
+
+const Tile = (id, target_tiles, current_color, will_change, preview) => ({id: id, target_tiles: target_tiles, current_color: current_color, will_change: will_change, preview: preview});
 const Level = (board, id) => ({
   board: board,
   id: id,
@@ -43,19 +41,99 @@ const Level = (board, id) => ({
   in_winning_state: in_winning_state,
 });
 
-let default_content = {
+const RandomLevel = () => {
+  let size = 6;
+  let tiles = [];
+  for (let i = 0; i < size; i++) {
+    let number_of_change_tiles = Math.random() * (size - 2 + 1) + 2;
+    let will_change_tiles = [];
+    for (let j = 0; j < number_of_change_tiles; j++) {
+      will_change_tiles.push(Math.floor(Math.random() * size));
+    }
+    tiles.push(Tile(i, will_change_tiles));
+  }
+  return Level(tiles, '9a3c75b1-23423-83dc-ca53a6220071');
+}
+
+const completed_achievements = function() {
+  return this.achievements.filter(achievement => achievement.condition(this.game));
+}
+
+let default_content = 
+{
   current_display: 'tutorial',
-  last_action: null,
+  show_level_nav: true,
+  level_nav_page: 0,
   mute_audio: false,
   mute_music: true,
   hide_numbers: false,
   hide_colors: false,
   hide_tooltips: false,
+  last_action: null,
+  music_enabled_once: false,
+  show_achievement_notification: true,
+  achievement_text: null,
+  completed_achievements: completed_achievements,
   game: {
     levels: [
       Level([
         Tile(0, [0]), Tile(1, [1])
       ], '9a3c75b1-4d4176-83dc-ca53a6220071'),
+      Level([
+        Tile(0, [1]), Tile(1, [0, 1]),
+      ], 'd5b2cd45-4ff7-4a8b-bf1d-82a64a0d5ea0'),
+      Level([
+        Tile(0, [0, 1]), Tile(1, [0, 2]), Tile(2, [2, 1]),
+      ], '1a49af532c-4bbd-bfb0-a6ab2094c3c1'),
+      Level([
+        Tile(0, [1, 2]), Tile(1, [0, 2]), Tile(2, [0, 1]),
+      ], 'afedc58f-574fbd-a06c-1010fcfdd6e6'),
+      Level([
+        Tile(0, [0, 1]), Tile(1, [1, 2]),
+        Tile(2, [2, 0]), Tile(3, [3, 2]),
+      ], '0024214a8e-427c-99bb-b0222f1ec099'),
+      Level([
+        Tile(0, [1, 2, 3]), Tile(1, [0, 1, 2]),
+        Tile(2, [2, 3, 0]), Tile(3, [3, 0, 1]),
+      ], '61dce9b6-93496a-9af3-e942c297e8c6'),
+      Level([
+        Tile(0, [0, 1, 3, 4]), Tile(1, [3, 1, 5]), Tile(2, [1, 2, 5]),
+        Tile(3, [0, 3, 4]), Tile(4, [0, 2, 4]), Tile(5, [1, 2, 4, 5]),
+      ], 'a3109dd9-b15d-4d80eb-dc6c6f485e76'),
+      Level([
+        Tile(0, [0, 1, 2]), Tile(1, [1, 3, 4, 5]), Tile(2, [2, 4, 5]),
+        Tile(3, [1, 3]), Tile(4, [0, 2, 4]), Tile(5, [1, 2, 4, 5]),
+      ], '50c1e6c9eb-431c-a8ca-e8e4b6b885d4'),
+      Level([
+        Tile(0, [0, 1, 3, 4]), Tile(1, [1, 5]), Tile(2, [1, 2, 4, 5]),
+        Tile(3, [3, 1]), Tile(4, [4, 5]), Tile(5, [5, 7]),
+        Tile(6, [3, 4, 6, 7]), Tile(7, [3, 7]), Tile(8, [4, 5, 7, 8]),
+      ], 'd14b238923-4efa-8d13-6635965ab5b3'),
+      Level([
+        Tile(0, [0, 1, 3]), Tile(1, [1, 3, 5]), Tile(2, [1, 2, 5]),
+        Tile(3, [1, 3, 7]), Tile(4, [1, 3, 5, 7]), Tile(5, [2, 4, 4, 5, 8]),
+        Tile(6, [3, 6, 7]), Tile(7, [6, 7, 8, 4]), Tile(8, [5, 7, 8]),
+      ], 'c0b74e6e-4f48b2-a971-65993bfcacd2'),
+      Level([
+        Tile(0, [0, 1, 4, 5]), Tile(1, [1, 2]), Tile(2, [1, 2]), Tile(3, [2, 3, 6, 7]),
+        Tile(4, [4, 8]), Tile(5, [5, 6, 9, 10]), Tile(6, [5, 6, 9, 10]), Tile(7, [7, 11]),
+        Tile(8, [4, 8]), Tile(9, [5, 6, 9, 10]), Tile(10, [5, 6, 9, 10]), Tile(11, [7, 11]),
+        Tile(12, [8, 9, 12, 13]), Tile(13, [13, 14]), Tile(14, [13, 14]), Tile(15, [10, 11, 14, 15]),
+      ], '4d68914f-f84bc1-a921-f69702075562'),
+      Level([
+        Tile(0, [0, 1, 2, 3]), Tile(1, [1, 4]), Tile(2, [2, 5, 8]), Tile(3, [3, 6, 9, 12]),
+        Tile(4, [4, 5, 6, 7]), Tile(5, [5, 2, 8]), Tile(6, [6, 3, 9, 12]), Tile(7, [7, 10, 13]),
+        Tile(8, [8, 9, 10, 11]), Tile(9, [9, 3, 6, 12]), Tile(10, [10, 7, 13]), Tile(11, [11, 14]),
+        Tile(12, [12, 13, 14, 15]), Tile(13, [13, 9, 5, 1]), Tile(14, [14, 10, 6, 2]), Tile(15, [15, 11, 7, 3]),
+      ], 'a524afce-86b3-48be23-af502cb80829'),
+      Level([
+        Tile(0, [0,1,2, 5,6, 10]), Tile(1, [1,7,13,19]), Tile(2, [1,2,3, 7,]), Tile(3, [3,7,11,15]), Tile(4, [4,3,2, 9,8, 14]),
+        Tile(5, [5,11,17,23]), Tile(6, [0,1,2, 5,6,7, 10,11,12]), Tile(7, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(8, [4,3,2, 9,8,7, 14,13,12]), Tile(9, [9,13,17,21]),
+        Tile(10, [5,10,15, 11]), Tile(11, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(12, [0,4,6,8, 12, 16,18,20,24]), Tile(13, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(14, [9,14,19, 13,]),
+        Tile(15, [3,7,11,15]), Tile(16, [20,21,22, 15,16,17, 10,11,12]), Tile(17, [2,6,7,8,10, 11,13,14, 16,17,18,22]), Tile(18, [24,23,22, 19,18,17, 14,13,12]), Tile(19, [1,7,13,19]),
+        Tile(20, [20,21,22, 15,16, 10,]), Tile(21, [9,13,17,21]), Tile(22, [21,22,23, 17]), Tile(23, [5,11,17,23]), Tile(24, [24,23,22, 19,18, 14]),
+      ], 'b16b2728-ec5e-4391-a371-147d2138f52e'),
+      RandomLevel(),
     ],
     current_level_index: 0,
     current_level: current_level,
@@ -164,12 +242,84 @@ let default_content = {
     current_level: current_level,
     highest_unlocked_level: highest_unlocked_level,
   },
-};
+  achievements: [
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220072',
+      text: 'Solve your first puzzle',
+      condition: game => game.highest_unlocked_level() > 0,
+    },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220073',
+    //   text: 'Turn music on',
+    //   condition: game => state.music_enabled_once,
+    // },
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220080',
+      text: 'Solve a puzzle in two moves',
+      condition: game => game.levels.filter(level => level.moves === 2 && level.in_winning_state()).length > 0,
+    },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220075',
+    //   text: 'Solve a puzzle using only reverse presses',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220077',
+    //   text: 'Solve a puzzle with numbers turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220078',
+    //   text: 'Solve a puzzle with colors turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220079',
+    //   text: 'Solve a puzzle with numbers and colors turned off',
+    //   condition: () => false,
+    // },
+    // {
+    //   id: '9a3c75b1-4d4176-83dc-ca53a6220076',
+    //   text: 'Solve a puzzle using the command line',
+    //   condition: () => false,
+    // },
+    // Solve a puzzle using the keyboard
+    // Solve a puzzle on mobile
+    {
+      id: '9a3c75b1-4d4176-83dc-ca53a6220074',
+      text: 'Solve every puzzle',
+      condition: game => game.highest_unlocked_level() === game.levels.length,
+    },
+  ],
+}
 
 // Rebuild the redux state by parsing the JSON string in localStorage
 if (persisted_state) {
   persisted_state = JSON.parse(persisted_state);
   persisted_state.game.current_level = current_level;
+  persisted_state.game.highest_unlocked_level = highest_unlocked_level;
+  persisted_state.mute_music = true;
+  persisted_state.achievements = default_content.achievements;
+  persisted_state.completed_achievements = completed_achievements;
+
+  for (let level of persisted_state.game.levels) {
+    level.in_winning_state = in_winning_state;
+  }
 }
 
-export const INITIAL_STATE = persisted_state ? persisted_state : default_content;
+// If new levels have been added to the game, merge them into the player's saved state
+// so they receive the new content without losing their progress.
+if (persisted_state && persisted_state.game.levels.length !== default_content.game.levels.length) {
+  let default_levels = default_content.game.levels.slice();
+
+  for (let [index, level] of default_levels.entries()) {
+    let matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
+    default_levels[index] =  matched_level ? matched_level : default_levels[index];
+  }
+
+  persisted_state.game.levels = default_levels;
+  persisted_state.game.current_level_index = 0;
+}
+
+// If there is no persisted_state in localStorage, initialize a new state with shuffled colors.
+export const INITIAL_STATE = persisted_state ? persisted_state : shuffle_colors(default_content, persisted_state);

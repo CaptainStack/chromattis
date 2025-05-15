@@ -11,8 +11,28 @@ import {
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case 'ADVANCE_TILE_COLOR':
+      return advance_tile_color(state, action.tile);
+    case 'PREVIOUS_TILE_COLOR':
+      return previous_tile_color(state, action.tile);
+    case 'PREVIEW_TILES':
+      return preview_tiles(state, action.tile);
+    case 'HIGHLIGHT_TILES':
+      return highlight_tiles(state, action.tile);
+    case 'CLEAR_HIGHLIGHTS':
+      return clear_highlights(state);
+    case 'SHUFFLE_COLORS':
+      return shuffle_colors(state);
+    case 'NAVIGATE_LEVEL':
+      return navigate_level(state, action.level);
+    case 'UNDO_MOVE':
+      return undo_move(state, action.tile);
     case 'TOGGLE_TUTORIAL':
       return toggle_tutorial(state);
+    case 'TOGGLE_ACHIEVEMENTS':
+      return toggle_achievements(state);
+    case 'UPDATE_ACHIEVEMENT_TEXT':
+      return update_achievement_text(state, action.text);
     case 'NEXT_TUTORIAL':
       return next_tutorial(state);
     case 'PREVIOUS_TUTORIAL':
@@ -23,8 +43,20 @@ export default function reducer(state = INITIAL_STATE, action) {
       return toggle_mute_music(state);
     case 'TOGGLE_HIDE_NUMBERS':
       return toggle_hide_numbers(state);
+    case 'TOGGLE_HIDE_COLORS':
+      return toggle_hide_colors(state);
+    case 'NEXT_LEVEL_NAVIGATION_PAGE':
+      return next_level_nav_page(state);
+    case 'PREVIOUS_LEVEL_NAVIGATION_PAGE':
+      return previous_level_nav_page(state);
+    case 'TOGGLE_LEVEL_NAVIGATION_MENU':
+      return toggle_level_nav_menu(state);
     case 'TOGGLE_HIDE_TOOLTIPS':
       return toggle_hide_tooltips(state);
+    case 'NULL_LAST_ACTION':
+      return null_last_action(state);
+    case 'SELECT_TILE':
+      return select_tile(state, action.tile_id);
     default:
       return state;
   }

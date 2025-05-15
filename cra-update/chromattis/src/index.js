@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
-import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
 import reducer from './reducer';
 import { Provider } from 'react-redux'
@@ -18,9 +17,12 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
+    if (event.target.className !== 'Tile') store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+  });
+}, false);
 
-store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(store.getState())));
+window.matchMedia('(display-mode: standalone)').matches ? 
+  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(store.getState()))) : 
+  store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(store.getState())));
