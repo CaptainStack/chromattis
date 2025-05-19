@@ -260,8 +260,8 @@ export const App = ({state}) => {
           <hr/>
 
           <small>
-            Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
-            Open source code on <a href='//github.com/CaptainStack/chromattis' target='_'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
+            Created by <a href='//captainstack.github.io/public-stackhouse' target='_blank'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
+            Open source code on <a href='//github.com/CaptainStack/chromattis' target='_blank'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
             Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
             <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
           </small>
