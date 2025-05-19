@@ -149,7 +149,6 @@
   .App {
     height: 100vh;
     .main-container {
-      max-height: var(--content-width);
       min-width: 1200px;
       display: grid;
       grid-template-columns: 1fr 1fr;
