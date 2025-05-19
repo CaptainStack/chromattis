@@ -2,8 +2,8 @@ import { shuffle_colors } from './actions';
 
 const in_winning_state = 
   function() {
-    for (let i = 1; i < this.board.length; i++) {
-      if (this.board[i].current_color !== this.board[i - 1].current_color) {
+    for (let index = 1; index < this.board.length; index++) {
+      if (this.board[index].current_color !== this.board[index - 1].current_color) {
         return false;
       }
     }

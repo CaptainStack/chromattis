@@ -96,11 +96,11 @@ export const cliPrintBoard = () => {
   const columns = board.length / Math.floor(Math.sqrt(board.length));
 
   let row = '[ ';
-  for (let i = 0; i < board.length; i++) {
-    if (i % columns === 0 && i > 0) {
+  for (let index = 0; index < board.length; index++) {
+    if (index % columns === 0 && index > 0) {
       row += ']\n[ ';
     }
-    row += board[i].current_color + ' ';
+    row += board[index].current_color + ' ';
   }
   row += ']';
   console.log(row);
