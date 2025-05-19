@@ -6,9 +6,11 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
+  height: 100vh;
   .main-container {
     font-size: large;
     width: var(--content-width);
+    height: 100%;
     gap: var(--content-gap);
     padding: var(--content-gap);
     display: flex;
@@ -150,6 +152,7 @@
     height: 100vh;
     .main-container {
       min-width: 1200px;
+      max-height: var(--content-width);
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: var(--content-gap);
