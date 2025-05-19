@@ -21,7 +21,7 @@ export const GameComplete = ({game}) => {
       <h3>Tell the world:</h3>
       <div className='row victory-share'>
         <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent(`I just beat #Chromattis Level ${''} in ${''} ${''}. I bet you can't do it in fewer!\n\nPlay for free here:\n`)}`} target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-        <a className='social-share' href='//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse" target="_blank" rel="noopener noreferrer' ><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook' target='_blank' rel='noopener noreferrer' /></a>
+        <a className='social-share' href='//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noopener noreferrer'><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook' target='_blank' rel='noopener noreferrer'/></a>
         <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
       </div>
     </div>

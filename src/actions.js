@@ -1,7 +1,7 @@
-import { cliPrintBoard } from "./events";
-import { GameMusic } from "./components/App";
-import { DownClickSound } from "./components/App";
-import { num_displayed_levels } from "./components/LevelNavMenu";
+import { cliPrintBoard } from './events';
+import { GameMusic } from './components/App';
+import { DownClickSound } from './components/App';
+import { num_displayed_levels } from './components/LevelNavMenu';
 
 export const select_tile = (state, tile_id) => {
   let current_level = state.game.current_level();

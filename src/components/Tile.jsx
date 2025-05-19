@@ -1,14 +1,14 @@
 import '../styles/Tile.css';
 import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview } from '../events';
 
-let color_map = {
-  0: {hex: "#B71234", string: 'Red'},
-  1: {hex: "#FF5800", string: 'Orange'},
-  2: {hex: "#FFD500", string: 'Yellow'},
-  3: {hex: "#009B48", string: 'Green'},
-  4: {hex: "#0046AD", string: 'Blue'},
-  5: {hex: "#FFFFFF", string: 'White'},
-}
+const color_map = {
+  0: {hex: '#B71234', string: 'Red'},
+  1: {hex: '#FF5800', string: 'Orange'},
+  2: {hex: '#FFD500', string: 'Yellow'},
+  3: {hex: '#009B48', string: 'Green'},
+  4: {hex: '#0046AD', string: 'Blue'},
+  5: {hex: '#FFFFFF', string: 'White'},
+};
 
 export const Tile = ({tile, index, currently_selected, preview_mode, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => 
   <div className='Tile'
@@ -29,8 +29,8 @@ export const Tile = ({tile, index, currently_selected, preview_mode, game_in_pro
           pointerEvents: !game_in_progress ? 'none' : null,
         }}>
     <span style={{color: hide_colors ? 'dimgrey' : currently_selected ? 'Aqua' : color_map[tile.current_color].hex}}>
-    { hide_numbers ? null : game_in_progress ? tile.current_color : null }
-    { !game_in_progress ? '✓' : '' }
+      { hide_numbers ? null : game_in_progress ? tile.current_color : null }
+      { !game_in_progress ? '✓' : '' }
     </span>
 
     {/* HIDDEN CLI BUTTONS */}

@@ -182,7 +182,7 @@ let default_content =
         image: '07-others.gif',
       },
       {
-        text: "Hover your cursor or long press to preview which tiles will change",
+        text: 'Hover your cursor or long press to preview which tiles will change',
         image: '08-preview.gif',
       },
       {
@@ -210,7 +210,7 @@ let default_content =
         image: '13-sixpress.gif',
       },
       {
-        text: 'Three consecutive taps "inverts" a set\'s colors',
+        text: `Three consecutive taps "inverts" a set's colors`,
         image: '14-invert.gif',
       },
       {
