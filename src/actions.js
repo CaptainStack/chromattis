@@ -282,7 +282,8 @@ export const null_last_action = state => {
 export const sync_pulse_animations = () => {
   let anims = document.getAnimations();
   for (let animation of anims) {
-    if (animation.animationName === 'pulse')
-    animation.currentTime = 0;
+    if (animation.animationName === 'pulse') {
+      animation.currentTime = 0;
+    }
   }
 }
