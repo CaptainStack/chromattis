@@ -206,7 +206,7 @@ export const App = ({state}) => {
     <div className='App' onContextMenu={event => event.preventDefault() } >
       <div className='main-container'>
         <div className='first'>
-          <AchievementNotification state={state} show={state.show_achievement_notification} />
+          <AchievementNotification state={state} show={state.show_achievement_notification}/>
           <div className='row'>
             <div className='row'><h1>Chromattis</h1><small>alpha</small></div>
             <div className='score-container'>
@@ -236,7 +236,7 @@ export const App = ({state}) => {
         <div className='second'>
           <div className='row' id='game-row'>
             <Game hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
-            <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length} />
+            <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length}/>
             <Achievements state={state} achievements={state.achievements} show_achievements={state.current_display === 'achievements'}/>
             <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>
             <LevelNavMenu hide_tooltips={state.hide_tooltips} page={state.level_nav_page} show_level_nav={state.current_display === 'nav'} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
@@ -250,14 +250,14 @@ export const App = ({state}) => {
 
           <div className='Settings row'>
             <strong>Settings</strong>
-            <label title='Toggle sound effects [s]'><input id='sound_toggle' onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type='checkbox' />Sounds off</label>
-            <label title='Toggle music [m]'><input id='music_toggle' onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type='checkbox' />Music off</label>
-            <label title='Enable/disable numbers on tiles [n]'><input id='numbers_toggle' onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type='checkbox' />Numbers off</label>
-            <label title='Enable/disable colors on tiles [c]'><input id='colors_toggle' onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type='checkbox' />Colors off</label>
-            {window.matchMedia('(pointer:fine)').matches ? <label title='Enable/disable info tooltips on tiles [i]'><input id='tooltips_toggle' onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type='checkbox' />Tooltips off</label> : null}
+            <label title='Toggle sound effects [s]'><input id='sound_toggle' onChange={muteSoundButtonClicked} defaultChecked={state.mute_audio} type='checkbox'/>Sounds off</label>
+            <label title='Toggle music [m]'><input id='music_toggle' onChange={muteMusicButtonClicked} defaultChecked={state.mute_music} type='checkbox'/>Music off</label>
+            <label title='Enable/disable numbers on tiles [n]'><input id='numbers_toggle' onChange={hideNumbersButtonClicked} defaultChecked={state.hide_numbers} type='checkbox'/>Numbers off</label>
+            <label title='Enable/disable colors on tiles [c]'><input id='colors_toggle' onChange={hideColorsButtonClicked} defaultChecked={state.hide_colors} type='checkbox'/>Colors off</label>
+            {window.matchMedia('(pointer:fine)').matches ? <label title='Enable/disable info tooltips on tiles [i]'><input id='tooltips_toggle' onChange={toggleHideTooltips} defaultChecked={state.hide_tooltips} type='checkbox'/>Tooltips off</label> : null}
           </div>
 
-          <hr />
+          <hr/>
 
           <small>
             Created by <a href='//captainstack.github.io/public-stackhouse' target='_'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
