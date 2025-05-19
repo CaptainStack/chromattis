@@ -134,7 +134,7 @@ export const shuffle_colors = (state, first_load) => {
     } else {
       previous_tile_color(state, shuffle_tile);
     }
-    clear_highlights(state)
+    clear_highlights(state);
   }
 
   // Don't leave the board within one click of solving the puzzle

@@ -17,7 +17,7 @@ export const Achievements = ({state, achievements}) => {
       </ul>
       <span className='flat-button' onClick={achievementsButtonClicked}>Back to game ↩</span>
     </div>
-  )
+  );
 }
 
 export default Achievements;

@@ -13,7 +13,7 @@ export const Tutorial = ({show_tutorial, tutorial}) => {
         <span id='next_tutorial_button' className={`flat-button ${tutorial.current_level_index < tutorial.levels.length - 1 ? null : 'locked'}`} onClick={nextTutorialButtonClicked}><span>Next ⇨</span></span>
       </div>
     </div>
-  )
+  );
 }
 
 export default Tutorial;

@@ -8,7 +8,7 @@ export const LevelNavButton = ({display_in_nav_menu, display_in_nav_bar, index, 
         title={ hide_tooltips ? null : is_unlocked ? `Go to Level ${index}` : `You haven't unlocked Level ${index} yet` } >
         {index}
     </span>
-  )
+  );
 }
 
 export default LevelNavButton;

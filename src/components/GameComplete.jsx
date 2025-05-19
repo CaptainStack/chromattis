@@ -25,7 +25,7 @@ export const GameComplete = ({game}) => {
         <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
       </div>
     </div>
-  )
+  );
 }
 
 export default GameComplete;

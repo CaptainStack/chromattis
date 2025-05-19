@@ -13,7 +13,7 @@ export const LevelNavMenu = ({levels, current_level_index, highest_unlocked_leve
     let is_unlocked = highest_unlocked_level >= index;
 
     return <LevelNavButton display_in_nav_menu={index >= lower_index && index < upper_index} show_level_nav={true} key={`${level.id}-NavButton`} level={level} index={index} current_level_index={current_level_index} is_unlocked={is_unlocked} current_level_class={current_level_class}/>;
-  })
+  });
 
   return(
     <div className='LevelNavMenu' style={{ display: show_level_nav ? null : 'none'}}>
@@ -25,7 +25,7 @@ export const LevelNavMenu = ({levels, current_level_index, highest_unlocked_leve
       <div className='nav-button-container'>{buttons}</div>
       <span className='flat-button' onClick={toggleLevelNavMenu}>Back to game ↩</span>
     </div>
-  )
+  );
 }
 
 export default LevelNavMenu;

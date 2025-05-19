@@ -7,7 +7,7 @@ export const AchievementNotification = ({state}) => {
       <strong>Achievement Unlocked</strong>
       <p>{state.achievement_text}</p>
     </div>
-  )
+  );
 }
 
 export default AchievementNotification;
