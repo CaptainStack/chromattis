@@ -1,21 +1,28 @@
 .Tutorial {
-  background: #cabfb4;
-  width: 510px;
-  height: 510px;
-  border: 15px solid black;
+  background: var(--mid-primary);
+  width: calc(var(--content-width) - 2 * var(--content-gap));
+  height: calc(var(--content-width) - 2 * var(--content-gap));
+  border: var(--content-gap) solid black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-radius: 6px;
-  padding: 15px;
+  border-radius: 4px;
+  padding: var(--content-gap);
   position: absolute;
   transition: all 2s;
   transition-delay: 1s;
-}
+
+  img {
+    width: 390px;
+    height: 390px;
+    margin-bottom: 8px;
+    border-radius: 10px;
+  }
   
-.Tutorial .flat-button {
-  margin-right: 10px;
-  min-width: 112px;
+  .flat-button {
+    margin-right: 10px;
+    min-width: 112px;
+  }
 }

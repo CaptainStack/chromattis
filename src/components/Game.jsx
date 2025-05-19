@@ -14,12 +14,15 @@ export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide
       hide_colors={hide_colors}
       hide_tooltips={hide_tooltips}
       />);
+  const columns = tiles.length / Math.floor(Math.sqrt(tiles.length));
+  const rows = Math.floor(Math.sqrt(tiles.length));
+
   return (
     <div className={`Game ${game_in_progress ? 'unsolved' : 'solved'}`}
          style={{
-            gridTemplateColumns: `repeat(${ tiles.length / Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
-            gridTemplateRows: `repeat(${ Math.floor(Math.sqrt(tiles.length)) }, ${ 555 / (tiles.length / Math.floor(Math.sqrt(tiles.length))) - 15 }px)`,
-            gridGap: '15px' }} >
+            gridTemplateColumns: `repeat(${ columns }, calc((var(--content-width) - (var(--content-gap) * 3)) / ${columns} - var(--content-gap)))`,
+            gridTemplateRows: `repeat(${ rows }, calc((var(--content-width) - (var(--content-gap) * 3)) / ${columns} - var(--content-gap))`,
+            gridGap: 'var(--content-gap)' }} >
       { tiles }
     </div>
   );

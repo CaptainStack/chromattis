@@ -1,14 +1,14 @@
 .Achievements {
-  background: #cabfb4;
-  width: 540px;
-  height: 540px;
-  border: 15px solid black;
+  background: var(--mid-primary);
+  width: calc(var(--content-width) - 2 * var(--content-gap));
+  height: calc(var(--content-width) - 2 * var(--content-gap));
+  border: var(--content-gap) solid black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-radius: 6px;
+  border-radius: 4px;
   position: absolute;
   ul {
     display: flex;
@@ -20,11 +20,11 @@
 #AchievementNotification {
   position: absolute;
   top: 0;
-  padding: 15px 0 15px 0;
+  padding: var(--content-gap) 0 var(--content-gap) 0;
   background-color: goldenrod;
-  border-radius: 6px;
+  border-radius: 4px;
   width: 100%;
-  z-index: 10;
+  z-index: 1;
   cursor: pointer;
 }
 

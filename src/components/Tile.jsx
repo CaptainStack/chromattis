@@ -27,7 +27,6 @@ export const Tile = ({tile, index, currently_selected, preview_mode, game_in_pro
           animation: tile.preview ? 'pulse 1s infinite' : null,
           opacity: tile.will_change ? 1 : tile.preview || !preview_mode ? 1 : 0.6,
           pointerEvents: !game_in_progress ? 'none' : null,
-          userSelect: 'none'
         }}>
     <span style={{color: hide_colors ? 'dimgrey' : currently_selected ? 'Aqua' : color_map[tile.current_color].hex}}>
     { hide_numbers ? null : game_in_progress ? tile.current_color : null }

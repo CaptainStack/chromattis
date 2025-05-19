@@ -1,12 +1,32 @@
-body {
+:root {
+  --dark-primary: #776e65;
+  --primary: #8f7a66;
+  --light-primary: #bbada0;
+  --mid-primary: #cabfb4;
+  --background: #faf8ef;
+  --content-width: 600px;
+  --content-gap: 13px;
+}
+
+@font-face {
+  font-family: 'Clear Sans';
+  src: url('./styles/ClearSans-Regular.ttf');
+}
+
+* {
   margin: 0;
   padding: 0;
-  font-family: "Clear Sans", Arial, sans-serif;
-  background: #faf8ef;
-  color: #776e65;
-  overscroll-behavior: none;
+  box-sizing: border-box;
 }
 
 html {
+  overscroll-behavior: none;
+  height: 100%;
+}
+
+body {
+  font-family: 'Clear Sans', Arial, sans-serif;
+  background: var(--background);
+  color: var(--dark-primary);
   overscroll-behavior: none;
 }

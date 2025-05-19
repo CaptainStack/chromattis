@@ -1,19 +1,19 @@
 .LevelNavMenu {
-  background: #cabfb4;
-  width: 540px;
-  height: 540px;
-  border: 15px solid black;
+  background: var(--mid-primary);
+  width: calc(var(--content-width) - 2 * var(--content-gap));
+  height: calc(var(--content-width) - 2 * var(--content-gap));
+  border: var(--content-gap) solid black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 4px;
   position: absolute;
   .level-navigation-button {
     margin: 20px;
   }
   .current-level {
-    margin:13px;
+    margin: var(--content-gap);
   }
   .row {
     margin-left: 10px;

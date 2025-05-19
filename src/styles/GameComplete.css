@@ -1,5 +1,5 @@
 .GameComplete {
-  background: #cabfb4;
+  background: var(--mid-primary);
   width: 540px;
   height: 540px;
   border: 15px solid black;

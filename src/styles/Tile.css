@@ -13,13 +13,12 @@
   justify-content: center;
   align-items: center;
   font-size: 500%;
-}
-.Tile:focus {
-  outline: none !important;
-}
-
-.Tile span {
-  filter: brightness(75%);
+  &:focus {
+    outline: none !important;
+  }
+  span {
+    filter: brightness(75%);
+  }
 }
 
 @keyframes pulse {
