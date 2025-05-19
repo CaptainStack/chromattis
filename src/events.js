@@ -24,10 +24,14 @@ export const backspaceKeyPressed = () => {
   let current_level = application.game.current_level();
   let achievements = application.completed_achievements();
   let selected_tile = current_level.board[current_level.currently_selected];
-  store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile })
-  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
-  let new_achievements = application.completed_achievements();
-  processAchievemeNotifications(achievements, new_achievements);
+
+  if (selected_tile) {
+    if (!application.mute_audio) UpDownClickSound.play();
+    store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile })
+    store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
+    let new_achievements = application.completed_achievements();
+    processAchievemeNotifications(achievements, new_achievements);
+  }
 }
 
 export const enterKeyPressed = () => {
@@ -35,10 +39,14 @@ export const enterKeyPressed = () => {
   let achievements = application.completed_achievements();
   let current_level = application.game.current_level();
   let selected_tile = current_level.board[current_level.currently_selected];
-  store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile })
-  store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
-  let new_achievements = application.completed_achievements();
-  processAchievemeNotifications(achievements, new_achievements);
+
+  if (selected_tile) {
+    if (!application.mute_audio) UpDownClickSound.play();
+    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile })
+    store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
+    let new_achievements = application.completed_achievements();
+    processAchievemeNotifications(achievements, new_achievements);
+  }
 }
 
 export const upArrowKeyPressed = () => {
