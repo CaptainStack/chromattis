@@ -4,7 +4,7 @@ import { DownClickSound } from './components/App';
 import { num_displayed_levels } from './components/LevelNavMenu';
 
 export const select_tile = (state, tile_id) => {
-  let current_level = state.game.current_level();
+  const current_level = state.game.current_level();
   current_level.currently_selected = tile_id;
   clear_highlights(state);
   preview_tiles(state, current_level.board[tile_id]);
@@ -12,9 +12,9 @@ export const select_tile = (state, tile_id) => {
 }
 
 export const advance_tile_color = (state, tile) => {
-  let current_level = state.game.current_level();
-  let tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
-  for (let updated_tile of tiles) {
+  const current_level = state.game.current_level();
+  const tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
+  for (const updated_tile of tiles) {
     updated_tile.current_color < 5 ? updated_tile.current_color += 1 : updated_tile.current_color = 0;
   }
   
@@ -40,10 +40,10 @@ export const update_achievement_text = (state, text) => {
 }
 
 export const previous_tile_color = (state, tile) => {
-  let current_level = state.game.current_level();
-  let tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
+  const current_level = state.game.current_level();
+  const tiles = current_level.board.filter(potential_tile => tile.target_tiles.includes(potential_tile.id));
 
-  for (let updated_tile of tiles) {
+  for (const updated_tile of tiles) {
     updated_tile.current_color = updated_tile.current_color === 0 ? 5 : updated_tile.current_color - 1;
   }
 
@@ -64,8 +64,8 @@ export const previous_tile_color = (state, tile) => {
 
 export const preview_tiles = (state, selected_tile) => {
   if (selected_tile) {
-    let current_level = state.game.current_level();
-    for (let tile of current_level.board) {
+    const current_level = state.game.current_level();
+    for (const tile of current_level.board) {
       if (selected_tile.target_tiles.includes(tile.id)) {
         tile.preview = true;
       }
@@ -77,8 +77,8 @@ export const preview_tiles = (state, selected_tile) => {
 
 export const highlight_tiles = (state, clicked_tile) => {
   clear_highlights(state);
-  let current_level = state.game.current_level();
-  for (let tile of current_level.board) {
+  const current_level = state.game.current_level();
+  for (const tile of current_level.board) {
     if (clicked_tile.target_tiles.includes(tile.id)) {
       tile.will_change = true;
       tile.preview = false;
@@ -90,8 +90,8 @@ export const highlight_tiles = (state, clicked_tile) => {
 }
 
 export const clear_highlights = state => {
-  let level = state.game.current_level();
-  for (let tile of level.board) {
+  const level = state.game.current_level();
+  for (const tile of level.board) {
     tile.preview = false;
     tile.will_change = false;
   }
@@ -100,8 +100,8 @@ export const clear_highlights = state => {
 }
 
 export const tiles_would_solve_puzzle = (board, target_tiles) => {
-  let target_tiles_ids = target_tiles.map(tile => tile.id);
-  let updated_colors = board.map(tile => !target_tiles_ids.includes(tile.id) ? tile.current_color : tile.current_color < 5 ? tile.current_color + 1 : 0);
+  const target_tiles_ids = target_tiles.map(tile => tile.id);
+  const updated_colors = board.map(tile => !target_tiles_ids.includes(tile.id) ? tile.current_color : tile.current_color < 5 ? tile.current_color + 1 : 0);
 
   return updated_colors.every(color => color === updated_colors[0]);
 }
@@ -109,12 +109,12 @@ export const tiles_would_solve_puzzle = (board, target_tiles) => {
 export const shuffle_colors = (state, first_load) => {
   clear_highlights(state);
   state.current_display = first_load === null ? 'tutorial' : 'game';
-  let current_level = state.game.current_level()
-  let board = current_level.board;
-  let keystone = board[Math.floor(Math.random() * board.length)];
-  let best_score = current_level.best_score;
+  const current_level = state.game.current_level();
+  const board = current_level.board;
+  const keystone = board[Math.floor(Math.random() * board.length)];
+  const best_score = current_level.best_score;
 
-  for (let tile of board) {
+  for (const tile of board) {
     if (tile === keystone || keystone.target_tiles.includes(tile.id)) {
       tile.current_color = 0;
     } else {
@@ -123,10 +123,10 @@ export const shuffle_colors = (state, first_load) => {
   }
 
   for (let i = 0; i < 1000; i++) {
-    let shffle_tile_index = Math.floor(Math.random() * board.length);
-    let shuffle_tile = board[shffle_tile_index];
+    const shffle_tile_index = Math.floor(Math.random() * board.length);
+    const shuffle_tile = board[shffle_tile_index];
 
-    let target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
+    const target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
 
     // Don't solve the puzzle while shuffling
     if (!tiles_would_solve_puzzle(board, target_tiles)) {
@@ -138,8 +138,8 @@ export const shuffle_colors = (state, first_load) => {
   }
 
   // Don't leave the board within one click of solving the puzzle
-  for (let shuffle_tile of board) {
-    let target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
+  for (const shuffle_tile of board) {
+    const target_tiles = board.filter(tile => shuffle_tile.target_tiles.includes(tile.id));
     if (tiles_would_solve_puzzle(board, target_tiles)) {
       previous_tile_color(state, shuffle_tile);
       previous_tile_color(state, shuffle_tile);
@@ -165,8 +165,8 @@ export const navigate_level = (state, level) => {
 
 export const undo_move = state => {
   if (!state.mute_audio) DownClickSound.play();
-  let current_level = state.game.current_level();
-  let last_move = current_level.last_move ? current_level.last_move : null;
+  const current_level = state.game.current_level();
+  const last_move = current_level.last_move ? current_level.last_move : null;
 
   if (last_move) {
     state.current_display = 'game';
@@ -280,8 +280,8 @@ export const null_last_action = state => {
 }
 
 export const sync_pulse_animations = () => {
-  let anims = document.getAnimations();
-  for (let animation of anims) {
+  const anims = document.getAnimations();
+  for (const animation of anims) {
     if (animation.animationName === 'pulse') {
       animation.currentTime = 0;
     }

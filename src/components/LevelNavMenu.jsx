@@ -5,12 +5,12 @@ import { nextLevelSelectPageClicked, previousLevelSelectPageClicked, toggleLevel
 export const num_displayed_levels = 48;
 
 export const LevelNavMenu = ({levels, current_level_index, highest_unlocked_level, show_level_nav, page}) => {
-  let lower_index = page * num_displayed_levels;
-  let upper_index = page * num_displayed_levels + num_displayed_levels;
+  const lower_index = page * num_displayed_levels;
+  const upper_index = page * num_displayed_levels + num_displayed_levels;
 
-  let buttons = levels.map((level, index) => {
-    let current_level_class = current_level_index === index ? 'current-level' : null;
-    let is_unlocked = highest_unlocked_level >= index;
+  const buttons = levels.map((level, index) => {
+    const current_level_class = current_level_index === index ? 'current-level' : null;
+    const is_unlocked = highest_unlocked_level >= index;
 
     return <LevelNavButton display_in_nav_menu={index >= lower_index && index < upper_index} show_level_nav={true} key={`${level.id}-NavButton`} level={level} index={index} current_level_index={current_level_index} is_unlocked={is_unlocked} current_level_class={current_level_class}/>;
   });

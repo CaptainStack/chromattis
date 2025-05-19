@@ -6,8 +6,8 @@ export const LevelNavBar = ({levels, current_level_index, highest_unlocked_level
 
   let buttons = levels.map((level, index) => {
 
-    let current_level_class = current_level_index === index ? 'current-level' : null;
-    let is_unlocked = highest_unlocked_level >= index;
+    const current_level_class = current_level_index === index ? 'current-level' : null;
+    const is_unlocked = highest_unlocked_level >= index;
 
     // The LevelNavBar should always display 10 levels and attempt to place the current level in the center
     let nav_levels_highest = current_level_index + 6 < 10 ? 10 : current_level_index + 6;

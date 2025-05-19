@@ -5,8 +5,8 @@ import { createStore } from 'redux';
 import reducer from './reducer';
 
 export const store = createStore(reducer);
-let application = store.getState();
-export const render = () => ReactDOM.render(<App state={application} />, document.getElementById('root'));
+const  application = store.getState();
+const render = () => ReactDOM.render(<App state={application}/>, document.getElementById('root'));
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {

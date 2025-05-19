@@ -2,7 +2,7 @@ import { achievementsButtonClicked } from '../events';
 import '../styles/Achievements.css';
 
 export const Achievements = ({state, achievements}) => {
-  let achievement_labels = achievements.map(achievement => 
+  const achievement_labels = achievements.map(achievement => 
     <li key={achievement.id} style={{fontWeight: achievement.condition(state) ? 'bold' : null}}>
       {achievement.condition(state) ? '✓' : '✕'} {achievement.text}
     </li>

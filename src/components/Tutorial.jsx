@@ -2,7 +2,7 @@ import '../styles/Tutorial.css';
 import { tutorialButtonClicked, previousTutorialButtonClicked, nextTutorialButtonClicked } from '../events';
 
 export const Tutorial = ({show_tutorial, tutorial}) => {
-  let lesson = tutorial.levels[tutorial.current_level_index];
+  const lesson = tutorial.levels[tutorial.current_level_index];
   return(
     <div className='Tutorial' style={{ display: show_tutorial ? null : 'none' }}>
       <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`}/>

@@ -4,7 +4,7 @@ import { UpClickSound } from './components/App';
 import { UpDownClickSound } from './components/App';
 import { sync_pulse_animations } from './actions';
 
-let processAchievemeNotifications = (achievements, new_achievements) => {
+const processAchievemeNotifications = (achievements, new_achievements) => {
   if (achievements.length !== new_achievements.length) {
     store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
     document.getElementById('AchievementNotification').classList.add('show');
@@ -20,80 +20,80 @@ export const escapeKeyPressed = () => {
 }
 
 export const backspaceKeyPressed = () => {
-  let application = store.getState();
-  let current_level = application.game.current_level();
-  let achievements = application.completed_achievements();
-  let selected_tile = current_level.board[current_level.currently_selected];
+  const application = store.getState();
+  const current_level = application.game.current_level();
+  const achievements = application.completed_achievements();
+  const selected_tile = current_level.board[current_level.currently_selected];
 
   if (selected_tile) {
     if (!application.mute_audio) UpDownClickSound.play();
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile })
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
-    let new_achievements = application.completed_achievements();
+    const new_achievements = application.completed_achievements();
     processAchievemeNotifications(achievements, new_achievements);
   }
 }
 
 export const enterKeyPressed = () => {
-  let application = store.getState();
-  let achievements = application.completed_achievements();
-  let current_level = application.game.current_level();
-  let selected_tile = current_level.board[current_level.currently_selected];
+  const application = store.getState();
+  const achievements = application.completed_achievements();
+  const current_level = application.game.current_level();
+  const selected_tile = current_level.board[current_level.currently_selected];
 
   if (selected_tile) {
     if (!application.mute_audio) UpDownClickSound.play();
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile })
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
-    let new_achievements = application.completed_achievements();
+    const new_achievements = application.completed_achievements();
     processAchievemeNotifications(achievements, new_achievements);
   }
 }
 
 export const upArrowKeyPressed = () => {
-  let application = store.getState();
-  let level = application.game.current_level();
-  let row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
-  let tile_id = level.currently_selected !== null ? level.currently_selected - row_length >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
+  const application = store.getState();
+  const level = application.game.current_level();
+  const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  const tile_id = level.currently_selected !== null ? level.currently_selected - row_length >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
   if (!application.mute_audio) UpClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
 export const downArrowKeyPressed = () => {
-  let application = store.getState();
-  let level = application.game.current_level();
-  let row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
-  let num_rows = Math.floor(Math.sqrt(level.board.length));
-  let tile_id = level.currently_selected !== null ? level.currently_selected < row_length * (num_rows - 1) ? level.currently_selected + row_length : level.currently_selected : 0;
+  const application = store.getState();
+  const level = application.game.current_level();
+  const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  const num_rows = Math.floor(Math.sqrt(level.board.length));
+  const tile_id = level.currently_selected !== null ? level.currently_selected < row_length * (num_rows - 1) ? level.currently_selected + row_length : level.currently_selected : 0;
   if (!application.mute_audio) DownClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
 export const rightArrowKeyPressed = () => {
-  let application = store.getState();
-  let level = application.game.current_level();
-  let tile_id = level.currently_selected !== null ? level.currently_selected === null || level.currently_selected === level.board.length - 1 ? level.currently_selected : level.currently_selected + 1 : 0;
+  const application = store.getState();
+  const level = application.game.current_level();
+  const tile_id = level.currently_selected !== null ? level.currently_selected === null || level.currently_selected === level.board.length - 1 ? level.currently_selected : level.currently_selected + 1 : 0;
   if (!application.mute_audio) UpClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
 export const leftArrowKeyPressed = () => {
-  let application = store.getState();
-  let level = application.game.current_level();
-  let tile_id = level.currently_selected !== null ? level.currently_selected === 0 ? level.currently_selected : level.currently_selected - 1 : level.board.length - 1;
+  const application = store.getState();
+  const level = application.game.current_level();
+  const tile_id = level.currently_selected !== null ? level.currently_selected === 0 ? level.currently_selected : level.currently_selected - 1 : level.board.length - 1;
   sync_pulse_animations();
   if (!application.mute_audio) DownClickSound.play();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
 export const cliPrintBoard = () => {
-  let game = store.getState().game;
-  let level = game.current_level();
-  let board = level.board;
+  const game = store.getState().game;
+  const level = game.current_level();
+  const board = level.board;
   console.log(`LEVEL ${game.current_level_index}, MOVE ${level.moves}`);
-  let columns = board.length / Math.floor(Math.sqrt(board.length));
+  const columns = board.length / Math.floor(Math.sqrt(board.length));
 
   let row = '[ ';
   for (let i = 0; i < board.length; i++) {
@@ -107,8 +107,8 @@ export const cliPrintBoard = () => {
 }
 
 export const cliClick = (tile, reverse) => () => {
-  let application = store.getState();
-  let current_level = application.game.current_level();
+  const application = store.getState();
+  const current_level = application.game.current_level();
   if (!current_level.in_winning_state()) {
     if (!application.mute_audio) UpDownClickSound.play();
     reverse ? 
@@ -131,10 +131,10 @@ export const cliPreview = (tile) => () => {
 }
 
 export const tileUpClicked = (clicked_tile) => event => {
-  let application = store.getState();
-  let achievements = application.completed_achievements();
-  let current_level = application.game.current_level();
-  let down_clicked_tile = current_level.board[current_level.currently_selected];
+  const application = store.getState();
+  const achievements = application.completed_achievements();
+  const current_level = application.game.current_level();
+  const down_clicked_tile = current_level.board[current_level.currently_selected];
 
   if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
     if (!application.mute_audio) UpClickSound.play();
@@ -149,7 +149,7 @@ export const tileUpClicked = (clicked_tile) => event => {
   if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
 
-  let new_achievements = application.completed_achievements();
+  const new_achievements = application.completed_achievements();
   processAchievemeNotifications(achievements, new_achievements);
   event.stopPropagation();
 }
@@ -167,12 +167,12 @@ export const tileHovered = hovered_tile => () => {
 }
 
 export const muteMusicButtonClicked = () => {
-  let application = store.getState();
-  let achievements = application.completed_achievements();
+  const application = store.getState();
+  const achievements = application.completed_achievements();
 
   store.dispatch({ type: 'TOGGLE_MUTE_MUSIC' });
 
-  let new_achievements = application.completed_achievements();
+  const new_achievements = application.completed_achievements();
   processAchievemeNotifications(achievements, new_achievements);
 }
 
@@ -193,7 +193,7 @@ export const nullLastActionOnInitialPageLoad = () => store.dispatch({ type: 'NUL
 
 export const newGameButtonClicked = () => {
   console.log('Shuffling board...');
-  let interval = setInterval(() => {
+  const interval = setInterval(() => {
     if (!store.getState().mute_audio) DownClickSound.play();
     store.dispatch({ type: 'SHUFFLE_COLORS' });
   }, 50);
@@ -201,7 +201,7 @@ export const newGameButtonClicked = () => {
 }
 
 export const navigateLevelButtonClicked = level_index => () => {
-  let game = store.getState().game;
+  const game = store.getState().game;
   if (level_index <= game.highest_unlocked_level()) {
     store.dispatch({ type: 'NAVIGATE_LEVEL', level: level_index });
     console.log(`Switching to Level ${level_index}...`);
@@ -210,7 +210,7 @@ export const navigateLevelButtonClicked = level_index => () => {
     console.log(`You haven't unlocked Level ${level_index} yet.`);
   }
   
-  let current_level = game.current_level();
+  const current_level = game.current_level();
 
   if (current_level.in_winning_state() && current_level.best_score === 'N/A') {
     store.dispatch({ type: 'SHUFFLE_COLORS' });

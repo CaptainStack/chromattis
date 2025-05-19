@@ -1,6 +1,6 @@
 import { shuffle_colors } from './actions';
 
-let in_winning_state = 
+const in_winning_state = 
   function() {
     for (let i = 1; i < this.board.length; i++) {
       if (this.board[i].current_color !== this.board[i - 1].current_color) {
@@ -10,15 +10,15 @@ let in_winning_state =
     return true;
   }
 
-let current_level = 
+const current_level = 
   function() {
     return this.levels[this.current_level_index];
   }
 
-let highest_unlocked_level = 
+const highest_unlocked_level = 
   function() {
     let highest_level = 0;
-    for (let [index, level] of this.levels.entries()) {
+    for (const [index, level] of this.levels.entries()) {
       if (level.best_score !== 'N/A') {
         highest_level = index + 1;
       }
@@ -26,7 +26,7 @@ let highest_unlocked_level =
     return highest_level;
   }
 
-let device_is_pwa = window.matchMedia('(display-mode: standalone)').matches ? true : false;
+const device_is_pwa = window.matchMedia('(display-mode: standalone)').matches ? true : false;
 let persisted_state = device_is_pwa ? localStorage.getItem('gamestate_pwa') : localStorage.getItem('gamestate_browser');
 
 
@@ -42,11 +42,11 @@ const Level = (board, id) => ({
 });
 
 const RandomLevel = () => {
-  let size = 6;
-  let tiles = [];
+  const size = 6;
+  const tiles = [];
   for (let i = 0; i < size; i++) {
-    let number_of_change_tiles = Math.random() * (size - 2 + 1) + 2;
-    let will_change_tiles = [];
+    const number_of_change_tiles = Math.random() * (size - 2 + 1) + 2;
+    const will_change_tiles = [];
     for (let j = 0; j < number_of_change_tiles; j++) {
       will_change_tiles.push(Math.floor(Math.random() * size));
     }
@@ -59,7 +59,7 @@ const completed_achievements = function() {
   return this.achievements.filter(achievement => achievement.condition(this));
 }
 
-let default_content = 
+const default_content = 
 {
   current_display: 'tutorial',
   show_level_nav: true,
@@ -302,7 +302,7 @@ if (persisted_state) {
   persisted_state.achievements = default_content.achievements;
   persisted_state.completed_achievements = completed_achievements;
 
-  for (let level of persisted_state.game.levels) {
+  for (const level of persisted_state.game.levels) {
     level.in_winning_state = in_winning_state;
   }
 }
@@ -310,10 +310,10 @@ if (persisted_state) {
 // If new levels have been added to the game, merge them into the player's saved state
 // so they receive the new content without losing their progress.
 if (persisted_state && persisted_state.game.levels.length !== default_content.game.levels.length) {
-  let default_levels = default_content.game.levels.slice();
+  const default_levels = default_content.game.levels.slice();
 
-  for (let [index, level] of default_levels.entries()) {
-    let matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
+  for (const [index, level] of default_levels.entries()) {
+    const matched_level = persisted_state.game.levels.find(saved_level => saved_level.id === level.id);
     default_levels[index] =  matched_level ? matched_level : default_levels[index];
   }
 

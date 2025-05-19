@@ -3,7 +3,7 @@ import { navigateLevelButtonClicked } from '../events';
 
 export const GameComplete = ({game}) => {
   let total_moves = 0;
-  for (let level of game.levels) {
+  for (const level of game.levels) {
     total_moves += level.moves;
   }
   return(

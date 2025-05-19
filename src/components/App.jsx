@@ -16,18 +16,18 @@ import {
   downArrowKeyPressed, achievementsButtonClicked
 } from '../events';
 
-let track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
-let track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
-let track3 = `${process.env.PUBLIC_URL}/audio/charm.ogg`;
-let track4 = `${process.env.PUBLIC_URL}/audio/island.ogg`;
-let track5 = `${process.env.PUBLIC_URL}/audio/synthwave.ogg`;
-let track6 = `${process.env.PUBLIC_URL}/audio/crystalcave.ogg`;
-let track7 = `${process.env.PUBLIC_URL}/audio/underwater.ogg`;
-let track8 = `${process.env.PUBLIC_URL}/audio/sevenandeight.ogg`;
-let track9 = `${process.env.PUBLIC_URL}/audio/lofi.ogg`;
-let track10 = `${process.env.PUBLIC_URL}/audio/chiptune.ogg`;
+const track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
+const track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
+const track3 = `${process.env.PUBLIC_URL}/audio/charm.ogg`;
+const track4 = `${process.env.PUBLIC_URL}/audio/island.ogg`;
+const track5 = `${process.env.PUBLIC_URL}/audio/synthwave.ogg`;
+const track6 = `${process.env.PUBLIC_URL}/audio/crystalcave.ogg`;
+const track7 = `${process.env.PUBLIC_URL}/audio/underwater.ogg`;
+const track8 = `${process.env.PUBLIC_URL}/audio/sevenandeight.ogg`;
+const track9 = `${process.env.PUBLIC_URL}/audio/lofi.ogg`;
+const track10 = `${process.env.PUBLIC_URL}/audio/chiptune.ogg`;
 
-let all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8, track9, track10];
+const all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8, track9, track10];
 let playlist = all_tracks.slice();
 
 // Get random song and remove it from the playlist
@@ -49,7 +49,7 @@ GameMusic.addEventListener('ended', () => {
 
   playlist = playlist.slice(0, random_track).concat(playlist.slice(random_track + 1));
 
-  let temp = new Audio(track);
+  const temp = new Audio(track);
   GameMusic.src = temp.src;
   GameMusic.play();
 });
@@ -84,12 +84,12 @@ export const App = ({state}) => {
       disableInAppInstallPrompt();
     });
 
-    function disableInAppInstallPrompt() {
+    const disableInAppInstallPrompt = () => {
       installPrompt = null;
       installButton.setAttribute('hidden', '');
     }
 
-    function keyboardControls(event) {
+    const keyboardControls = event => {
       switch(event.key) {
         case 'ArrowLeft': leftArrowKeyPressed(); event.preventDefault(); break;
         case 'ArrowRight': rightArrowKeyPressed(); event.preventDefault(); break;
@@ -121,7 +121,7 @@ export const App = ({state}) => {
     let connectedGamepads = {};
     let isPolling = true;
 
-    function stopPolling() {
+    const stopPolling = () => {
       isPolling = false;
     }
     window.addEventListener('gamepadconnected', (event) => {
@@ -135,7 +135,7 @@ export const App = ({state}) => {
       gamepadDisconnectedHandler(event.gamepad);
     });
 
-    function gamepadConnectedHandler(gamepad) {
+    const gamepadConnectedHandler = gamepad => {
       connectedGamepads[gamepad.index] = gamepad;
       console.log('Connected gamepads:', connectedGamepads);
       // You might want to start polling for button/axis updates here
@@ -143,14 +143,14 @@ export const App = ({state}) => {
       requestAnimationFrame(updateGamepadState);
     }
 
-    function gamepadDisconnectedHandler(gamepad) {
+    const gamepadDisconnectedHandler = gamepad => {
       delete connectedGamepads[gamepad.index];
       console.log('Connected gamepads:', connectedGamepads);
       // You might want to stop polling for this gamepad here
       stopPolling();
     }
 
-    function gamepadControls(buttonIndex) {
+    const gamepadControls = buttonIndex => {
       switch(buttonIndex) {
         case 14: leftArrowKeyPressed(); break;
         case 15: rightArrowKeyPressed(); break;
@@ -169,7 +169,7 @@ export const App = ({state}) => {
     }
 
     let previousButtonStates = {};
-    function updateGamepadState() {
+    const updateGamepadState = () => {
       const gamepads = navigator.getGamepads();
 
       for (let i = 0; i < gamepads.length; i++) {
@@ -199,7 +199,7 @@ export const App = ({state}) => {
     return () => document.removeEventListener('keydown', keyboardControls);
   }, []);
 
-  let current_level = state.game.current_level();
+  const current_level = state.game.current_level();
 
   // This is the root of the React application
   return(
