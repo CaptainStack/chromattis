@@ -27,7 +27,7 @@ export const backspaceKeyPressed = () => {
 
   if (selected_tile) {
     if (!application.mute_audio) UpDownClickSound.play();
-    store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile })
+    store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
     const new_achievements = application.completed_achievements();
     processAchievemeNotifications(achievements, new_achievements);
@@ -42,7 +42,7 @@ export const enterKeyPressed = () => {
 
   if (selected_tile) {
     if (!application.mute_audio) UpDownClickSound.play();
-    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile })
+    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
     const new_achievements = application.completed_achievements();
     processAchievemeNotifications(achievements, new_achievements);
@@ -126,7 +126,7 @@ export const cliPreview = (tile) => () => {
     console.log(`If you press Tile ${tile.id} the following Tiles will change:`);
     console.log(tile.target_tiles);
   } else {
-    console.log('This level is currently solved. Select a new level, or reset the puzzle using the shuffle() command.')
+    console.log('This level is currently solved. Select a new level, or reset the puzzle using the shuffle() command.');
   }
 }
 
