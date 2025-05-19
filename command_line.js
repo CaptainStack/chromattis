@@ -49,4 +49,4 @@ const toggle_sounds = () => document.getElementById('sound_toggle').click();
 const toggle_numbers = () => document.getElementById('numbers_toggle').click();
 const toggle_colors = () => document.getElementById('colors_toggle').click();
 
-help()
+help();
