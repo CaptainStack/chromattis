@@ -25,7 +25,7 @@
   }
 
   #game-row {
-    min-height: var(--content-width);
+    min-height: calc(var(--content-width) - var(--content-gap) * 2);
   }
 
   div {
