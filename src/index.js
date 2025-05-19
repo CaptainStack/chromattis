@@ -12,6 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
     if (event.target.className !== 'Tile') store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   });
+
+  if (navigator.serviceWorker) {
+    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`, {scope: '/chromattis/'}); 
+  }
 }, false);
 
 render();
