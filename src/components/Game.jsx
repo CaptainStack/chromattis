@@ -13,7 +13,7 @@ export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide
       hide_numbers={hide_numbers} 
       hide_colors={hide_colors}
       hide_tooltips={hide_tooltips}
-      />);
+    />);
   const columns = tiles.length / Math.floor(Math.sqrt(tiles.length));
   const rows = Math.floor(Math.sqrt(tiles.length));
 
