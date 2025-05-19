@@ -86,7 +86,7 @@ export const App = ({state}) => {
 
     const disableInAppInstallPrompt = () => {
       installPrompt = null;
-      installButton.hidden', '');
+      installButton.hidden = true;
     }
 
     const keyboardControls = event => {
