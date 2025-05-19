@@ -11,7 +11,7 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "/chromattis/favicon.svg",
+      "src": "favicon.svg",
       "sizes": "144x144",
       "purpose": "any"
     }
