@@ -3,7 +3,6 @@ const APP_PREFIX = 'chromattis';
 const VERSION = '0.00';
 const CACHE_NAME = `${APP_PREFIX}-${VERSION}`;
 
-
 const APP_STATIC_RESOURCES = [
   `${GHPATH}/`,
   `${GHPATH}/index.html`,

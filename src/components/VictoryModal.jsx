@@ -33,4 +33,5 @@ export const VictoryModal = ({show_victory, game_in_progress, current_moves, cur
     </div>
   </div>)
 }
+
 export default VictoryModal;

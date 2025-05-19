@@ -9,7 +9,7 @@ import {
   update_achievement_text,
  } from './actions';
 
-export default function reducer(state = INITIAL_STATE, action) {
+export const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADVANCE_TILE_COLOR':
       return advance_tile_color(state, action.tile);
@@ -61,3 +61,5 @@ export default function reducer(state = INITIAL_STATE, action) {
       return state;
   }
 }
+
+export default reducer;
