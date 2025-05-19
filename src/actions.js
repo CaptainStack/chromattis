@@ -55,6 +55,7 @@ export const previous_tile_color = (state, tile) => {
     }
   }
 
+  preview_tiles(state, current_level.board[tile.id]);
   current_level.last_move = { tile: tile, reverse: true };
   state.last_action = 'clicktile';
   return state;
