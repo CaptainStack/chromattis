@@ -69,16 +69,14 @@ export const App = ({state}) => {
     let installPrompt = null;
     const installButton = document.querySelector('#install');
 
-    window.addEventListener('beforeinstallprompt', (event) => {
+    window.addEventListener('beforeinstallprompt', event => {
       installPrompt = event;
       installButton.hidden = false;
     });
 
     installButton.addEventListener('click', async () => {
       if (!state.mute_audio) DownClickSound.play();
-      if (!installPrompt) {
-        return;
-      }
+      if (!installPrompt) return;
       const result = await installPrompt.prompt();
       console.log(`Install prompt was: ${result.outcome}`);
       disableInAppInstallPrompt();
@@ -124,13 +122,13 @@ export const App = ({state}) => {
     const stopPolling = () => {
       isPolling = false;
     }
-    window.addEventListener('gamepadconnected', (event) => {
+    window.addEventListener('gamepadconnected', event => {
       const gamepad = event.gamepad;
       console.log(`Gamepad connected at index ${gamepad.index}: ${gamepad.id}. ${gamepad.buttons.length} buttons, ${gamepad.axes.length} axes.`);
-      gamepadConnectedHandler(event.gamepad)
+      gamepadConnectedHandler(event.gamepad);
     });
 
-    window.addEventListener('gamepaddisconnected', (event) => {
+    window.addEventListener('gamepaddisconnected', event => {
       console.log('Gamepad disconnected:', event.gamepad);
       gamepadDisconnectedHandler(event.gamepad);
     });
@@ -172,8 +170,7 @@ export const App = ({state}) => {
     const updateGamepadState = () => {
       const gamepads = navigator.getGamepads();
 
-      for (let i = 0; i < gamepads.length; i++) {
-        const gamepad = gamepads[i];
+      for (const gamepad of gamepads) {
         if (gamepad) {
           const gamepadIndex = gamepad.index;
           if (!previousButtonStates[gamepadIndex]) {

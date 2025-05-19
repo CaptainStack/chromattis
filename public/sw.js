@@ -36,41 +36,41 @@ const APP_STATIC_RESOURCES = [
   `${GHPATH}/tutorial/18-install.gif`,
 ];
 
-self.addEventListener('fetch', function(e) {
-  console.log('Fetch request : ' + e.request.url);
-  e.respondWith(
-    caches.match(e.request).then(request => {
+self.addEventListener('fetch', event => {
+  console.log('Fetch request : ' + event.request.url);
+  event.respondWith(
+    caches.match(event.request).then(request => {
       if (request) { 
-        console.log('Responding with cache : ' + e.request.url);
+        console.log('Responding with cache : ' + event.request.url);
         return request;
       } else {
-        console.log('File is not cached, fetching : ' + e.request.url);
-        return fetch(e.request);
+        console.log('File is not cached, fetching : ' + event.request.url);
+        return fetch(event.request);
       }
     })
   );
 });
 
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => {
       console.log('Installing cache : ' + CACHE_NAME);
       return cache.addAll(APP_STATIC_RESOURCES);
     })
   );
 });
 
-self.addEventListener('activate', function(e) {
-  e.waitUntil(
-    caches.keys().then(function(keyList) {
-      const cacheWhitelist = keyList.filter(function(key) {
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keyList => {
+      const cacheWhitelist = keyList.filter(key => {
         return key.indexOf(APP_PREFIX);
-      })
+      });
       cacheWhitelist.push(CACHE_NAME);
-      return Promise.all(keyList.map(function(key, i) {
+      return Promise.all(keyList.map((key, index) => {
         if (cacheWhitelist.indexOf(key) === -1) {
-          console.log('Deleting cache : ' + keyList[i] );
-          return caches.delete(keyList[i]);
+          console.log('Deleting cache : ' + keyList[index]);
+          return caches.delete(keyList[index]);
         }
       }));
     })
