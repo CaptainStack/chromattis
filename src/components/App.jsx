@@ -71,7 +71,7 @@ export const App = ({state}) => {
 
     window.addEventListener('beforeinstallprompt', (event) => {
       installPrompt = event;
-      installButton.removeAttribute('hidden');
+      installButton.hidden = false;
     });
 
     installButton.addEventListener('click', async () => {
@@ -86,7 +86,7 @@ export const App = ({state}) => {
 
     const disableInAppInstallPrompt = () => {
       installPrompt = null;
-      installButton.setAttribute('hidden', '');
+      installButton.hidden', '');
     }
 
     const keyboardControls = event => {
