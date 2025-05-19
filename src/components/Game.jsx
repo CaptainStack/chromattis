@@ -17,7 +17,7 @@ export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide
   const columns = tiles.length / Math.floor(Math.sqrt(tiles.length));
   const rows = Math.floor(Math.sqrt(tiles.length));
 
-  return (
+  return(
     <div className={`Game ${game_in_progress ? 'unsolved' : 'solved'}`}
          style={{
             gridTemplateColumns: `repeat(${ columns }, calc((var(--content-width) - (var(--content-gap) * 3)) / ${columns} - var(--content-gap)))`,

@@ -225,7 +225,7 @@ export const App = ({state}) => {
 
           <div className='row'>
             <strong>Make all Tiles the same value</strong>
-            <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button'  onClick={newGameButtonClicked}>Reset ⇵</span>
+            <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
             <span id='undo' title='Click to undo last move [u]' className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
             <span id='install' title='Click to install Chromattis' className='flat-button'  hidden>Install ⇩</span>
           </div>

@@ -22,7 +22,7 @@ export const advance_tile_color = (state, tile) => {
 
   if (current_level.in_winning_state()) {
     if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
-    current_level.best_score = current_level.moves;
+      current_level.best_score = current_level.moves;
     }
   }
 
@@ -46,18 +46,19 @@ export const previous_tile_color = (state, tile) => {
   for (let updated_tile of tiles) {
     updated_tile.current_color = updated_tile.current_color === 0 ? 5 : updated_tile.current_color - 1;
   }
-  
+
   current_level.moves++;
 
   if (current_level.in_winning_state()) {
     if (current_level.best_score === 'N/A' || current_level.best_score > current_level.moves) {
-    current_level.best_score = current_level.moves;
+      current_level.best_score = current_level.moves;
     }
   }
 
   preview_tiles(state, current_level.board[tile.id]);
   current_level.last_move = { tile: tile, reverse: true };
   state.last_action = 'clicktile';
+
   return state;
 }
 
