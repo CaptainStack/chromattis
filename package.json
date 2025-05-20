@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "redux": "^3.7.2"
+    "redux": "^5.0.1"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",

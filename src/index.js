@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import './index.css';
-import { createStore } from 'redux';
+import { legacy_createStore as createStore } from 'redux';
 import reducer from './reducer';
 
 export const store = createStore(reducer);
