@@ -5,7 +5,7 @@ export const Tutorial = ({show_tutorial, tutorial}) => {
   const lesson = tutorial.levels[tutorial.current_level_index];
   return(
     <div className='Tutorial' style={{ display: show_tutorial ? null : 'none' }}>
-      <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`}/>
+      <img src={`${process.env.PUBLIC_URL}/tutorials/${lesson.image}`} alt={lesson.text}/>
       <span><strong>Tutorial {tutorial.current_level_index} of {tutorial.levels.length - 1}:</strong> {lesson.text}</span>
       <div className='row'>
         <span id='previous_tutorial_button' className={`flat-button ${tutorial.current_level_index > 0 ? null : 'locked'}`} onClick={previousTutorialButtonClicked}><span>⇦ Previous</span></span>

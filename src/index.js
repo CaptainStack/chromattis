@@ -1,13 +1,15 @@
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import './index.css';
 import { legacy_createStore as createStore } from 'redux';
 import reducer from './reducer';
+import reportWebVitals from './reportWebVitals';
 
 export const store = createStore(reducer);
 const application = store.getState();
 const root = createRoot(document.getElementById('root'));
-const render = () => root.render(<App state={application}/>);
+const render = () => root.render(<React.StrictMode><App state={application}/></React.StrictMode>);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
@@ -25,3 +27,5 @@ store.subscribe(render);
 window.matchMedia('(display-mode: standalone)').matches ? 
   store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application))) :
   store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(application)));
+
+reportWebVitals();

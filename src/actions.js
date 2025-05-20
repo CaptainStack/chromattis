@@ -204,13 +204,13 @@ export const toggle_tutorial = state => {
 }
 export const next_tutorial = state => {
   if (!state.mute_audio) DownClickSound.play();
-  state.tutorial.current_level_index < state.tutorial.levels.length - 1 ? state.tutorial.current_level_index += 1 : state.tutorial.current_level_index;
+  state.tutorial.current_level_index = state.tutorial.current_level_index < state.tutorial.levels.length - 1 ? state.tutorial.current_level_index + 1 : state.tutorial.current_level_index;
   return state;
 }
 
 export const previous_tutorial = state => {
   if (!state.mute_audio) DownClickSound.play();
-  state.tutorial.current_level_index > 0 ? state.tutorial.current_level_index -= 1 : state.tutorial.current_level_index;
+  state.tutorial.current_level_index = state.tutorial.current_level_index > 0 ? state.tutorial.current_level_index - 1 : state.tutorial.current_level_index;
   return state;
 }
 

@@ -194,7 +194,7 @@ export const App = ({state}) => {
     }
 
     return () => document.removeEventListener('keydown', keyboardControls);
-  }, []);
+  }, [state.mute_audio]);
 
   const current_level = state.game.current_level();
 
