@@ -257,18 +257,18 @@ export const App = ({state}) => {
           <hr/>
 
           <small>
-            Created by <a href='//captainstack.github.io/public-stackhouse' target='_blank'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank'>@CaptainStack</a>)<br/>
-            Open source code on <a href='//github.com/CaptainStack/chromattis' target='_blank'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE'><strong>MIT license</strong></a><br/>
-            Public domain music courtesy <a href='//opengameart.org'><strong>OpenGameArt.org</strong></a><br/>
-            <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank'><strong>Report bugs</strong></a>
+            Created by <a href='//captainstack.github.io/public-stackhouse' target='_blank' rel='noreferrer'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank' rel='noreferrer'>@CaptainStack</a>)<br/>
+            Open source code on <a href='//github.com/CaptainStack/chromattis' target='_blank' rel='noreferrer'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE' target='_blank' rel='noreferrer'><strong>MIT license</strong></a><br/>
+            Public domain music courtesy <a href='//opengameart.org' target='_blank' rel='noreferrer'><strong>OpenGameArt.org</strong></a><br/>
+            <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank' rel='noreferrer'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank' rel='noreferrer'><strong>Report bugs</strong></a>
           </small>
 
           {/* SOCIAL MEDIA BUTTONS */}
           <div className='row social'>
-            <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count='true' target='_blank'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-            <a className='social-share' href='//www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noopener noreferrer'><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
-            <a className='social-share' href={`//www.reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
-            <a className='flat-button' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank'>Support on Open Collective</a>
+            <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count='true' target='_blank' rel='noreferrer'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
+            <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer'><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
+            <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
+            <a className='flat-button' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Support on Open Collective</a>
           </div>
         </div>
       </div>
