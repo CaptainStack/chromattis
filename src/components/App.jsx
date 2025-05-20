@@ -109,7 +109,7 @@ export const App = ({state}) => {
         case '-': document.getElementById('previous_puzzle_button').click(); break;
         case '[': document.getElementById('previous_tutorial_button').click(); break;
         case ']': document.getElementById('next_tutorial_button').click(); break;
-        case '~': localStorage.clear(); location.reload(); break;
+        case '~': localStorage.clear(); window.location.reload(); break;
         default: break;
       }
     }
