@@ -1,12 +1,13 @@
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './components/App';
 import './index.css';
 import { createStore } from 'redux';
 import reducer from './reducer';
 
 export const store = createStore(reducer);
-const  application = store.getState();
-const render = () => ReactDOM.render(<App state={application}/>, document.getElementById('root'));
+const application = store.getState();
+const root = createRoot(document.getElementById('root'));
+const render = () => root.render(<App state={application}/>);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (navigator.serviceWorker) {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`, {scope: '/chromattis/'}); 
+    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`, {scope: '/chromattis/'});
   }
 }, false);
 
@@ -22,5 +23,5 @@ render();
 store.subscribe(render);
 
 window.matchMedia('(display-mode: standalone)').matches ? 
-  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application))) : 
+  store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application))) :
   store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(application)));
