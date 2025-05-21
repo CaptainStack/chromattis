@@ -130,8 +130,11 @@
 
   .Settings {
     font-size: medium;
+    display: flex;
+    align-items: flex-start;
     label, input {
       cursor: pointer;
+      display: flex;
     }
     input {
       margin: 3px;
