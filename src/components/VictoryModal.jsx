@@ -28,9 +28,9 @@ export const VictoryModal = ({show_victory, game_in_progress, current_moves, cur
       </div>
       <h3>Brag about it:</h3>
       <div className='row victory-share' style={{ display: game_in_progress ? 'none' : null }}>
-        <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent(`I just beat #Chromattis Level ${current_level_index} in ${current_moves} ${current_moves === 1 ? 'move' : 'moves'}. I bet you can't do it in fewer!\n\nPlay for free here:\n`)}`} target='_blank' rel='noreferrer'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-        <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer' ><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook' target='_blank' rel='noreferrer'/></a>
-        <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
+        <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent(`I just beat #Chromattis Level ${current_level_index} in ${current_moves} ${current_moves === 1 ? 'move' : 'moves'}. I bet you can't do it in fewer!\n\nPlay for free here:\n`)}`} target='_blank' rel='noreferrer'><img src={`${import.meta.env.BASE_URL}x.png`} alt='Post on X'/></a>
+        <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer' ><img src={`${import.meta.env.BASE_URL}facebook.png`} alt='Share on Facebook' target='_blank' rel='noreferrer'/></a>
+        <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${import.meta.env.BASE_URL}reddit.png`} alt='submit to reddit'/></a>
       </div>
     </div>
   );

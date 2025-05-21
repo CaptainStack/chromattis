@@ -1,15 +1,14 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
 import App from './components/App';
-import './index.css';
 import { legacy_createStore as createStore } from 'redux';
 import reducer from './reducer';
-import reportWebVitals from './reportWebVitals';
 
 export const store = createStore(reducer);
 const application = store.getState();
 const root = createRoot(document.getElementById('root'));
-const render = () => root.render(<React.StrictMode><App state={application}/></React.StrictMode>);
+const render = () => root.render(<StrictMode><App state={application}/></StrictMode>);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (navigator.serviceWorker) {
-    navigator.serviceWorker.register(`${process.env.PUBLIC_URL}/sw.js`, {scope: '/chromattis/'});
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`, {scope: '/chromattis/'});
   }
 }, false);
 
@@ -27,5 +26,3 @@ store.subscribe(render);
 window.matchMedia('(display-mode: standalone)').matches ? 
   store.subscribe(() => localStorage.setItem('gamestate_pwa', JSON.stringify(application))) :
   store.subscribe(() => localStorage.setItem('gamestate_browser', JSON.stringify(application)));
-
-reportWebVitals();

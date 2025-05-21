@@ -16,16 +16,16 @@ import {
   downArrowKeyPressed, achievementsButtonClicked
 } from '../events';
 
-const track1 = `${process.env.PUBLIC_URL}/audio/song17.ogg`;
-const track2 = `${process.env.PUBLIC_URL}/audio/song21.ogg`;
-const track3 = `${process.env.PUBLIC_URL}/audio/charm.ogg`;
-const track4 = `${process.env.PUBLIC_URL}/audio/island.ogg`;
-const track5 = `${process.env.PUBLIC_URL}/audio/synthwave.ogg`;
-const track6 = `${process.env.PUBLIC_URL}/audio/crystalcave.ogg`;
-const track7 = `${process.env.PUBLIC_URL}/audio/underwater.ogg`;
-const track8 = `${process.env.PUBLIC_URL}/audio/sevenandeight.ogg`;
-const track9 = `${process.env.PUBLIC_URL}/audio/lofi.ogg`;
-const track10 = `${process.env.PUBLIC_URL}/audio/chiptune.ogg`;
+const track1 = `${import.meta.env.BASE_URL}audio/song17.ogg`;
+const track2 = `${import.meta.env.BASE_URL}audio/song21.ogg`;
+const track3 = `${import.meta.env.BASE_URL}audio/charm.ogg`;
+const track4 = `${import.meta.env.BASE_URL}audio/island.ogg`;
+const track5 = `${import.meta.env.BASE_URL}audio/synthwave.ogg`;
+const track6 = `${import.meta.env.BASE_URL}audio/crystalcave.ogg`;
+const track7 = `${import.meta.env.BASE_URL}audio/underwater.ogg`;
+const track8 = `${import.meta.env.BASE_URL}audio/sevenandeight.ogg`;
+const track9 = `${import.meta.env.BASE_URL}audio/lofi.ogg`;
+const track10 = `${import.meta.env.BASE_URL}audio/chiptune.ogg`;
 
 const all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8, track9, track10];
 let playlist = all_tracks.slice();
@@ -265,9 +265,9 @@ export const App = ({state}) => {
 
           {/* SOCIAL MEDIA BUTTONS */}
           <div className='row social'>
-            <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count='true' target='_blank' rel='noreferrer'><img src={`${process.env.PUBLIC_URL}/x.png`} alt='Post on X'/></a>
-            <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer'><img src={`${process.env.PUBLIC_URL}/facebook.png`} alt='Share on Facebook'/></a>
-            <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${process.env.PUBLIC_URL}/reddit.png`} alt='submit to reddit'/></a>
+            <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count='true' target='_blank' rel='noreferrer'><img src={`${import.meta.env.BASE_URL}x.png`} alt='Post on X'/></a>
+            <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer'><img src={`${import.meta.env.BASE_URL}facebook.png`} alt='Share on Facebook'/></a>
+            <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${import.meta.env.BASE_URL}reddit.png`} alt='submit to reddit'/></a>
             <a className='flat-button' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Support on Open Collective</a>
           </div>
         </div>
