@@ -13,6 +13,25 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-size: 1.4rem;
+  }
+  .ProgressBar {
+    background-color: var(--light-primary);
+    width: 80%;
+    height: 1.5rem;
+    .progress-percent {
+      background-color: var(--dark-primary);
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      span {
+        color: var(--background)
+      }
+    }
   }
 }
 

@@ -2,6 +2,9 @@ import { achievementsButtonClicked } from '../events';
 import '../styles/Achievements.css';
 
 export const Achievements = ({state, achievements}) => {
+  const num_completed_achievements = achievements.filter(achievement => achievement.condition(state) === true).length;
+  const num_total_achievements = achievements.length;
+  const percent_complete = num_completed_achievements / num_total_achievements * 100.0;
   const achievement_labels = achievements.map(achievement => 
     <li key={achievement.id} style={{fontWeight: achievement.condition(state) ? 'bold' : null}}>
       {achievement.condition(state) ? '✓' : '✕'} {achievement.text}
@@ -11,7 +14,10 @@ export const Achievements = ({state, achievements}) => {
   return(
     <div className={`Achievements`} style={{display: state.current_display === 'achievements' ? null : 'none'}}>
       <h1>Achievements 🏆</h1>
-      <p>You have completed {achievements.filter(achievement => achievement.condition(state) === true).length} of {achievements.length} achievements</p>
+      <strong>You have completed {num_completed_achievements} of {num_total_achievements} achievements</strong>
+      <div className='ProgressBar'>
+        <div className='progress-percent' style={{width: `${percent_complete}%`}}><span>{`${percent_complete}%`}</span></div>
+      </div>
       <ul>
         {achievement_labels}
       </ul>
