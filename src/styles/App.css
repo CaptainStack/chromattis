@@ -95,7 +95,7 @@
     display: inline-block;
     padding: 0.5rem;
     &:not(.achievements) {
-      min-width: 4.6rem;
+      min-width: 4.8rem;
       font-family: monospace;
     }
   }
