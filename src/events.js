@@ -48,7 +48,7 @@ export const enterKeyPressed = () => {
     const new_achievements = application.completed_achievements();
     processAchievemeNotifications(achievements, new_achievements);
   }
-if (current_level.in_winning_state()) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+  if (current_level.in_winning_state()) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
 }
 
 export const upArrowKeyPressed = () => {
