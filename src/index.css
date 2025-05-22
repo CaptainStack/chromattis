@@ -15,7 +15,7 @@
   }
 }
 
-@media screen and (max-resolution: 2dppx) {
+@media screen and (max-resolution: 2dppx) and (orientation: portrait) {
   :root {
     --content-width: 40rem;
   }
