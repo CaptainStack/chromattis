@@ -137,6 +137,7 @@
     label, input {
       cursor: pointer;
       display: flex;
+      align-items: center;
     }
     input {
       margin: 0.25rem;
