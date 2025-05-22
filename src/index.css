@@ -15,6 +15,12 @@
   }
 }
 
+@media screen and (max-resolution: 2dppx) {
+  :root {
+    --content-width: 40rem;
+  }
+}
+
 @font-face {
   font-family: 'Clear Sans';
   src: url('./styles/ClearSans-Regular.ttf');
