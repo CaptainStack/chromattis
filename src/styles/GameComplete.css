@@ -1,8 +1,8 @@
 .GameComplete {
   background: var(--mid-primary);
-  width: 540px;
-  height: 540px;
-  border: 15px solid black;
+  width: calc(var(--content-width) - 2 * var(--content-gap));
+  height: calc(var(--content-width) - 2 * var(--content-gap));
+  border: var(--content-gap) solid black;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
