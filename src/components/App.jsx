@@ -16,16 +16,16 @@ import {
   downArrowKeyPressed, achievementsButtonClicked
 } from '../events';
 
-const track1 = `${import.meta.env.BASE_URL}audio/song17.ogg`;
-const track2 = `${import.meta.env.BASE_URL}audio/song21.ogg`;
-const track3 = `${import.meta.env.BASE_URL}audio/charm.ogg`;
-const track4 = `${import.meta.env.BASE_URL}audio/island.ogg`;
-const track5 = `${import.meta.env.BASE_URL}audio/synthwave.ogg`;
-const track6 = `${import.meta.env.BASE_URL}audio/crystalcave.ogg`;
-const track7 = `${import.meta.env.BASE_URL}audio/underwater.ogg`;
-const track8 = `${import.meta.env.BASE_URL}audio/sevenandeight.ogg`;
-const track9 = `${import.meta.env.BASE_URL}audio/lofi.ogg`;
-const track10 = `${import.meta.env.BASE_URL}audio/chiptune.ogg`;
+const track1 = `${import.meta.env.BASE_URL}audio/song17.flac`;
+const track2 = `${import.meta.env.BASE_URL}audio/song21.flac`;
+const track3 = `${import.meta.env.BASE_URL}audio/charm.flac`;
+const track4 = `${import.meta.env.BASE_URL}audio/island.flac`;
+const track5 = `${import.meta.env.BASE_URL}audio/synthwave.flac`;
+const track6 = `${import.meta.env.BASE_URL}audio/crystalcave.flac`;
+const track7 = `${import.meta.env.BASE_URL}audio/underwater.flac`;
+const track8 = `${import.meta.env.BASE_URL}audio/sevenandeight.flac`;
+const track9 = `${import.meta.env.BASE_URL}audio/lofi.flac`;
+const track10 = `${import.meta.env.BASE_URL}audio/chiptune.flac`;
 
 const all_tracks = [track1, track2, track3, track4, track5, track6, track7, track8, track9, track10];
 let playlist = all_tracks.slice();
