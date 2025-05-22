@@ -1,7 +1,7 @@
 import { store } from './index';
-import { DownClickSound } from './components/App';
-import { UpClickSound } from './components/App';
-import { UpDownClickSound } from './components/App';
+import { DownClickSound } from './initial_state';
+import { UpClickSound } from './initial_state';
+import { UpDownClickSound } from './initial_state';
 import { sync_pulse_animations } from './actions';
 
 const processAchievemeNotifications = (achievements, new_achievements) => {

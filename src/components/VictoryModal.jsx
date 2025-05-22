@@ -1,6 +1,6 @@
 import '../styles/VictoryModal.css';
 import { newGameButtonClicked, navigateLevelButtonClicked } from '../events';
-import { VictorySound } from './App';
+import { VictorySound } from '../initial_state';
 
 export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels, last_action, mute_audio}) => {
   return(
