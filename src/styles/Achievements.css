@@ -13,11 +13,11 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .ProgressBar {
     background-color: var(--light-primary);
-    width: 80%;
+    width: 85%;
     height: 1.5rem;
     .progress-percent {
       background-color: var(--dark-primary);

@@ -4,7 +4,7 @@ import '../styles/Achievements.css';
 export const Achievements = ({state, achievements}) => {
   const num_completed_achievements = achievements.filter(achievement => achievement.condition(state) === true).length;
   const num_total_achievements = achievements.length;
-  const percent_complete = num_completed_achievements / num_total_achievements * 100.0;
+  const percent_complete = Math.floor(num_completed_achievements / num_total_achievements * 100);
   const achievement_labels = achievements.map(achievement => 
     <li key={achievement.id} style={{fontWeight: achievement.condition(state) ? 'bold' : null}}>
       {achievement.condition(state) ? '✓' : '✕'} {achievement.text}
