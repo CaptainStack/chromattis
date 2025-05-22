@@ -160,7 +160,7 @@ const default_content =
   tutorial: {
     levels: [
       {
-        text: 'Welcome to Chromattis! Tap "OPEN TUTORIAL" below to restart this tutorial any time.',
+        text: 'Welcome to Chromattis! Tap "OPEN TUTORIAL" to restart this tutorial any time.',
         image: '00-grid.gif',
       },
       {

@@ -151,6 +151,14 @@
       height: 1.5rem;
     }
   }
+
+  .primary-content-container {
+    background: var(--mid-primary);
+    width: calc(var(--content-width) - 2 * var(--content-gap));
+    height: calc(var(--content-width) - 2 * var(--content-gap));
+    border: var(--content-gap) solid var(--dark-background);
+    display: flex;
+  }
 }
 
 @media screen and (max-height: 1070px) and (min-width: 1200px) and (orientation: landscape) {

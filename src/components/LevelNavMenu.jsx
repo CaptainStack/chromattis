@@ -16,7 +16,7 @@ export const LevelNavMenu = ({levels, current_level_index, highest_unlocked_leve
   });
 
   return(
-    <div className='LevelNavMenu' style={{ display: show_level_nav ? null : 'none'}}>
+    <div className='LevelNavMenu primary-content-container' style={{ display: show_level_nav ? null : 'none'}}>
       <div className='row'>
         <span className={`flat-button ${page === 0 ? 'locked' : null}`} onClick={previousLevelSelectPageClicked}>⇦</span>
         <h1>{`Levels ${lower_index}-${upper_index - 1 < levels.length ? upper_index - 1 : levels.length - 1}`}</h1>

@@ -4,7 +4,7 @@ import { VictorySound } from '../initial_state';
 
 export const VictoryModal = ({show_victory, game_in_progress, current_moves, current_level_index, best_score, total_levels, last_action, mute_audio}) => {
   return(
-    <div className={`VictoryModal bounce-container ${show_victory ? 'show' : 'hide'} ${last_action === 'clicktile' ? 'fade-in' : 'instant'}`}>
+    <div className={`VictoryModal primary-content-container bounce-container ${show_victory ? 'show' : 'hide'} ${last_action === 'clicktile' ? 'fade-in' : 'instant'}`}>
       <h2 className='bounce' style={{visibility: current_moves <= best_score ? null : 'hidden'}}>
         {last_action === 'clicktile' && show_victory && !mute_audio ? <audio autoPlay src={VictorySound.src}></audio> : null}
         <span>H</span>

@@ -1,9 +1,4 @@
 .Achievements {
-  background: var(--mid-primary);
-  width: calc(var(--content-width) - 2 * var(--content-gap));
-  height: calc(var(--content-width) - 2 * var(--content-gap));
-  border: var(--content-gap) solid black;
-  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-evenly;

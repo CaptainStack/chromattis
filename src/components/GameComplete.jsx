@@ -7,7 +7,7 @@ export const GameComplete = ({game}) => {
     total_moves += level.moves;
   }
   return(
-    <div className='GameComplete' >
+    <div className='GameComplete primary-content-container' >
       <div class='firework'></div>
       <div class='firework'></div>
       <div class='firework'></div>
