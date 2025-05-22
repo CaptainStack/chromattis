@@ -1,6 +1,5 @@
 .Game {
   background: black;
-  border-radius: 6px;
   padding: var(--content-gap);
   display: grid;
   width: calc(var(--content-width) - 2 * var(--content-gap));

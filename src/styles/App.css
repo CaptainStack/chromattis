@@ -67,7 +67,6 @@
   .flat-button {
     border: 0;
     background: var(--primary);
-    border-radius: 4px;
     padding: 0 10px;
     text-decoration: none;
     color: var(--background);
@@ -91,7 +90,6 @@
   .score-container {
     position: relative;
     background: var(--light-primary);
-    border-radius: 4px;
     text-align: center;
     display: inline-block;
     padding: 8px;

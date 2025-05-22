@@ -7,7 +7,6 @@
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
-  border-radius: 4px;
   position: absolute;
   .level-navigation-button {
     margin: 20px;
