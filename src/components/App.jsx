@@ -218,7 +218,7 @@ export const App = ({state}) => {
             <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
             <span id='undo' title='Click to undo last move [u]' className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
             <span id='install' title='Click to install Chromattis' className='flat-button' hidden>Install ↓</span>
-            <span id='iOSinstall' title='Click to install Chromattis' className='flat-button' hidden onClick={() => alert('Click the Share button and select "Add to Homescreen" to install Chromattis.')}>Install ↓</span>
+            <span id='iOSinstall' title='Click to install Chromattis' className='flat-button' hidden onClick={() => alert('Click the Share button next to your browser bar and select "Add to Homescreen" to install Chromattis.\n\nInstalling Chromattis is optional and gives you offline access, saves your progress, and provides a more native "app" like experience.')}>Install ↓</span>
           </div>
 
           <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
