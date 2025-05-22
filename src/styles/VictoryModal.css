@@ -22,11 +22,11 @@
     transition-delay: 0s;
   }
   & > h1 {
-    font-size: 48px;
+    font-size: 3rem;
   }
   .flat-button {
-    margin-right: 10px;
-    width: 120px;
+    margin-right: 1rem;
+    width: 8rem;
   }
   .victory-share {
     width: 60%;

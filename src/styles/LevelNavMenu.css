@@ -9,21 +9,22 @@
   justify-content: center;
   position: absolute;
   .level-navigation-button {
-    margin: 20px;
+    margin: var(--content-gap);
   }
   .current-level {
     margin: var(--content-gap);
   }
   .row {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: var(--content-gap);
+    margin-right: var(--content-gap);
   }
   .nav-button-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 403px;
+    height: 25rem;
     align-content: flex-start;
+    align-items: center;
   }
   .hide-in-menu {
     display: none;

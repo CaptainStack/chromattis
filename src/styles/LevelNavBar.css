@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: 1.2rem;
+  height: 2rem;
   .hide-in-nav {
     display:none;
   }
@@ -13,26 +14,27 @@
 }
 
 .level-navigation-button {
+  transition: all 0.2s;
   cursor: pointer;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
   border-radius: 50%;
   background-color: var(--primary);
-  display: inline-block;
-  text-align: center;
-  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
   color: var(--background);
   user-select: none;
-  margin-left: 10px;
   &:active {
     transform: scale(0.95);
   }
   &.level-navigation-button.current-level {
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    font-size: 25px;
-    outline: 2px solid var(--dark-primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 2rem;
+    outline: 0.25rem solid var(--dark-primary);
   }
 }

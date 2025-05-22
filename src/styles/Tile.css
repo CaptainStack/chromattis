@@ -12,12 +12,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 500%;
+  resize: both;
+  container-type: inline-size;
+
   &:focus {
     outline: none !important;
   }
   span {
     filter: brightness(75%);
+    font-size: 50cqmin;
   }
 }
 

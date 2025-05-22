@@ -4,8 +4,15 @@
   --light-primary: #bbada0;
   --mid-primary: #cabfb4;
   --background: #faf8ef;
-  --content-width: 600px;
-  --content-gap: 13px;
+  --content-width: 37rem;
+  --content-gap: 1rem;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 420px) {
+  :root {
+    font-size: 11px;
+  }
 }
 
 @font-face {
