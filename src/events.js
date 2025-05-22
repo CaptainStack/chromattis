@@ -25,7 +25,7 @@ export const backspaceKeyPressed = () => {
   const achievements = application.completed_achievements();
   const selected_tile = current_level.board[current_level.currently_selected];
 
-  if (selected_tile) {
+  if (selected_tile && !current_level.in_winning_state()) {
     if (!application.mute_audio) UpDownClickSound.play();
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
@@ -41,7 +41,7 @@ export const enterKeyPressed = () => {
   const current_level = application.game.current_level();
   const selected_tile = current_level.board[current_level.currently_selected];
 
-  if (selected_tile) {
+  if (selected_tile && !current_level.in_winning_state()) {
     if (!application.mute_audio) UpDownClickSound.play();
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
