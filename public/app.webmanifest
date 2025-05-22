@@ -14,6 +14,11 @@
       "src": "favicon.svg",
       "sizes": "144x144",
       "purpose": "any"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "purpose": "maskable"
     }
   ],
   "screenshots" : [
