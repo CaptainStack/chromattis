@@ -6,7 +6,7 @@ Chromattis is a simple, fun, and challenging puzzle game by [Andre Stackhouse](h
 
 ![Homepage screenshot](https://captainstack.github.io/chromattis/chromattis-social-preview.png "Chromattis homepage screenshot")
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) and [Redux](https://github.com/reduxjs/redux). Hosting done via [GitHub Pages](https://captainstack.github.io/chromattis/).
+This project was bootstrapped with [Vite](https://vite.dev) and [Redux](https://github.com/reduxjs/redux). Hosting done via [GitHub Pages](https://captainstack.github.io/chromattis/).
 
 ## How to play
 1. Chromattis is played by tapping or clicking `Tiles` on the game `Board`.
@@ -83,9 +83,9 @@ Installing `git` is also recommended in order to clone the repository, track cha
 ## Running chromattis
 To run Chromattis locally type the following command from the root directory.
 
-`$ ./chromattis> npm run start`
+$ ./chromattis> `npm start` (or npm run dev)
 
-The game should now be accessible and playable in a web browser. If the game does not start automatically open a a browser and go to `https://localhost/chromattis:3000`.
+The game should now be accessible and playable in a web browser. If the game does not start automatically open a browser and go to `https://localhost:3000`.
 
 ## Development
 Chromattis is a single page application (SPA) that runs entirely client-side within a web browser. It may be installed locally as a progressive web application (PWA).
@@ -106,7 +106,7 @@ Chromattis is a single page application (SPA) that runs entirely client-side wit
 
 ### Important files
 * `index.html` - the main application container that the React app loads into.
-* `index.js` - the JavaScript file which binds the React app to index.html.
+* `index.jsx` - the JavaScript file which binds the React app to index.html.
 * `actions.js` - The file which contains all JavaScript actions fired from event handlers or reducers.
 * `events.js` - The file which contains all UI event listeners.
 * `reducer.js` - The file which specifies all operations which modify the Redux state. All state management must be done via reducers defined in this file.
@@ -132,3 +132,7 @@ However, before investing significant development time with hopes that your chan
 If you spot an issue you'd like to take on consider contacting the developer first to set expectations and create a plan of action.
 
 Currently Chromattis makes no reveneue and there is no plan to incorporate paid contributors to the project.
+
+### Donations ###
+
+ If you'd like to support Chromattis's development financially you may donate to the project on [Open Collective](https://www.opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me). Your donation is helping to fund open source indie game development and is much appreciated.

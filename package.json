@@ -10,6 +10,7 @@
     "redux": "^5.0.1"
   },
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "predeploy": "npm run build",
