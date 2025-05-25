@@ -23,7 +23,7 @@ export const LevelNavMenu = ({levels, current_level_index, highest_unlocked_leve
         <span className={`flat-button ${page * num_displayed_levels + num_displayed_levels > levels.length ? 'locked' : null}`} onClick={nextLevelSelectPageClicked}>→</span>
       </div>
       <div className='nav-button-container'>{buttons}</div>
-      <span className='flat-button' onClick={toggleLevelNavMenu}>Back to game ↩</span>
+      <span className='flat-button clickable' onClick={toggleLevelNavMenu}>Back to game ↩</span>
     </div>
   );
 }

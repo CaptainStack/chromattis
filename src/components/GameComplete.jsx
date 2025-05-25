@@ -16,7 +16,7 @@ export const GameComplete = ({game}) => {
       <h3>Try to do it in fewer or move on?</h3>
       <div className='row'>
         <span id='previous_puzzle_button' className={`flat-button`} onClick={ navigateLevelButtonClicked(0) }>↩ Back to start</span>
-        <a className='flat-button' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Donate</a>
+        <a className='flat-button clickable' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Donate</a>
       </div>
       <h3>Tell the world:</h3>
       <div className='row victory-share'>

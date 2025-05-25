@@ -23,7 +23,7 @@ export const VictoryModal = ({show_victory, game_in_progress, current_moves, cur
       <h3>Try to do it in fewer or move on?</h3>
       <div className='row'>
         <span id='previous_puzzle_button' className={`flat-button ${current_level_index > 0 ? null : 'locked'}`} onClick={ navigateLevelButtonClicked(current_level_index > 0 ? current_level_index - 1 : current_level_index) }>← Previous</span>
-        <span className='flat-button' onClick={ newGameButtonClicked }>Reset ⇵</span>
+        <span className='flat-button clickable' onClick={ newGameButtonClicked }>Reset ⇵</span>
         <span id='next_puzzle_button' className={`flat-button ${current_level_index < total_levels - 1 ? null : 'locked'}`} onClick={ navigateLevelButtonClicked(current_level_index < total_levels ? current_level_index + 1 : current_level_index) }>Next →</span>
       </div>
       <h3>Brag about it:</h3>

@@ -27,9 +27,6 @@
   font-size: 1rem;
   color: var(--background);
   user-select: none;
-  &:active {
-    transform: scale(0.95);
-  }
   &.level-navigation-button.current-level {
     width: 2.5rem;
     height: 2.5rem;

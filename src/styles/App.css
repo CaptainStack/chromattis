@@ -57,7 +57,7 @@
     justify-content: space-between;
   }
 
-  small a {
+  .Credits a {
     color: var(--dark-primary);
   }
 
@@ -88,9 +88,8 @@
     cursor: not-allowed;
   }
 
-  .flat-button:active {
+  .clickable:active {
     transform: scale(0.95);
-    transition: 0.08s;
   }
 
   .score-container {

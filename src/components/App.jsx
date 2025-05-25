@@ -218,7 +218,7 @@ export const App = ({state}) => {
               <h3>BEST</h3>
               <p>{current_level.best_score}</p>
             </div>
-            <div className='score-container achievements' onClick={achievementsButtonClicked}>
+            <div className='score-container achievements clickable' onClick={achievementsButtonClicked}>
               <h3>ACHIEVEMENTS</h3>
               <p>🏆</p>
             </div>
@@ -226,10 +226,10 @@ export const App = ({state}) => {
 
           <div className='row'>
             <h3 className='goal'><strong>Make all Tiles the same value</strong></h3>
-            <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button' onClick={newGameButtonClicked}>Reset ⇵</span>
+            <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button clickable' onClick={newGameButtonClicked}>Reset ⇵</span>
             <span id='undo' title='Click to undo last move [u]' className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
-            <span id='install' title='Click to install Chromattis' className='flat-button' hidden>Install ↓</span>
-            <span id='iOSinstall' title='Click to install Chromattis' className='flat-button' hidden onClick={() => alert('Click the Share button next to your browser bar and select "Add to Homescreen" to install Chromattis.\n\nInstalling Chromattis is optional and gives you offline access, saves your progress, and provides a more native "app" like experience.')}>Install ↓</span>
+            <span id='install' title='Click to install Chromattis' className='flat-button clickable' hidden>Install ↓</span>
+            <span id='iOSinstall' title='Click to install Chromattis' className='flat-button clickable' hidden onClick={() => alert('Click the Share button next to your browser bar and select "Add to Homescreen" to install Chromattis.\n\nInstalling Chromattis is optional and gives you offline access, saves your progress, and provides a more native "app" like experience.')}>Install ↓</span>
           </div>
 
           <LevelNavBar hide_tooltips={state.hide_tooltips} levels={state.game.levels} current_level_index={state.game.current_level_index} highest_unlocked_level={state.game.highest_unlocked_level()}/>
@@ -246,7 +246,7 @@ export const App = ({state}) => {
         </div>
 
         <div className='third'>
-          <p className='instructions' onClick={tutorialButtonClicked} title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+          <p className='instructions' onClick={tutorialButtonClicked} title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
           <hr/>
 
@@ -261,19 +261,19 @@ export const App = ({state}) => {
 
           <hr/>
 
-          <small>
+          <span className='Credits'>
             Created by <a href='//captainstack.github.io/public-stackhouse' target='_blank' rel='noreferrer'><strong>Andre Stackhouse </strong></a> (<a href='//twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A3000%2F&ref_src=twsrc%5Etfw&screen_name=CaptainStack&tw_p=followbutton' target='_blank' rel='noreferrer'>@CaptainStack</a>)<br/>
             Open source code on <a href='//github.com/CaptainStack/chromattis' target='_blank' rel='noreferrer'><strong>GitHub</strong></a> under an <a href='//github.com/CaptainStack/chromattis/blob/master/LICENSE' target='_blank' rel='noreferrer'><strong>MIT license</strong></a><br/>
             Public domain music courtesy <a href='//opengameart.org' target='_blank' rel='noreferrer'><strong>OpenGameArt.org</strong></a><br/>
             <a href='//forms.gle/YVkRv9uepXTjW46r9' target='_blank' rel='noreferrer'><strong>Submit feedback</strong></a>&nbsp;&nbsp;<a href='//forms.gle/rFaBNkFPJNZiF8t18' target='_blank' rel='noreferrer'><strong>Report bugs</strong></a>
-          </small>
+          </span>
 
           {/* SOCIAL MEDIA BUTTONS */}
           <div className='row social'>
             <a className='social-share' href={`//twitter.com/share?text=${encodeURIComponent('Are you smart enough to solve #Chromattis? A new puzzle game by Andre Stackhouse (@CaptainStack).\n\n Play for free here:\n')}`} data-show-count='true' target='_blank' rel='noreferrer'><img src={`${import.meta.env.BASE_URL}x.png`} alt='Post on X'/></a>
             <a className='social-share' href='//facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcaptainstack.github.io%2Fchromattis%2F&amp;src=sdkpreparse' target='_blank' rel='noreferrer'><img src={`${import.meta.env.BASE_URL}facebook.png`} alt='Share on Facebook'/></a>
             <a className='social-share' href={`//reddit.com/submit?url=${encodeURIComponent(window.location)}&title=${encodeURIComponent('Just discovered a new puzzle game called Chromattis. It\'s challenging but very fun (and free)!')}`} target='_blank' rel='noreferrer'> <img src={`${import.meta.env.BASE_URL}reddit.png`} alt='submit to reddit'/></a>
-            <a className='flat-button' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Support on Open Collective</a>
+            <a className='flat-button clickable' href='//opencollective.com/public-stackhouse/projects/chromattis/donate?interval=month&amount=10&contributeAs=me' target='_blank' rel='noreferrer'>Support on Open Collective</a>
           </div>
         </div>
       </div>

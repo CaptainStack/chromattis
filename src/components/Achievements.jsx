@@ -21,7 +21,7 @@ export const Achievements = ({state, achievements}) => {
       <ul>
         {achievement_labels}
       </ul>
-      <span className='flat-button' onClick={achievementsButtonClicked}>Back to game ↩</span>
+      <span className='flat-button clickable' onClick={achievementsButtonClicked}>Back to game ↩</span>
     </div>
   );
 }
