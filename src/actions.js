@@ -3,6 +3,11 @@ import { GameMusic } from './components/App';
 import { DownClickSound } from './initial_state';
 import { num_displayed_levels } from './components/LevelNavMenu';
 
+export const set_touch_flag = (state, value) => {
+  state.touch_action = value;
+  return state;
+}
+
 export const select_tile = (state, tile_id) => {
   const current_level = state.game.current_level();
   current_level.currently_selected = tile_id;

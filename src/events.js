@@ -132,40 +132,87 @@ export const cliPreview = (tile) => () => {
   }
 }
 
+let touchStartTarget = null;
+let cancelPress = null;
+let clickStartTarget = null;
+
+export const tileTouchStart = tile => event => {
+  const application = store.getState();
+  if (!application.mute_audio) DownClickSound.play();
+  touchStartTarget = event.target
+  store.dispatch({type: 'TOUCH_STARTED', value: true});
+  store.dispatch({ type: 'SELECT_TILE', tile_id: tile.id });
+}
+
+export const tileTouchEnd = tile => event => {
+  const application = store.getState();
+  const touch = event.changedTouches[0];
+  const x = touch.clientX;
+  const y = touch.clientY;
+  let touchEndTarget = document.elementFromPoint(x, y);document.elementFromPoint(x, y);
+
+  const current_level = application.game.current_level();
+  const selected_tile = current_level.board[current_level.currently_selected];
+  
+  if (selected_tile && !current_level.in_winning_state() && touchStartTarget === touchEndTarget && !cancelPress) {
+    if (!application.mute_audio) UpClickSound.play();
+    if ((event.touches && event.touches.length === 1)) {
+      store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: tile });  
+    } else {
+      store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: tile });
+    }
+    touchStartTarget = null;
+  }
+  store.dispatch({ type: 'SELECT_TILE', tile_id: null });
+  store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+
+  cancelPress = null;
+}
+
 export const tileUpClicked = (clicked_tile) => event => {
+  let clickEndTarget = event.target;
   const application = store.getState();
   const achievements = application.completed_achievements();
-  const current_level = application.game.current_level();
-  const down_clicked_tile = current_level.board[current_level.currently_selected];
+  
+  // Suppress click actions triggered by touch events, set touch_action flag to track
+  if (application.touch_action) {
+    store.dispatch({type: 'TOUCH_STARTED', value: false});
+    return;
+  } 
+  if (clickStartTarget !== clickEndTarget) {
+    return;
+  }
 
-  if (event.button === 0 && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+  if (event.button === 0) {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Press Tile ${clicked_tile.id}`);
-    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: down_clicked_tile });
+    store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: clicked_tile });
   }
-  else if ((event.button === 2 || (event.touches && event.touches.length === 1)) && (clicked_tile.will_change || down_clicked_tile === clicked_tile)) {
+  else if (event.button === 2) {
     if (!application.mute_audio) UpClickSound.play();
     console.log(`Reverse press Tile ${clicked_tile.id}`);
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: clicked_tile });
   }
-  if (event.touches) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   cliPrintBoard();
 
   const new_achievements = application.completed_achievements();
   processAchievemeNotifications(achievements, new_achievements);
-  event.stopPropagation();
 }
 
 export const tileDownClicked = (clicked_tile) => event => {
-  if (!store.getState().mute_audio && (event.button === 0 || (event.touches))) DownClickSound.play();
-  store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
-  event.stopPropagation();
+  clickStartTarget = event.target;
+  const application = store.getState();
+  if (!application.touch_action) {
+    if (!application.mute_audio && (event.button === 0 || (event.touches))) DownClickSound.play();
+    store.dispatch({ type: 'HIGHLIGHT_TILES', tile: clicked_tile });
+  }
 }
 
 export const tileHovered = hovered_tile => () => {
   sync_pulse_animations();
-
-  store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+  if (!store.getState().touch_action) {
+    store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
+  }
 }
 
 export const muteMusicButtonClicked = () => {
@@ -178,7 +225,13 @@ export const muteMusicButtonClicked = () => {
   processAchievemeNotifications(achievements, new_achievements);
 }
 
-export const tileUnhovered = hovered_tile => () => store.dispatch({ type: 'CLEAR_HIGHLIGHTS', tile: hovered_tile });
+export const tileUnhovered = hovered_tile => () => {
+  if (!store.getState().touch_action) {
+    store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
+  }
+}
+
+export const tileLongPressed = () => () => cancelPress = true;
 export const undoButtonClicked = () => store.dispatch({ type: 'UNDO_MOVE' });
 export const nextTutorialButtonClicked = () => store.dispatch({ type: 'NEXT_TUTORIAL' });
 export const previousTutorialButtonClicked = () => store.dispatch({ type: 'PREVIOUS_TUTORIAL' });

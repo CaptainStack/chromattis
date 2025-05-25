@@ -21,6 +21,7 @@
   span {
     filter: brightness(75%);
     font-size: 50cqmin;
+    pointer-events: none;
   }
 }
 

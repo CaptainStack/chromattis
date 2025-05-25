@@ -91,6 +91,7 @@ const default_content =
   music_enabled_once: false,
   show_achievement_notification: true,
   achievement_text: null,
+  touch_action: null,
   completed_achievements: completed_achievements,
   game: {
     levels: [

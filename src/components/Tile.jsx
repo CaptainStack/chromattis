@@ -1,5 +1,5 @@
 import '../styles/Tile.css';
-import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview } from '../events';
+import { tileUpClicked, tileDownClicked, tileHovered, tileUnhovered, cliClick, cliPreview, tileTouchStart, tileTouchEnd, tileLongPressed } from '../events';
 
 const color_map = {
   0: {hex: '#B71234', string: 'Red'},
@@ -16,8 +16,9 @@ export const Tile = ({tile, index, currently_selected, preview_mode, game_in_pro
        onMouseEnter={tileHovered(tile)}
        onMouseLeave={tileUnhovered(tile)}
        onMouseUp={tileUpClicked(tile)}
-       onTouchStart={tileDownClicked(tile)}
-       onTouchEnd={tileUpClicked(tile)}
+       onTouchStart={tileTouchStart(tile)}
+       onTouchEnd={tileTouchEnd(tile)}
+       onContextMenu={tileLongPressed(tile)}
        title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles.sort((a, b) => a - b)}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,

@@ -6,7 +6,7 @@ import {
   toggle_mute_music, toggle_hide_numbers, toggle_hide_colors,
   next_level_nav_page, previous_level_nav_page, toggle_level_nav_menu,
   toggle_hide_tooltips, null_last_action, select_tile, toggle_achievements,
-  update_achievement_text,
+  update_achievement_text, set_touch_flag
  } from './actions';
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -57,6 +57,8 @@ export const reducer = (state = INITIAL_STATE, action) => {
       return null_last_action(state);
     case 'SELECT_TILE':
       return select_tile(state, action.tile_id);
+    case 'TOUCH_STARTED':
+      return set_touch_flag(state, action.value);
     default:
       return state;
   }
