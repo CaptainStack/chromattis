@@ -169,13 +169,13 @@ export const navigate_level = (state, level) => {
 }
 
 export const undo_move = state => {
-  if (!state.mute_audio) DownClickSound.play();
   const current_level = state.game.current_level();
   const last_move = current_level.last_move ? current_level.last_move : null;
 
   if (last_move) {
     state.current_display = 'game';
     console.log('Undoing last move...');
+    if (!state.mute_audio) DownClickSound.play();
     if (last_move.reverse) {
       advance_tile_color(state, last_move.tile);
       current_level.last_move = null;

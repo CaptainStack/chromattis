@@ -4,6 +4,11 @@ import { UpClickSound } from './initial_state';
 import { UpDownClickSound } from './initial_state';
 import { sync_pulse_animations } from './actions';
 
+let touchStartTarget = null;
+let cancelPress = null;
+let clickStartTarget = null;
+let enterKeyCurrentlyPressed = null;
+
 const processAchievemeNotifications = (achievements, new_achievements) => {
   if (achievements.length !== new_achievements.length) {
     store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
@@ -22,11 +27,20 @@ export const escapeKeyPressed = () => {
 export const backspaceKeyPressed = () => {
   const application = store.getState();
   const current_level = application.game.current_level();
+  const selected_tile = current_level.board[current_level.currently_selected];
+  
+  if (!application.mute_audio) UpClickSound.play();
+  store.dispatch({ type: 'HIGHLIGHT_TILES', tile: selected_tile });
+}
+
+export const backspaceKeyReleased = event => {
+  const application = store.getState();
+  const current_level = application.game.current_level();
   const achievements = application.completed_achievements();
   const selected_tile = current_level.board[current_level.currently_selected];
 
   if (selected_tile && !current_level.in_winning_state()) {
-    if (!application.mute_audio) UpDownClickSound.play();
+    if (!application.mute_audio) DownClickSound.play();
     store.dispatch({ type: 'PREVIOUS_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
     const new_achievements = application.completed_achievements();
@@ -37,12 +51,27 @@ export const backspaceKeyPressed = () => {
 
 export const enterKeyPressed = () => {
   const application = store.getState();
+  const current_level = application.game.current_level();
+  const selected_tile = current_level.board[current_level.currently_selected];
+  
+  enterKeyCurrentlyPressed = true;
+
+  if (selected_tile && !current_level.in_winning_state()) {
+    if (!application.mute_audio) DownClickSound.play();
+    store.dispatch({ type: 'HIGHLIGHT_TILES', tile: selected_tile });
+  }
+}
+
+export const enterKeyReleased = () => {
+  const application = store.getState();
   const achievements = application.completed_achievements();
   const current_level = application.game.current_level();
   const selected_tile = current_level.board[current_level.currently_selected];
 
+  enterKeyCurrentlyPressed = false;
+
   if (selected_tile && !current_level.in_winning_state()) {
-    if (!application.mute_audio) UpDownClickSound.play();
+    if (!application.mute_audio) UpClickSound.play();
     store.dispatch({ type: 'ADVANCE_TILE_COLOR', tile: selected_tile });
     store.dispatch({ type: 'SELECT_TILE', tile_id: selected_tile.id });
     const new_achievements = application.completed_achievements();
@@ -51,17 +80,28 @@ export const enterKeyPressed = () => {
   if (current_level.in_winning_state()) store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
 }
 
-export const upArrowKeyPressed = () => {
+export const upArrowKeyPressed = event => {
+  if (enterKeyCurrentlyPressed) {
+    escapeKeyPressed(event);
+    return;
+  }
+
   const application = store.getState();
   const level = application.game.current_level();
   const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
   const tile_id = level.currently_selected !== null ? level.currently_selected - row_length >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
+
   if (!application.mute_audio) UpClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
-export const downArrowKeyPressed = () => {
+export const downArrowKeyPressed = event => {
+  if (enterKeyCurrentlyPressed) {
+    escapeKeyPressed(event);
+    return;
+  }
+
   const application = store.getState();
   const level = application.game.current_level();
   const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
@@ -72,7 +112,12 @@ export const downArrowKeyPressed = () => {
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
-export const rightArrowKeyPressed = () => {
+export const rightArrowKeyPressed = event => {
+  if (enterKeyCurrentlyPressed) {
+    escapeKeyPressed(event);
+    return;
+  }
+
   const application = store.getState();
   const level = application.game.current_level();
   const tile_id = level.currently_selected !== null ? level.currently_selected === null || level.currently_selected === level.board.length - 1 ? level.currently_selected : level.currently_selected + 1 : 0;
@@ -81,7 +126,12 @@ export const rightArrowKeyPressed = () => {
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
 }
 
-export const leftArrowKeyPressed = () => {
+export const leftArrowKeyPressed = event => {
+  if (enterKeyCurrentlyPressed) {
+    escapeKeyPressed(event);
+    return;
+  }
+
   const application = store.getState();
   const level = application.game.current_level();
   const tile_id = level.currently_selected !== null ? level.currently_selected === 0 ? level.currently_selected : level.currently_selected - 1 : level.board.length - 1;
@@ -131,10 +181,6 @@ export const cliPreview = (tile) => () => {
     console.log('This level is currently solved. Select a new level, or reset the puzzle using the shuffle() command.');
   }
 }
-
-let touchStartTarget = null;
-let cancelPress = null;
-let clickStartTarget = null;
 
 export const tileTouchStart = tile => event => {
   const application = store.getState();

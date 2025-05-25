@@ -12,9 +12,8 @@ import {
   newGameButtonClicked, undoButtonClicked, tutorialButtonClicked, 
   muteSoundButtonClicked, muteMusicButtonClicked, hideNumbersButtonClicked, 
   hideColorsButtonClicked, toggleHideTooltips, nullLastActionOnInitialPageLoad, 
-  rightArrowKeyPressed, leftArrowKeyPressed, enterKeyPressed, 
-  backspaceKeyPressed, escapeKeyPressed, upArrowKeyPressed, 
-  downArrowKeyPressed, achievementsButtonClicked
+  rightArrowKeyPressed, leftArrowKeyPressed, enterKeyPressed, backspaceKeyPressed, 
+  escapeKeyPressed, upArrowKeyPressed, downArrowKeyPressed, achievementsButtonClicked, enterKeyReleased, backspaceKeyReleased
 } from '../events';
 
 let playlist = all_tracks.slice();
@@ -80,34 +79,43 @@ export const App = ({state}) => {
       installButton.hidden = true;
     }
 
-    const keyboardControls = event => {
+    const keyboardPressEvents = event => {
       switch(event.key) {
-        case 'ArrowLeft': leftArrowKeyPressed(); event.preventDefault(); break;
-        case 'ArrowRight': rightArrowKeyPressed(); event.preventDefault(); break;
-        case 'ArrowUp': upArrowKeyPressed(); event.preventDefault(); break;
-        case 'ArrowDown': downArrowKeyPressed(); event.preventDefault(); break;
-        case 'Enter': enterKeyPressed(); break;
-        case 'Backspace': backspaceKeyPressed(); break;
-        case 'Escape': escapeKeyPressed(); break;
-        case 'r': newGameButtonClicked(); break;
-        case 't': tutorialButtonClicked(); break;
-        case 'u': undoButtonClicked(); break;
-        case 'a': achievementsButtonClicked(); break;
-        case 'm': document.getElementById('music_toggle').click(); break;
-        case 's': document.getElementById('sound_toggle').click(); break;
-        case 'n': document.getElementById('numbers_toggle').click(); break;
-        case 'c': document.getElementById('colors_toggle').click(); break;
-        case 'i': document.getElementById('tooltips_toggle').click(); break;
-        case '=': document.getElementById('next_puzzle_button').click(); break;
-        case '-': document.getElementById('previous_puzzle_button').click(); break;
-        case '[': document.getElementById('previous_tutorial_button').click(); break;
-        case ']': document.getElementById('next_tutorial_button').click(); break;
+        case 'ArrowLeft': event.repeat ? null : leftArrowKeyPressed(event); event.preventDefault(); break;
+        case 'ArrowRight': event.repeat ? null : rightArrowKeyPressed(event); event.preventDefault(); break;
+        case 'ArrowUp': event.repeat ? null : upArrowKeyPressed(event); event.preventDefault(); break;
+        case 'ArrowDown': event.repeat ? null : downArrowKeyPressed(event); event.preventDefault(); break;
+        case 'Enter': event.repeat ? null : enterKeyPressed(event); break;
+        case 'Backspace': event.repeat ? null : backspaceKeyPressed(event); break;
+        case 'Escape': event.repeat ? null : escapeKeyPressed(event); break;
+        case 'r': event.repeat ? null : newGameButtonClicked(event); break;
+        case 't': event.repeat ? null : tutorialButtonClicked(event); break;
+        case 'u': event.repeat ? null : undoButtonClicked(event); break;
+        case 'a': event.repeat ? null : achievementsButtonClicked(event); break;
+        case 'm': event.repeat ? null : document.getElementById('music_toggle').click(); break;
+        case 's': event.repeat ? null : document.getElementById('sound_toggle').click(); break;
+        case 'n': event.repeat ? null : document.getElementById('numbers_toggle').click(); break;
+        case 'c': event.repeat ? null : document.getElementById('colors_toggle').click(); break;
+        case 'i': event.repeat ? null : document.getElementById('tooltips_toggle').click(); break;
+        case '=': event.repeat ? null : document.getElementById('next_puzzle_button').click(); break;
+        case '-': event.repeat ? null : document.getElementById('previous_puzzle_button').click(); break;
+        case '[': event.repeat ? null : document.getElementById('previous_tutorial_button').click(); break;
+        case ']': event.repeat ? null : document.getElementById('next_tutorial_button').click(); break;
         case '~': localStorage.clear(); window.location.reload(); break;
         default: break;
       }
     }
 
-    document.addEventListener('keydown', keyboardControls);
+    const keyboardReleaseEvents = event => {
+      switch(event.key) {
+        case 'Enter': enterKeyReleased(event); break;
+        case 'Backspace': backspaceKeyReleased(event); break;
+        default: break;
+      }
+    }
+
+    document.addEventListener('keydown', keyboardPressEvents);
+    document.addEventListener('keyup', keyboardReleaseEvents);
 
     let connectedGamepads = {};
     let isPolling = true;
@@ -186,7 +194,10 @@ export const App = ({state}) => {
       if (isPolling) requestAnimationFrame(updateGamepadState);
     }
 
-    return () => document.removeEventListener('keydown', keyboardControls);
+    return () => { 
+      document.removeEventListener('keydown', keyboardPressEvents);
+      document.removeEventListener('keyup', keyboardReleaseEvents);
+    }
   }, [state.mute_audio]);
 
   const current_level = state.game.current_level();
