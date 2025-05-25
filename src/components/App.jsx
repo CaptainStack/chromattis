@@ -235,7 +235,7 @@ export const App = ({state}) => {
         </div>
 
         <div className='third'>
-          <p onClick={tutorialButtonClicked} title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
+          <p className='instructions' onClick={tutorialButtonClicked} title={state.hide_tooltips ? null : 'Open tutorial [t]'}><strong style={{textDecoration: 'underline', cursor:'pointer'}}>OPEN TUTORIAL</strong> Tap to advance sets of Tiles to their next color. Two-finger tap or right-click to reverse them to their previous. The six colors cycle in the order red, orange, yellow, green, blue, white.</p>
 
           <hr/>
 

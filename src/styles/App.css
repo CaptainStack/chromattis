@@ -61,8 +61,9 @@
     color: var(--dark-primary);
   }
 
-  p {
+  .instructions {
     line-height: 1.3;
+    font-size: 1.15rem
   }
 
   .flat-button {
@@ -104,6 +105,7 @@
     font-size: 1.5rem;
     color: var(--background);
     font-weight: bold;
+    min-height: 2rem;
   }
 
   .score-container.achievements {
