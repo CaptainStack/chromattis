@@ -84,7 +84,7 @@ export const App = ({state}) => {
       switch(event.key) {
         case 'ArrowLeft': leftArrowKeyPressed(); event.preventDefault(); break;
         case 'ArrowRight': rightArrowKeyPressed(); event.preventDefault(); break;
-        case 'ArrowUp': upArrowKeyPressed(); event.preventDefault(); event.preventDefault(); break;
+        case 'ArrowUp': upArrowKeyPressed(); event.preventDefault(); break;
         case 'ArrowDown': downArrowKeyPressed(); event.preventDefault(); break;
         case 'Enter': enterKeyPressed(); break;
         case 'Backspace': backspaceKeyPressed(); break;
