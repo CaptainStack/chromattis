@@ -120,7 +120,12 @@ export const rightArrowKeyPressed = event => {
 
   const application = store.getState();
   const level = application.game.current_level();
-  const tile_id = level.currently_selected !== null ? level.currently_selected === null || level.currently_selected === level.board.length - 1 ? level.currently_selected : level.currently_selected + 1 : 0;
+  const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  const tile_id = level.currently_selected !== null ? 
+    (level.currently_selected + 1) % row_length === 0 ? 
+    level.currently_selected : 
+    level.currently_selected + 1 : 
+    0;
   if (!application.mute_audio) UpClickSound.play();
   sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
@@ -134,7 +139,12 @@ export const leftArrowKeyPressed = event => {
 
   const application = store.getState();
   const level = application.game.current_level();
-  const tile_id = level.currently_selected !== null ? level.currently_selected === 0 ? level.currently_selected : level.currently_selected - 1 : level.board.length - 1;
+  const row_length = (level.board.length / Math.floor(Math.sqrt(level.board.length)));
+  const tile_id = level.currently_selected !== null ? 
+    (level.currently_selected) % row_length === 0 ? 
+    level.currently_selected : 
+    level.currently_selected - 1 : 
+    level.board.length - 1;
   sync_pulse_animations();
   if (!application.mute_audio) DownClickSound.play();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
