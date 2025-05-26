@@ -9,7 +9,13 @@
   --content-gap: 1rem;
   font-size: 16px;
 }
-
+@media screen and (max-height: 412px) and (orientation: landscape) {
+  :root {
+    --content-width: 100dvh;
+    --content-gap: 2.5dvh;
+    font-size: 9px;
+  }
+}
 @media screen and (max-width: 420px) {
   :root {
     font-size: 11px;

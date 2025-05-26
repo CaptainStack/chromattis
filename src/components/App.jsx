@@ -227,7 +227,7 @@ export const App = ({state}) => {
           <div className='row'>
             <h3 className='goal'><strong>Make all Tiles the same value</strong></h3>
             <span id='reset_game' title='Click to reset the puzzle [r]' className='flat-button clickable' onClick={newGameButtonClicked}>Reset ⇵</span>
-            <span id='undo' title='Click to undo last move [u]' className={`flat-button ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
+            <span id='undo' title='Click to undo last move [u]' className={`flat-button clickable ${state.game.current_level().last_move ? null : 'locked'}`} onClick={undoButtonClicked}>Undo ↺</span>
             <span id='install' title='Click to install Chromattis' className='flat-button clickable' hidden>Install ↓</span>
             <span id='iOSinstall' title='Click to install Chromattis' className='flat-button clickable' hidden onClick={() => alert('Click the Share button next to your browser bar and select "Add to Homescreen" to install Chromattis.\n\nInstalling Chromattis is optional and gives you offline access, saves your progress, and provides a more native "app" like experience.')}>Install ↓</span>
           </div>

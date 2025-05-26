@@ -166,9 +166,10 @@
   }
 }
 
-@media screen and (max-height: 1070px) and (min-width: 1200px) and (orientation: landscape) {
+@media screen and (max-height: 1070px) and (orientation: landscape) {
   .App {
-    height: 100vh;
+    height: 100dvh;
+    width: 100dvw;
     .main-container {
       min-width: 75rem;
       max-height: var(--content-width);
