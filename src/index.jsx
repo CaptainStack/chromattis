@@ -11,7 +11,7 @@ const root = createRoot(document.getElementById('root'));
 const render = () => root.render(<StrictMode><App state={application}/></StrictMode>);
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelector('body').addEventListener(['mouseup', 'touchend'], event => {
+  document.querySelector('body').addEventListener('mousedown', event => {
     if (event.target.className !== 'Tile') store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   });
 
