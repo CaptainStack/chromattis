@@ -202,6 +202,7 @@ export const tileTouchStart = tile => event => {
 
 export const tileTouchEnd = tile => event => {
   const application = store.getState();
+  const achievements = application.completed_achievements();
   const touch = event.changedTouches[0];
   const x = touch.clientX;
   const y = touch.clientY;
@@ -223,6 +224,8 @@ export const tileTouchEnd = tile => event => {
   store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
 
   cancelPress = null;
+  const new_achievements = application.completed_achievements();
+  processAchievemeNotifications(achievements, new_achievements);
 }
 
 export const tileUpClicked = (clicked_tile) => event => {
