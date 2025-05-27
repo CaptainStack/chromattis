@@ -9,6 +9,14 @@
   --content-gap: 1rem;
   font-size: 16px;
 }
+
+@media screen and (max-height: 650px) {
+  :root {
+    --content-width: 35rem;
+    font-size: 15px;
+  }
+}
+
 @media screen and (max-height: 412px) and (orientation: landscape) {
   :root {
     --content-width: 34rem;

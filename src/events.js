@@ -108,8 +108,8 @@ export const downArrowKeyPressed = event => {
   const num_rows = Math.floor(Math.sqrt(level.board.length));
   const tile_id = level.currently_selected !== null ? level.currently_selected < row_length * (num_rows - 1) ? level.currently_selected + row_length : level.currently_selected : 0;
   if (!application.mute_audio) DownClickSound.play();
-  sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+  sync_pulse_animations();
 }
 
 export const rightArrowKeyPressed = event => {
@@ -127,8 +127,8 @@ export const rightArrowKeyPressed = event => {
     level.currently_selected + 1 : 
     0;
   if (!application.mute_audio) UpClickSound.play();
-  sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+  sync_pulse_animations();
 }
 
 export const leftArrowKeyPressed = event => {
@@ -145,9 +145,9 @@ export const leftArrowKeyPressed = event => {
     level.currently_selected : 
     level.currently_selected - 1 : 
     level.board.length - 1;
-  sync_pulse_animations();
   if (!application.mute_audio) DownClickSound.play();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+  sync_pulse_animations();
 }
 
 export const cliPrintBoard = () => {
@@ -268,10 +268,10 @@ export const tileDownClicked = (clicked_tile) => event => {
 }
 
 export const tileHovered = hovered_tile => () => {
-  sync_pulse_animations();
   if (!store.getState().touch_action) {
     store.dispatch({ type: 'PREVIEW_TILES', tile: hovered_tile });
   }
+  sync_pulse_animations();
 }
 
 export const muteMusicButtonClicked = () => {
@@ -288,6 +288,7 @@ export const tileUnhovered = hovered_tile => () => {
   if (!store.getState().touch_action) {
     store.dispatch({ type: 'CLEAR_HIGHLIGHTS' });
   }
+  sync_pulse_animations();
 }
 
 export const tileLongPressed = () => () => cancelPress = true;
@@ -312,6 +313,7 @@ export const newGameButtonClicked = () => {
     store.dispatch({ type: 'SHUFFLE_COLORS' });
   }, 50);
   setTimeout(() => { clearInterval(interval); cliPrintBoard(); }, 800);
+  sync_pulse_animations();
 }
 
 export const navigateLevelButtonClicked = level_index => () => {

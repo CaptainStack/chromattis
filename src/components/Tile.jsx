@@ -22,14 +22,17 @@ export const Tile = ({tile, index, currently_selected, preview_mode, game_in_pro
        title={hide_tooltips ? null : `Tile ${index}${hide_colors ? '': `\nColor: ${color_map[tile.current_color].string}`}${hide_numbers ? '' : `\nNumber: ${tile.current_color}`}\nWill change Tiles [${tile.target_tiles.sort((a, b) => a - b)}]`}
        style={{
           backgroundColor: hide_colors ? 'silver' : color_map[tile.current_color].hex,
-          outline: currently_selected ? '0.25rem solid Aqua' : tile.preview || tile.will_change ? '0.25rem dashed Aqua' : null,
+          outline: currently_selected ? '0.4rem solid Aqua' : tile.preview || tile.will_change ? '0.2rem dashed Aqua' : null,
           borderRadius: currently_selected ? '1rem' : null,
           transform: tile.will_change ? 'scale(1.03)' : null,
           animation: tile.preview ? 'pulse 1s infinite' : null,
           opacity: tile.will_change ? 1 : tile.preview || !preview_mode ? 1 : 0.6,
           pointerEvents: !game_in_progress ? 'none' : null,
         }}>
-    <span style={{color: hide_colors ? 'dimgrey' : currently_selected ? 'Aqua' : color_map[tile.current_color].hex}}>
+    <span style={{
+      color: hide_colors ? 'dimgrey' : currently_selected ? 'Aqua' : color_map[tile.current_color].hex,
+      fontWeight: currently_selected ? 'bold' : null,
+    }}>
       { hide_numbers ? null : game_in_progress ? tile.current_color : null }
       { !game_in_progress ? '✓' : '' }
     </span>
