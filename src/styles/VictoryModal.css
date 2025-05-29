@@ -7,7 +7,7 @@
   &.show.fade-in {
     opacity: 1;
     visibility: visible;
-    transition: all 2s;
+    transition: opacity 2s ease-in-out, visibility 0s linear;
     transition-delay: 2s;
   }
   &.hide {
