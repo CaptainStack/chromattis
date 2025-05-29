@@ -218,7 +218,7 @@ export const App = ({state}) => {
               <h3>BEST</h3>
               <p>{current_level.best_score}</p>
             </div>
-            <div className='score-container achievements clickable' onClick={achievementsButtonClicked}>
+            <div className='score-container achievements clickable' onClick={achievementsButtonClicked} title='Show achievements [a]'>
               <h3>ACHIEVEMENTS</h3>
               <p>🏆</p>
             </div>
