@@ -7,8 +7,12 @@
   position: absolute;
 
   .lesson-text {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     padding: 0 1rem 0 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
   }
 
   .row {

@@ -67,7 +67,8 @@
 
   .instructions {
     line-height: 1.3;
-    font-size: 1.15rem
+    font-size: 1.14rem;
+    cursor: pointer;
   }
 
   .flat-button {
@@ -137,12 +138,12 @@
   }
 
   .Settings {
-    display: flex;
-    align-items: flex-start;
+    align-items: center;
     label, input {
       cursor: pointer;
       display: flex;
       align-items: center;
+      font-size: 0.9rem;
     }
     input {
       margin: 0.25rem;

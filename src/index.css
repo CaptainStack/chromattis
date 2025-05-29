@@ -20,10 +20,11 @@
 @media screen and (max-height: 412px) and (orientation: landscape) {
   :root {
     --content-width: 34rem;
+    --content-gap: 0.75rem;
     font-size: 9px;
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width: 650px) {
   :root {
     font-size: 11px;
   }
