@@ -92,8 +92,8 @@ export const upArrowKeyPressed = event => {
   const tile_id = level.currently_selected !== null ? level.currently_selected - row_length >= 0 ? level.currently_selected - row_length : level.currently_selected : level.board.length - 1;
 
   if (!application.mute_audio) UpClickSound.play();
-  sync_pulse_animations();
   store.dispatch({ type: 'SELECT_TILE', tile_id: tile_id });
+  sync_pulse_animations();
 }
 
 export const downArrowKeyPressed = event => {
