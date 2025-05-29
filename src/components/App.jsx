@@ -13,7 +13,8 @@ import {
   muteSoundButtonClicked, muteMusicButtonClicked, hideNumbersButtonClicked, 
   hideColorsButtonClicked, toggleHideTooltips, nullLastActionOnInitialPageLoad, 
   rightArrowKeyPressed, leftArrowKeyPressed, enterKeyPressed, backspaceKeyPressed, 
-  escapeKeyPressed, upArrowKeyPressed, downArrowKeyPressed, achievementsButtonClicked, enterKeyReleased, backspaceKeyReleased
+  escapeKeyPressed, upArrowKeyPressed, downArrowKeyPressed, achievementsButtonClicked, enterKeyReleased, backspaceKeyReleased,
+  toggleLevelNavMenu, 
 } from '../events';
 
 let playlist = all_tracks.slice();
@@ -92,6 +93,7 @@ export const App = ({state}) => {
         case 't': event.repeat ? null : tutorialButtonClicked(event); break;
         case 'u': event.repeat ? null : undoButtonClicked(event); break;
         case 'a': event.repeat ? null : achievementsButtonClicked(event); break;
+        case 'l': event.repeat ? null : toggleLevelNavMenu(event); break;
         case 'm': event.repeat ? null : document.getElementById('music_toggle').click(); break;
         case 's': event.repeat ? null : document.getElementById('sound_toggle').click(); break;
         case 'n': event.repeat ? null : document.getElementById('numbers_toggle').click(); break;
