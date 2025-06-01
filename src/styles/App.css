@@ -172,7 +172,7 @@
     height: 100dvh;
     width: 100dvw;
     .main-container {
-      min-width: 75rem;
+      min-width: calc(var(--content-width) * 2 + var(--content-gap) * 3);
       max-height: var(--content-width);
       display: grid;
       grid-template-columns: 1fr 1fr;
