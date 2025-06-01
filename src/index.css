@@ -17,14 +17,14 @@
   }
 }
 
-@media screen and (max-height: 412px) and (orientation: landscape) {
+@media screen and (max-height: 600px) and (orientation: landscape) {
   :root {
     --content-width: 34rem;
     --content-gap: 0.75rem;
     font-size: 9px;
   }
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1275px) {
   :root {
     font-size: 11px;
   }
