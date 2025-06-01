@@ -1,23 +1,19 @@
 .LevelNavMenu {
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   position: absolute;
+  padding: var(--content-gap);
   .level-navigation-button {
     margin: var(--content-gap);
   }
   .current-level {
     margin: var(--content-gap);
   }
-  .row {
-    margin-left: var(--content-gap);
-    margin-right: var(--content-gap);
-  }
   .nav-button-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 25rem;
     align-content: flex-start;
     align-items: center;
   }
