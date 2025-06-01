@@ -1,7 +1,7 @@
 import { Tile } from './Tile';
 import '../styles/Game.css';
 
-export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide_colors, hide_tooltips}) => {
+export const Game = ({tiles, current_level, game_in_progress, show_game,  hide_numbers, hide_colors, hide_tooltips}) => {
   tiles = tiles.map((tile, index) => 
     <Tile 
       index={index}
@@ -18,7 +18,7 @@ export const Game = ({tiles, current_level, game_in_progress, hide_numbers, hide
   const rows = Math.floor(Math.sqrt(tiles.length));
 
   return(
-    <div className={`Game ${game_in_progress ? 'unsolved' : 'solved'}`}
+    <div className={`Game ${game_in_progress ? 'unsolved' : 'solved'} ${show_game ? 'show' : 'hide'}`}
          style={{
             gridTemplateColumns: `repeat(${ columns }, calc((var(--content-width) - (var(--content-gap) * 3)) / ${columns} - var(--content-gap)))`,
             gridTemplateRows: `repeat(${ rows }, calc((var(--content-width) - (var(--content-gap) * 3)) / ${columns} - var(--content-gap))`,

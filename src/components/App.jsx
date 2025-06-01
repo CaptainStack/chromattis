@@ -239,7 +239,7 @@ export const App = ({state}) => {
 
         <div className='second'>
           <div className='row' id='game-row'>
-            <Game hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
+            <Game show_game={state.current_display === 'game'} hide_tooltips={state.hide_tooltips} hide_numbers={state.hide_numbers} hide_colors={state.hide_colors} tiles={current_level.board} game_in_progress={!current_level.in_winning_state()} current_moves={current_level.moves} current_level={current_level}/>
             <VictoryModal mute_audio={state.mute_audio} victory_audio={VictorySound} last_action={state.last_action} show_victory={state.current_display === 'game' && current_level.in_winning_state()} current_moves={ current_level.moves } current_level_index={ state.game.current_level_index } best_score={current_level.best_score} total_levels={state.game.levels.length}/>
             <Achievements state={state} achievements={state.achievements} show_achievements={state.current_display === 'achievements'}/>
             <Tutorial show_tutorial={state.current_display === 'tutorial'} tutorial={ state.tutorial }/>

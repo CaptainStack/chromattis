@@ -4,7 +4,7 @@ import { tutorialButtonClicked, previousTutorialButtonClicked, nextTutorialButto
 export const Tutorial = ({show_tutorial, tutorial}) => {
   const lesson = tutorial.levels[tutorial.current_level_index];
   return(
-    <div className='Tutorial primary-content-container' style={{ display: show_tutorial ? null : 'none' }}>
+    <div className={`Tutorial primary-content-container ${show_tutorial ? 'show' : 'hide'}`}>
       <h1>Tutorial {tutorial.current_level_index} of {tutorial.levels.length - 1}</h1>
       <span className='lesson-text'><strong>{lesson.text}</strong></span>
       <img src={`${import.meta.env.BASE_URL}tutorials/${lesson.image}`} alt={lesson.text}/>

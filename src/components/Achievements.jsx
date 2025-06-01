@@ -12,7 +12,7 @@ export const Achievements = ({state, achievements}) => {
   );
   
   return(
-    <div className={'Achievements primary-content-container'} style={{display: state.current_display === 'achievements' ? null : 'none'}}>
+    <div className={`Achievements primary-content-container ${state.current_display === 'achievements' ? 'show' : 'hide'}`}>
       <h1>Achievements 🏆</h1>
       <strong>You have completed {num_completed_achievements} of {num_total_achievements} achievements</strong>
       <div className='ProgressBar'>
