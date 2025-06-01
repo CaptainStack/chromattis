@@ -13,8 +13,10 @@ const processAchievemeNotifications = (achievements, new_achievements) => {
   if (achievements.length !== new_achievements.length) {
     store.dispatch({ type: 'UPDATE_ACHIEVEMENT_TEXT', text: new_achievements.filter(element => !achievements.includes(element))[0].text });
     document.getElementById('AchievementNotification').classList.add('show');
+    document.getElementById('AchievementNotification').classList.remove('hide');
     setTimeout(() => {
       document.getElementById('AchievementNotification').classList.remove('show');
+      document.getElementById('AchievementNotification').classList.add('hide');
     }, 4000);
   }
 }
